@@ -1,0 +1,216 @@
+2026-02-02 19:14:56 | INFO     | __main__:main:266 - === Iniciando prueba del scraper RFEBM ===
+2026-02-02 19:14:56 | INFO     | __main__:__init__:35 - Scraper inicializado con max_retries=3, retry_delay=2
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:159 - Iniciando scraping de: https://www.rfebm.com/transparencia/normativa-y-reglamentos/
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:171 - Encontrados 261 enlaces en la página
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:14:56 | INFO     | __main__:scrape_pdf_links:216 - Scraping completado: 18 PDFs de Reglas de Juego encontrados
+2026-02-02 19:15:05 | INFO     | __main__:close:253 - Sesión del scraper cerrada
+2026-02-02 19:15:05 | INFO     | __main__:main:287 - === Prueba completada ===
+2026-02-02 19:28:03 | INFO     | __main__:main:243 - === Iniciando prueba del descargador de PDFs ===
+2026-02-02 19:28:03 | INFO     | src.scraper.rfebm_scraper:__init__:35 - Scraper inicializado con max_retries=3, retry_delay=2
+2026-02-02 19:28:03 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:159 - Iniciando scraping de: https://www.rfebm.com/transparencia/normativa-y-reglamentos/
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:171 - Encontrados 261 enlaces en la página
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:216 - Scraping completado: 18 PDFs de Reglas de Juego encontrados
+2026-02-02 19:28:04 | INFO     | src.scraper.rfebm_scraper:close:253 - Sesión del scraper cerrada
+2026-02-02 19:28:04 | INFO     | __main__:__init__:25 - PDFDownloader inicializado. Directorio de salida: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw
+2026-02-02 19:28:04 | INFO     | __main__:download_reglas_juego:233 - PDF de Reglas de Juego identificado: Reglas de Juego (Julio 2025) (versión 2025)
+2026-02-02 19:28:04 | INFO     | __main__:download_pdf:131 - Descargando PDF: Reglas de Juego (Julio 2025)
+2026-02-02 19:28:04 | INFO     | __main__:download_pdf:132 - URL: https://www.rfebm.com/download/779/estatutos-y-reglamentos/124147/reglas-de-juego-julio-2025.pdf
+2026-02-02 19:28:04 | INFO     | __main__:download_pdf:133 - Destino: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\reglas-juego_2025_20260202.pdf
+2026-02-02 19:28:13 | INFO     | __main__:download_pdf:143 - Descarga completada: 96.59 MB
+2026-02-02 19:28:13 | INFO     | __main__:download_pdf:165 - PDF guardado exitosamente: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\reglas-juego_2025_20260202.pdf
+2026-02-02 19:28:13 | INFO     | __main__:download_pdf:166 - Checksum: af8bde5c174ab9b2...
+2026-02-02 19:28:13 | INFO     | __main__:main:267 - === Prueba completada ===
+2026-02-02 19:29:51 | INFO     | __main__:main:243 - === Iniciando prueba del descargador de PDFs ===
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:__init__:35 - Scraper inicializado con max_retries=3, retry_delay=2
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:159 - Iniciando scraping de: https://www.rfebm.com/transparencia/normativa-y-reglamentos/
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:171 - Encontrados 261 enlaces en la página
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:216 - Scraping completado: 18 PDFs de Reglas de Juego encontrados
+2026-02-02 19:29:51 | INFO     | src.scraper.rfebm_scraper:close:253 - Sesión del scraper cerrada
+2026-02-02 19:29:51 | INFO     | __main__:__init__:25 - PDFDownloader inicializado. Directorio de salida: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw
+2026-02-02 19:29:51 | INFO     | __main__:download_reglas_juego:233 - PDF de Reglas de Juego identificado: Reglas de Juego (Julio 2025) (versión 2025)
+2026-02-02 19:29:51 | INFO     | __main__:download_pdf:131 - Descargando PDF: Reglas de Juego (Julio 2025)
+2026-02-02 19:29:51 | INFO     | __main__:download_pdf:132 - URL: https://www.rfebm.com/download/779/estatutos-y-reglamentos/124147/reglas-de-juego-julio-2025.pdf
+2026-02-02 19:29:51 | INFO     | __main__:download_pdf:133 - Destino: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\reglas-juego_2025_20260202.pdf
+2026-02-02 19:30:01 | INFO     | __main__:download_pdf:143 - Descarga completada: 96.59 MB
+2026-02-02 19:30:01 | INFO     | __main__:_file_exists_with_same_content:105 - Archivo duplicado detectado: reglas-juego_2025_20260202.pdf (checksum: af8bde5c...)
+2026-02-02 19:30:01 | INFO     | __main__:download_pdf:147 - Archivo ya existe y es idéntico, omitiendo escritura
+2026-02-02 19:30:01 | INFO     | __main__:main:267 - === Prueba completada ===
+2026-02-02 19:35:19 | INFO     | __main__:main:406 - === Iniciando prueba del tracker de versiones ===
+2026-02-02 19:35:19 | INFO     | __main__:_load_database:39 - Base de datos de versiones no existe, creando nueva
+2026-02-02 19:35:19 | INFO     | __main__:__init__:29 - VersionTracker inicializado. Base de datos: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:35:19 | INFO     | __main__:auto_update:330 - === Iniciando proceso de auto-actualización ===
+2026-02-02 19:35:19 | INFO     | __main__:check_for_updates:156 - === Iniciando comprobación de actualizaciones ===
+2026-02-02 19:35:19 | INFO     | __main__:_save_database:66 - Base de datos guardada: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:__init__:35 - Scraper inicializado con max_retries=3, retry_delay=2
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:159 - Iniciando scraping de: https://www.rfebm.com/transparencia/normativa-y-reglamentos/
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:171 - Encontrados 261 enlaces en la página
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:216 - Scraping completado: 18 PDFs de Reglas de Juego encontrados
+2026-02-02 19:35:19 | INFO     | src.scraper.rfebm_scraper:close:253 - Sesión del scraper cerrada
+2026-02-02 19:35:19 | INFO     | __main__:check_for_updates:201 - Nuevo documento detectado: Reglas de Juego (Julio 2025) (versión 2025)
+2026-02-02 19:35:19 | INFO     | __main__:check_for_updates:227 - === Comprobación completada: 1 actualizaciones encontradas ===
+2026-02-02 19:35:19 | INFO     | __main__:download_updates:245 - === Descargando 1 actualizaciones ===
+2026-02-02 19:35:19 | INFO     | src.scraper.pdf_downloader:__init__:25 - PDFDownloader inicializado. Directorio de salida: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw
+2026-02-02 19:35:19 | INFO     | __main__:download_updates:254 - Descargando rj-2025: Reglas de Juego (Julio 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.pdf_downloader:download_pdf:131 - Descargando PDF: Reglas de Juego (Julio 2025)
+2026-02-02 19:35:19 | INFO     | src.scraper.pdf_downloader:download_pdf:132 - URL: https://www.rfebm.com/download/779/estatutos-y-reglamentos/124147/reglas-de-juego-julio-2025.pdf
+2026-02-02 19:35:19 | INFO     | src.scraper.pdf_downloader:download_pdf:133 - Destino: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\reglas-juego_2025_20260202.pdf
+2026-02-02 19:35:30 | INFO     | src.scraper.pdf_downloader:download_pdf:143 - Descarga completada: 96.59 MB
+2026-02-02 19:35:30 | INFO     | src.scraper.pdf_downloader:download_pdf:165 - PDF guardado exitosamente: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\reglas-juego_2025_20260202.pdf
+2026-02-02 19:35:30 | INFO     | src.scraper.pdf_downloader:download_pdf:166 - Checksum: af8bde5c174ab9b2...
+2026-02-02 19:35:30 | INFO     | __main__:_update_document_record:318 - Nuevo documento rj-2025 agregado a la base de datos
+2026-02-02 19:35:30 | INFO     | __main__:_save_database:66 - Base de datos guardada: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:35:30 | INFO     | __main__:download_updates:274 - === Descargas completadas: 1 exitosas ===
+2026-02-02 19:35:30 | INFO     | __main__:main:437 - === Prueba completada ===
+2026-02-02 19:36:15 | INFO     | __main__:main:406 - === Iniciando prueba del tracker de versiones ===
+2026-02-02 19:36:15 | INFO     | __main__:_load_database:50 - Base de datos cargada: 1 documentos
+2026-02-02 19:36:15 | INFO     | __main__:__init__:29 - VersionTracker inicializado. Base de datos: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:36:15 | INFO     | __main__:auto_update:330 - === Iniciando proceso de auto-actualización ===
+2026-02-02 19:36:15 | INFO     | __main__:check_for_updates:156 - === Iniciando comprobación de actualizaciones ===
+2026-02-02 19:36:15 | INFO     | __main__:_save_database:66 - Base de datos guardada: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:36:15 | INFO     | src.scraper.rfebm_scraper:__init__:35 - Scraper inicializado con max_retries=3, retry_delay=2
+2026-02-02 19:36:15 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:159 - Iniciando scraping de: https://www.rfebm.com/transparencia/normativa-y-reglamentos/
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:171 - Encontrados 261 enlaces en la página
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:216 - Scraping completado: 18 PDFs de Reglas de Juego encontrados
+2026-02-02 19:36:16 | INFO     | src.scraper.rfebm_scraper:close:253 - Sesión del scraper cerrada
+2026-02-02 19:36:16 | INFO     | __main__:check_for_updates:218 - No hay cambios para rj-2025
+2026-02-02 19:36:16 | INFO     | __main__:check_for_updates:227 - === Comprobación completada: 0 actualizaciones encontradas ===
+2026-02-02 19:36:16 | INFO     | __main__:auto_update:345 - No hay actualizaciones disponibles
+2026-02-02 19:36:16 | INFO     | __main__:main:437 - === Prueba completada ===
+2026-02-02 19:37:54 | INFO     | __main__:main:18 - ============================================================
+2026-02-02 19:37:54 | INFO     | __main__:main:19 - INICIO DE TAREA PROGRAMADA: Auto-actualización
+2026-02-02 19:37:54 | INFO     | __main__:main:20 - ============================================================
+2026-02-02 19:37:54 | INFO     | src.scraper.version_tracker:_load_database:50 - Base de datos cargada: 1 documentos
+2026-02-02 19:37:54 | INFO     | src.scraper.version_tracker:__init__:29 - VersionTracker inicializado. Base de datos: c:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:37:54 | INFO     | src.scraper.version_tracker:auto_update:320 - === Iniciando proceso de auto-actualización ===
+2026-02-02 19:37:54 | INFO     | src.scraper.version_tracker:needs_check:131 - Próximo check en 89 días
+2026-02-02 19:37:54 | INFO     | src.scraper.version_tracker:check_for_updates:148 - No es necesario realizar comprobación todavía
+2026-02-02 19:37:54 | INFO     | __main__:main:30 - ✅ No es necesario realizar comprobación todavía
+2026-02-02 19:37:54 | INFO     | __main__:main:31 -    Próximo check: 2026-05-03T19:36:15.652140
+2026-02-02 19:37:54 | INFO     | __main__:main:57 - ============================================================
+2026-02-02 19:37:54 | INFO     | __main__:main:58 - FIN DE TAREA PROGRAMADA
+2026-02-02 19:37:54 | INFO     | __main__:main:59 - ============================================================
+2026-02-02 19:38:36 | INFO     | src.scraper.version_tracker:_load_database:50 - Base de datos cargada: 1 documentos
+2026-02-02 19:38:36 | INFO     | src.scraper.version_tracker:__init__:29 - VersionTracker inicializado. Base de datos: c:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:42:24 | INFO     | __main__:status_mode:188 - === Modo: Estado del Sistema ===
+2026-02-02 19:42:24 | INFO     | src.scraper.version_tracker:_load_database:50 - Base de datos cargada: 1 documentos
+2026-02-02 19:42:24 | INFO     | src.scraper.version_tracker:__init__:29 - VersionTracker inicializado. Base de datos: c:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:42:29 | INFO     | __main__:scrape_only:20 - === Modo: Solo Scraping ===
+2026-02-02 19:42:29 | INFO     | src.scraper.rfebm_scraper:__init__:35 - Scraper inicializado con max_retries=3, retry_delay=2
+2026-02-02 19:42:29 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:159 - Iniciando scraping de: https://www.rfebm.com/transparencia/normativa-y-reglamentos/
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:171 - Encontrados 261 enlaces en la página
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-de-regimen-disciplinario-junio-2025.pdf (versión: 2025)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-julio-2025.pdf (versión: 2025)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-partidos-y-competiciones-febrero-2025.pdf (versión: 2025)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: estatutos-rfebm-asamblea-2024.pdf (versión: 2024)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglas-de-juego-de-bm-playa-edicion-2016.pdf (versión: 2016)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (versión: 2022)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: regulaciones-transfers-edicion-2019.pdf (versión: 2019)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: erratas-reglas-de-juego-balonmano-playa-2016.pdf (versión: 2016)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:214 - PDF encontrado: 20190201-reglamento-escuela-nacional-entrenadores.pdf (versión: 2019)
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:scrape_pdf_links:216 - Scraping completado: 18 PDFs de Reglas de Juego encontrados
+2026-02-02 19:42:30 | INFO     | src.scraper.rfebm_scraper:close:253 - Sesión del scraper cerrada
+2026-02-02 19:42:40 | INFO     | __main__:auto_update_mode:153 - === Modo: Auto-actualización ===
+2026-02-02 19:42:40 | INFO     | src.scraper.version_tracker:_load_database:50 - Base de datos cargada: 1 documentos
+2026-02-02 19:42:40 | INFO     | src.scraper.version_tracker:__init__:29 - VersionTracker inicializado. Base de datos: c:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\versions.json
+2026-02-02 19:42:40 | INFO     | src.scraper.version_tracker:auto_update:320 - === Iniciando proceso de auto-actualización ===
+2026-02-02 19:42:40 | INFO     | src.scraper.version_tracker:needs_check:131 - Próximo check en 89 días
+2026-02-02 19:42:40 | INFO     | src.scraper.version_tracker:check_for_updates:148 - No es necesario realizar comprobación todavía
