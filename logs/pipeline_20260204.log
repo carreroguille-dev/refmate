@@ -1,0 +1,74 @@
+2026-02-04 01:05:15,759 | INFO | __main__ | ==================================================
+2026-02-04 01:05:15,760 | INFO | __main__ | INICIANDO TEST DEL FLUJO
+2026-02-04 01:05:15,760 | INFO | __main__ | ==================================================
+2026-02-04 01:05:15,760 | INFO | __main__ | PASO 1: Extrayendo PDFs...
+2026-02-04 01:05:15,760 | INFO | src.pipeline.scraper | Iniciando extracción de 2 fuentes
+2026-02-04 01:05:46,584 | ERROR | src.pipeline.scraper | Error procesando https://www.rfebm.com/competiciones/reglas-de-juego: HTTPSConnectionPool(host='resultadosbalonmano.isquad.es', port=443): Read timed out. (read timeout=30)
+2026-02-04 01:05:46,684 | ERROR | src.pipeline.scraper | Error procesando https://www.fabm.es/reglamentos: HTTPSConnectionPool(host='www.fabm.es', port=443): Max retries exceeded with url: /reglamentos (Caused by NameResolutionError("HTTPSConnection(host='www.fabm.es', port=443): Failed to resolve 'www.fabm.es' ([Errno 11001] getaddrinfo failed)"))
+2026-02-04 01:05:46,685 | INFO | src.pipeline.scraper | Total PDFs extraídos: 0
+2026-02-04 01:05:46,685 | ERROR | __main__ | No se encontraron PDFs
+2026-02-04 01:09:41,873 | INFO | __main__ | ==================================================
+2026-02-04 01:09:41,873 | INFO | __main__ | INICIANDO TEST DEL FLUJO
+2026-02-04 01:09:41,873 | INFO | __main__ | ==================================================
+2026-02-04 01:09:41,873 | INFO | __main__ | PASO 1: Extrayendo PDFs...
+2026-02-04 01:09:41,874 | INFO | src.pipeline.scraper | Iniciando extracción de 2 fuentes
+2026-02-04 01:09:43,261 | INFO | src.pipeline.scraper | RFEBM - Normativa y Reglamentos: 11 PDFs encontrados
+2026-02-04 01:09:47,034 | INFO | src.pipeline.scraper | FABM - Reglamentos: 4 PDFs encontrados
+2026-02-04 01:09:47,034 | INFO | src.pipeline.scraper | Total PDFs extraídos: 15
+2026-02-04 01:09:47,036 | INFO | __main__ | PASO 2: Filtrando PDFs...
+2026-02-04 01:09:47,036 | INFO | src.pipeline.scraper | PDFs filtrados: 9 de 15 (patrones: ['reglas', 'reglamento', 'disciplina', 'rgc'])
+2026-02-04 01:09:47,036 | INFO | __main__ | PASO 3: Cargando metadatos existentes...
+2026-02-04 01:14:42,511 | INFO | __main__ | ==================================================
+2026-02-04 01:14:42,512 | INFO | __main__ | INICIANDO TEST DEL FLUJO
+2026-02-04 01:14:42,512 | INFO | __main__ | ==================================================
+2026-02-04 01:14:42,512 | INFO | __main__ | PASO 1: Extrayendo PDFs...
+2026-02-04 01:14:42,512 | INFO | src.pipeline.scraper | Iniciando extracción de 2 fuentes
+2026-02-04 01:14:43,052 | INFO | src.pipeline.scraper | RFEBM - Normativa y Reglamentos: 11 PDFs encontrados
+2026-02-04 01:14:43,687 | INFO | src.pipeline.scraper | FABM - Reglamentos: 4 PDFs encontrados
+2026-02-04 01:14:43,687 | INFO | src.pipeline.scraper | Total PDFs extraídos: 15
+2026-02-04 01:14:43,689 | INFO | __main__ | PASO 2: Filtrando PDFs...
+2026-02-04 01:14:43,690 | INFO | src.pipeline.scraper | PDFs filtrados: 9 de 15 (patrones: ['reglas', 'reglamento', 'disciplina', 'rgc'])
+2026-02-04 01:14:43,690 | INFO | __main__ | PASO 3: Cargando metadatos existentes...
+2026-02-04 01:14:43,690 | INFO | src.pipeline.downloader | Metadatos cargados: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\downloads_metadata.json
+2026-02-04 01:14:43,691 | INFO | __main__ | PASO 4: Filtrando duplicados...
+2026-02-04 01:14:43,691 | INFO | src.pipeline.downloader | URLs nuevas: 9 de 9 totales
+2026-02-04 01:14:43,691 | INFO | __main__ | PASO 5: Descargando PDFs...
+2026-02-04 01:14:44,939 | INFO | src.pipeline.downloader | Descargado: reglamento-de-regimen-disciplinario-junio-2025.pdf
+2026-02-04 01:14:58,745 | INFO | src.pipeline.downloader | Descargado: reglas-de-juego-julio-2025.pdf
+2026-02-04 01:15:00,185 | INFO | src.pipeline.downloader | Descargado: reglamento-partidos-y-competiciones-febrero-2025.pdf
+2026-02-04 01:15:02,116 | INFO | src.pipeline.downloader | Descargado: reglas-de-juego-de-bm-playa-edicion-2016.pdf
+2026-02-04 01:15:07,854 | INFO | src.pipeline.downloader | Descargado: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf
+2026-02-04 01:15:08,783 | INFO | src.pipeline.downloader | Descargado: erratas-reglas-de-juego-balonmano-playa-2016.pdf
+2026-02-04 01:15:10,397 | INFO | src.pipeline.downloader | Descargado: 20190201-reglamento-escuela-nacional-entrenadores.pdf
+2026-02-04 01:15:12,888 | INFO | src.pipeline.downloader | Descargado: rgc-25-web.pdf
+2026-02-04 01:15:14,017 | INFO | src.pipeline.downloader | Descargado: reglamento-electoral-2024-2.pdf
+2026-02-04 01:15:14,019 | INFO | __main__ | PASO 6: Extrayendo metadatos...
+2026-02-04 01:15:14,044 | INFO | src.pipeline.downloader | Metadatos extraídos: reglamento-de-regimen-disciplinario-junio-2025.pdf (595 KB)
+2026-02-04 01:15:14,175 | INFO | src.pipeline.downloader | Metadatos extraídos: reglas-de-juego-julio-2025.pdf (98905 KB)
+2026-02-04 01:15:14,834 | INFO | src.pipeline.downloader | Metadatos extraídos: reglamento-partidos-y-competiciones-febrero-2025.pdf (1049 KB)
+2026-02-04 01:15:14,865 | INFO | src.pipeline.downloader | Metadatos extraídos: reglas-de-juego-de-bm-playa-edicion-2016.pdf (9415 KB)
+2026-02-04 01:15:15,101 | INFO | src.pipeline.downloader | Metadatos extraídos: reglamento-del-comite-tecnico-de-arbitros-mayo2022.pdf (601 KB)
+2026-02-04 01:15:15,114 | INFO | src.pipeline.downloader | Metadatos extraídos: erratas-reglas-de-juego-balonmano-playa-2016.pdf (77 KB)
+2026-02-04 01:15:15,133 | INFO | src.pipeline.downloader | Metadatos extraídos: 20190201-reglamento-escuela-nacional-entrenadores.pdf (126 KB)
+2026-02-04 01:15:15,148 | INFO | src.pipeline.downloader | Metadatos extraídos: rgc-25-web.pdf (982 KB)
+2026-02-04 01:15:15,162 | INFO | src.pipeline.downloader | Metadatos extraídos: reglamento-electoral-2024-2.pdf (379 KB)
+2026-02-04 01:15:15,163 | INFO | __main__ | PASO 7: Guardando metadatos...
+2026-02-04 01:15:15,164 | INFO | src.pipeline.downloader | Metadatos guardados: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\downloads_metadata.json (9 documentos)
+2026-02-04 01:15:15,165 | INFO | __main__ | ==================================================
+2026-02-04 01:15:15,165 | INFO | __main__ | TEST COMPLETADO EXITOSAMENTE
+2026-02-04 01:15:15,165 | INFO | __main__ | ==================================================
+2026-02-04 01:16:41,261 | INFO | __main__ | ==================================================
+2026-02-04 01:16:41,261 | INFO | __main__ | INICIANDO TEST DEL FLUJO
+2026-02-04 01:16:41,262 | INFO | __main__ | ==================================================
+2026-02-04 01:16:41,262 | INFO | __main__ | PASO 1: Extrayendo PDFs...
+2026-02-04 01:16:41,262 | INFO | src.pipeline.scraper | Iniciando extracción de 2 fuentes
+2026-02-04 01:16:41,764 | INFO | src.pipeline.scraper | RFEBM - Normativa y Reglamentos: 11 PDFs encontrados
+2026-02-04 01:16:42,359 | INFO | src.pipeline.scraper | FABM - Reglamentos: 4 PDFs encontrados
+2026-02-04 01:16:42,359 | INFO | src.pipeline.scraper | Total PDFs extraídos: 15
+2026-02-04 01:16:42,361 | INFO | __main__ | PASO 2: Filtrando PDFs...
+2026-02-04 01:16:42,361 | INFO | src.pipeline.scraper | PDFs filtrados: 9 de 15 (patrones: ['reglas', 'reglamento', 'disciplina', 'rgc'])
+2026-02-04 01:16:42,361 | INFO | __main__ | PASO 3: Cargando metadatos existentes...
+2026-02-04 01:16:42,362 | INFO | src.pipeline.downloader | Metadatos cargados: C:\Users\carre\Documents\Proyectos\refmate-handball\data\raw\downloads_metadata.json
+2026-02-04 01:16:42,362 | INFO | __main__ | PASO 4: Filtrando duplicados...
+2026-02-04 01:16:42,362 | INFO | src.pipeline.downloader | URLs nuevas: 0 de 9 totales
+2026-02-04 01:16:42,363 | INFO | __main__ | No hay PDFs nuevos para descargar
