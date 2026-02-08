@@ -34,9 +34,21 @@ ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
 
 PATHS = {
-    "raw": DATA_DIR / "raw",           
-    "temp": DATA_DIR / "temp",         
-    "processed": DATA_DIR / "processed", 
-    "indices": DATA_DIR / "indices",   
-    "logs": ROOT / "logs",            
+    "raw": DATA_DIR / "raw",
+    "temp": DATA_DIR / "temp",
+    "processed": DATA_DIR / "processed",
+    "indices": DATA_DIR / "indices",
+    "logs": ROOT / "logs",
+}
+
+# =====================================
+# OCR
+# =====================================
+
+OCR = {
+    "model_id": "lightonai/LightOnOCR-1B-1025",
+    "default_prompt": None,  # LightOnOCR expects image-only input, no text prompt
+    "max_new_tokens": 2048,
+    "language": "es",
+    "tokenizer_model": "moonshotai/Kimi-K2.5",
 }

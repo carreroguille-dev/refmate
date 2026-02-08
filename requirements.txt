@@ -1,1 +1,16 @@
-﻿
+# Scraping and downloading
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# PDF processing
+pdf2image>=1.16.0
+Pillow>=10.0.0
+PyMuPDF>=1.23.0
+
+# OCR with LightOnOCR
+torch>=2.0.0
+transformers>=4.36.0
+accelerate>=0.25.0
+
+# Utilities
+tqdm>=4.66.0

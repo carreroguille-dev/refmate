@@ -20,8 +20,12 @@ def load_metadata(filename='downloads_metadata.json'):
     
     if metadata_path.exists():
         with open(metadata_path, 'r', encoding='utf-8') as f:
+            content = f.read().strip()
+            if not content:
+                log.info(f"Archivo de metadatos vacío: {metadata_path}")
+                return []
             log.info(f"Metadatos cargados: {metadata_path}")
-            return json.load(f)
+            return json.loads(content)
     
     log.info("No existen metadatos previos")
     return []

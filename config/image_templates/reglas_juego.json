@@ -1,0 +1,21 @@
+{
+  "name": "Reglas de Juego",
+  "description": "Handball rules document - alternating border on binding margin",
+  "file_pattern": "reglas.*juego|reglas-de-juego",
+  "skip_first_page": true,
+  "crop": {
+    "unit": "percent",
+    "odd_pages": {
+      "top": 0,
+      "bottom": 0,
+      "left": 0,
+      "right": 8
+    },
+    "even_pages": {
+      "top": 0,
+      "bottom": 0,
+      "left": 8,
+      "right": 0
+    }
+  }
+}

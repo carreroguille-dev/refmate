@@ -45,16 +45,29 @@ def extract_pdfs():
     return pdfs
 
 
-def filter_pdfs(pdfs, patterns):
-    """Filtra PDFs que coincidan con los patrones dados."""
+def filter_pdfs(pdfs, patterns, exclude_patterns=None):
+    """Filtra PDFs que coincidan con los patrones dados y excluye los no deseados."""
     filtered = []
+    exclude_patterns = exclude_patterns or []
     
     for pdf in pdfs:
         filename = pdf.split('/')[-1].lower()
+        
+        matches = False
         for pattern in patterns:
             if re.search(pattern, filename, re.IGNORECASE):
-                filtered.append(pdf)
+                matches = True
                 break
+        
+        if matches:
+            excluded = False
+            for exclude in exclude_patterns:
+                if re.search(exclude, filename, re.IGNORECASE):
+                    excluded = True
+                    break
+            
+            if not excluded:
+                filtered.append(pdf)
     
-    log.info(f"PDFs filtrados: {len(filtered)} de {len(pdfs)} (patrones: {patterns})")
+    log.info(f"PDFs filtrados: {len(filtered)} de {len(pdfs)} (patrones: {patterns}, excluidos: {exclude_patterns})")
     return filtered

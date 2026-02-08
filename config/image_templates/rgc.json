@@ -1,0 +1,15 @@
+{
+  "name": "RGC",
+  "description": "Additional regulations document - header and footer on all pages",
+  "file_pattern": "rgc",
+  "skip_first_page": true,
+  "crop": {
+    "unit": "percent",
+    "all_pages": {
+      "top": 8,
+      "bottom": 6,
+      "left": 0,
+      "right": 0
+    }
+  }
+}

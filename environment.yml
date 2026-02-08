@@ -1,9 +1,22 @@
 name: refmate
 channels:
+  - pytorch
   - conda-forge
   - defaults
 dependencies:
   - python=3.10
+  # PDF processing
+  - poppler
+  - pdf2image
+  - pillow
+  # ML/OCR
+  - pytorch
+  - torchvision
+  - transformers
+  - accelerate
+  # Scraping
+  - requests
+  - beautifulsoup4
+  # Utilities
+  - tqdm
   - pip
-  - pip:
-      - -r requirements.txt

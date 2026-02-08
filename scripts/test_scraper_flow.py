@@ -26,8 +26,9 @@ def test_flow():
         return False
     
     log.info("PASO 2: Filtrando PDFs...")
-    patterns = ["reglas", "reglamento", "disciplina", "rgc"]
-    pdfs = filter_pdfs(pdfs, patterns)
+    patterns = ["reglas-de-juego", "zz-add", "rgc"]
+    exclude_patterns=["playa", "beach"]
+    pdfs = filter_pdfs(pdfs, patterns, exclude_patterns)
     
     if not pdfs:
         log.error("Ningún PDF coincide con los patrones")
