@@ -36,6 +36,7 @@ ENV/
 # IDEs
 .vscode/
 .idea/
+.claude/
 
 # OS
 .DS_Store
@@ -57,3 +58,8 @@ data/index/*
 
 data/cache/*
 !data/cache/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
