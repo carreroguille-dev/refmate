@@ -59,6 +59,9 @@ data/index/*
 data/cache/*
 !data/cache/.gitkeep
 
+data/temp/*
+!data/temp/.gitkeep
+
 # Logs
 logs/*
 !logs/.gitkeep
