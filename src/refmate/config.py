@@ -168,6 +168,16 @@ class TelegramConfig(BaseModel):
         return v
 
 
+class ScraperConfig(BaseModel):
+    """Parámetros operacionales del scraper de descarga."""
+
+    model_config = ConfigDict(frozen=True)
+
+    timeout_seconds: int
+    max_retries: int
+    backoff_base: int
+
+
 class ApiKeysConfig(BaseModel):
     """API keys externas."""
 
@@ -196,6 +206,7 @@ class RefMateConfig(BaseModel):
     retrieval: RetrievalConfig
     qdrant: QdrantConfig
     cache: CacheConfig
+    scraper: ScraperConfig
     telegram: TelegramConfig
     api_keys: ApiKeysConfig
 
@@ -259,6 +270,15 @@ def _find_config_file() -> Path:
     raise FileNotFoundError(
         "No se encontró config.yaml. Asegúrate de que existe en la raíz del proyecto."
     )
+
+
+def get_project_root() -> Path:
+    """Devuelve la raíz del proyecto (directorio que contiene config.yaml).
+
+    Returns:
+        Path al directorio raíz del proyecto.
+    """
+    return _find_config_file().parent
 
 
 @lru_cache(maxsize=1)

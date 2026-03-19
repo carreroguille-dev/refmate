@@ -105,5 +105,10 @@ telegram:
   token: "${TELEGRAM_BOT_TOKEN}"
   rate_limit_per_user: 20
 
+scraper:
+  timeout_seconds: 60
+  max_retries: 3
+  backoff_base: 2
+
 api_keys:
   openrouter: "${OPENROUTER_API_KEY}"

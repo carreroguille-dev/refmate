@@ -12,19 +12,12 @@ import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 import httpx
 from loguru import logger
 
-from refmate.config import get_config
-
-# ---------------------------------------------------------------------------
-# Constantes
-# ---------------------------------------------------------------------------
-
-_TIMEOUT_SECONDS = 60
-_MAX_RETRIES = 3
-_BACKOFF_BASE = 2  # segundos: 2^1, 2^2, 2^3
+from refmate.config import get_config, get_project_root
 
 
 # ---------------------------------------------------------------------------
@@ -48,7 +41,7 @@ def _compute_sha256(path: Path) -> str:
     return sha.hexdigest()
 
 
-def _load_manifest(manifest_path: Path) -> dict[str, dict]:  # type: ignore[type-arg]
+def _load_manifest(manifest_path: Path) -> dict[str, Any]:
     """Carga el manifest.json existente o devuelve un dict vacío.
 
     Args:
@@ -63,7 +56,7 @@ def _load_manifest(manifest_path: Path) -> dict[str, dict]:  # type: ignore[type
     return {}
 
 
-def _save_manifest(manifest_path: Path, data: dict[str, dict]) -> None:  # type: ignore[type-arg]
+def _save_manifest(manifest_path: Path, data: dict[str, Any]) -> None:
     """Guarda el manifest.json con formato legible.
 
     Args:
@@ -103,6 +96,8 @@ async def _download_document(
     doc_id: str,
     url: str,
     dest_path: Path,
+    max_retries: int,
+    backoff_base: int,
 ) -> None:
     """Descarga un documento con reintentos y backoff exponencial.
 
@@ -111,13 +106,15 @@ async def _download_document(
         doc_id: Identificador del documento (para logging).
         url: URL de descarga.
         dest_path: Ruta de destino donde guardar el fichero.
+        max_retries: Número máximo de intentos.
+        backoff_base: Base para el backoff exponencial (segundos).
 
     Raises:
         httpx.HTTPError: Si agotan los reintentos sin éxito.
     """
-    for attempt in range(1, _MAX_RETRIES + 1):
+    for attempt in range(1, max_retries + 1):
         try:
-            logger.info(f"[{doc_id}] Descargando (intento {attempt}/{_MAX_RETRIES}): {url}")
+            logger.info(f"[{doc_id}] Descargando (intento {attempt}/{max_retries}): {url}")
             async with client.stream("GET", url) as response:
                 response.raise_for_status()
                 with open(dest_path, "wb") as f:
@@ -127,8 +124,8 @@ async def _download_document(
             return
         except (httpx.HTTPError, httpx.TimeoutException) as exc:
             logger.warning(f"[{doc_id}] Error en intento {attempt}: {exc}")
-            if attempt < _MAX_RETRIES:
-                wait = _BACKOFF_BASE**attempt
+            if attempt < max_retries:
+                wait = backoff_base**attempt
                 logger.info(f"[{doc_id}] Reintentando en {wait}s...")
                 await asyncio.sleep(wait)
             else:
@@ -140,7 +137,7 @@ async def _download_document(
 # ---------------------------------------------------------------------------
 
 
-async def run_scraper() -> dict[str, dict]:  # type: ignore[type-arg]
+async def run_scraper() -> dict[str, Any]:
     """Descarga todos los documentos normativos configurados.
 
     Lee las URLs de config.documents, aplica deduplicación por SHA-256 contra
@@ -150,13 +147,13 @@ async def run_scraper() -> dict[str, dict]:  # type: ignore[type-arg]
         Diccionario doc_id → entrada del manifest con los resultados.
     """
     config = get_config()
-    raw_dir = Path("data/raw")
+    raw_dir = get_project_root() / "data" / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = raw_dir / "manifest.json"
 
     manifest = _load_manifest(manifest_path)
 
-    timeout = httpx.Timeout(timeout=_TIMEOUT_SECONDS)
+    timeout = httpx.Timeout(timeout=config.scraper.timeout_seconds)
     async with httpx.AsyncClient(timeout=timeout, follow_redirects=True) as client:
         for doc_id, doc_cfg in config.documents.items():
             dest_path = raw_dir / f"{doc_id}.pdf"
@@ -184,7 +181,10 @@ async def run_scraper() -> dict[str, dict]:  # type: ignore[type-arg]
 
             # Descarga
             try:
-                await _download_document(client, doc_id, doc_cfg.url, dest_path)
+                await _download_document(
+                    client, doc_id, doc_cfg.url, dest_path,
+                    config.scraper.max_retries, config.scraper.backoff_base,
+                )
                 _verify_pdf(dest_path)
                 sha256 = _compute_sha256(dest_path)
                 entry.update({
