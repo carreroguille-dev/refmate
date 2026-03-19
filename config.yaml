@@ -1,0 +1,109 @@
+# ==========================================
+# RefMate — Configuración Central v3.0
+# ==========================================
+
+documents:
+  reglas-de-juego:
+    url: "https://www.rfebm.com/download/779/estatutos-y-reglamentos/124147/reglas-de-juego-julio-2025.pdf"
+    nombre: "Reglas de Juego (Julio 2025)"
+    fuente: "RFEBM/IHF"
+    tipo_jerarquia: "regla_subregla"
+  rgc-fabm:
+    url: "https://fandaluzabm.org/download/1175/reglamentos/42688/rgc-25-web.pdf"
+    nombre: "Reglamento General de Competiciones (FABM, 2025)"
+    fuente: "FABM"
+    tipo_jerarquia: "titulo_capitulo_seccion"
+  add-fabm:
+    url: "https://fandaluzabm.org/download/1175/reglamentos/42686/zz-add-2024.pdf"
+    nombre: "Acuerdo Disciplinario Deportivo (FABM, 2024)"
+    fuente: "FABM"
+    tipo_jerarquia: "titulo_capitulo_articulo"
+
+models:
+  ocr:
+    name: "lightonai/LightOnOCR-1B-1025"
+    endpoint: "http://host.docker.internal:8000/v1/chat/completions"
+    temperature: 0.2
+    max_tokens: 4096
+    top_p: 0.9
+  structuring:
+    name: "qwen/qwen3-235b-a22b-instruct"
+    provider: "openrouter"
+    endpoint: "https://openrouter.ai/api/v1/chat/completions"
+    temperature: 0.1
+    max_tokens: 16384
+    mode: "no-thinking"
+    overlap_tokens: 500
+  guard:
+    name: "qwen/qwen3-4b"
+    provider: "openrouter"
+    endpoint: "https://openrouter.ai/api/v1/chat/completions"
+    temperature: 0.0
+    max_tokens: 50
+  agent:
+    name: "qwen/qwen3-235b-a22b-instruct"
+    provider: "openrouter"
+    endpoint: "https://openrouter.ai/api/v1/chat/completions"
+    temperature: 0.3
+    max_tokens: 4096
+    mode: "no-thinking"
+  embeddings:
+    name: "BAAI/bge-m3"
+    provider: "local"
+    device: "cpu"
+    batch_size: 8
+
+# Máscaras de recorte (en % del tamaño de la imagen — escalable)
+crop_masks:
+  reglas-de-juego:
+    top_pct: 5.5
+    bottom_pct: 4.0
+    right_pct: 3.0
+    left_pct: 3.0
+    alternate_sides: true
+  rgc-fabm:
+    top_pct: 4.5
+    bottom_pct: 3.5
+  add-fabm:
+    top_pct: 4.0
+    bottom_pct: 3.0
+
+rendering:
+  dpi: 200
+  format: "PNG"
+  max_dimension: 1540
+
+retrieval:
+  top_k: 5
+  max_cross_ref_expansion: 3
+  hybrid_fusion: "rrf"
+  rrf_k: 60
+
+qdrant:
+  host: "qdrant"
+  port: 6333
+  collection: "handball_normativa"
+  vectors:
+    dense:
+      size: 1024
+      distance: "Cosine"
+    sparse:
+      index:
+        on_disk: false
+
+cache:
+  host: "redis"
+  port: 6379
+  db: 0
+  ttl_days: 90
+  similarity_direct_hit: 0.95
+  similarity_context_hit: 0.85
+  min_hits_for_direct: 3
+  invalidate_on_ingest: true
+
+telegram:
+  token: "${TELEGRAM_BOT_TOKEN}"
+  rate_limit_per_user: 20
+
+api_keys:
+  openrouter: "${OPENROUTER_API_KEY}"
