@@ -58,14 +58,14 @@ crop_masks:
   reglas-de-juego:
     top_pct: 5.5
     bottom_pct: 4.0
-    right_pct: 3.0
-    left_pct: 3.0
+    right_pct: 6.0
+    left_pct: 6.0
     alternate_sides: true
   rgc-fabm:
-    top_pct: 4.5
+    top_pct: 8.0
     bottom_pct: 3.5
   add-fabm:
-    top_pct: 4.0
+    top_pct: 6.5
     bottom_pct: 3.0
 
 rendering:

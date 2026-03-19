@@ -128,10 +128,10 @@ def _render_document(
         # Recorte
         cropped = _apply_crop_mask(pil_image, mask, page_number)
 
-        # Guardar y liberar memoria de la imagen original
+        # Guardar y liberar memoria de la imagen original (orden: hijo → padre)
         cropped.save(str(out_path), format=rendering.format)
-        pil_image.close()
         cropped.close()
+        pil_image.close()
         bitmap.close()
 
         processed += 1
@@ -189,8 +189,7 @@ async def run_cropper(doc_ids: list[str] | None = None) -> dict[str, int]:
                 f"[{doc_id}] Sin máscara de recorte en config.crop_masks. "
                 f"Se renderizará sin recorte (top/bottom=0)."
             )
-            from refmate.config import CropMaskConfig as _CropMaskConfig
-            mask = _CropMaskConfig(top_pct=0.0, bottom_pct=0.0)
+            mask = CropMaskConfig(top_pct=0.0, bottom_pct=0.0)
         else:
             mask = config.crop_masks[doc_id]
 
