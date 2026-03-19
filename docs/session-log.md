@@ -235,3 +235,68 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 3: OCR — implementar `src/refmate/infrastructure/ocr/lighton.py` (implementa `OCRProvider`) y `src/refmate/ingest/ocr_runner.py`.
 
 ---
+
+## 2026-03-19 — FASE 3: OCR con LightOnOCR y orquestador
+
+**Fase(s):** Fase 3: OCR
+**Duración aproximada:** 10 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/infrastructure/ocr/lighton.py` | Creado | `LightOnOCRProvider` implementa `OCRProvider`: PNG → base64 → POST OpenAI-compatible al endpoint vLLM |
+| `src/refmate/ingest/ocr_runner.py` | Creado | Orquestador: health check del servidor, procesamiento secuencial página a página, retry/backoff, persistencia en `data/ocr/{doc_id}_raw.txt` |
+| `data/ocr/` | Creado | Directorio de salida para los textos OCR (no commitado, en .gitignore) |
+
+### Decisiones tomadas
+
+- **Procesamiento secuencial (no concurrente):** El ROADMAP especifica explícitamente procesamiento secuencial por la limitación de VRAM del servidor vLLM (8GB). Un semáforo con concurrencia=1 habría sido equivalente, pero la forma idiomática y legible es simplemente un bucle `for` sin `asyncio.gather`. Menos complejidad, mismo resultado.
+
+- **Health check parseando la base URL del endpoint:** El endpoint configurado es la URL completa del chat completions (`/v1/chat/completions`). El health endpoint de vLLM está en `/health` sobre la misma base. Se extrae la base con una regex sencilla `(https?://[^/]+)` en lugar de usar `urllib.parse` para evitar una importación adicional innecesaria para un caso tan simple.
+
+- **Marcador de página insertado antes del texto (excepto página 1):** El marcador `<!-- PAGE {n} -->` se inserta **antes** del texto de cada página (excepto la primera), no después. Esto facilita el splitting posterior en la fase de estructuración: un `split('<!-- PAGE')` da directamente el texto limpio de cada página sin prefijos vacíos.
+
+- **Retry backoff 1s/2s/4s (base=1.0, factor=2^(intento-1)):** Tres intentos con esperas cortas son suficientes para errores transitorios del servidor local. Un backoff más agresivo sería excesivo para un servidor en la misma máquina. Si falla en los tres intentos, el error se propaga con contexto claro de qué página y documento fallaron.
+
+- **`LightOnOCRProvider` sin prompt de sistema:** La API de LightOnOCR (modelo OCR puro) no necesita system prompt — el modelo está entrenado específicamente para transcribir imágenes. El mensaje del usuario contiene solo el `image_url`. Alternativa descartada: añadir un system prompt descriptivo, que podría interferir con el comportamiento entrenado del modelo.
+
+### Problemas encontrados
+
+- Ninguno — la implementación es directa. La verificación del criterio "texto fiel al original" solo puede hacerse en runtime con el servidor vLLM activo.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 4: Structurer — implementar `src/refmate/ingest/structurer.py` usando `TextGenerator` de OpenRouter para convertir texto plano en Markdown jerárquico.
+
+---
+
+## 2026-03-19 — FASE 3: Correcciones post-revisión (fix)
+
+**Fase(s):** Fase 3: OCR (fix)
+**Duración aproximada:** 5 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `config.yaml` | Modificado | Añadidos `timeout_seconds: 120` y `health_timeout_seconds: 10` a `models.ocr` |
+| `src/refmate/config.py` | Modificado | Añadidos campos `timeout_seconds: int` y `health_timeout_seconds: int` a `OcrModelConfig` |
+| `src/refmate/infrastructure/ocr/lighton.py` | Modificado | `timeout=120.0` hardcodeado → `self._config.timeout_seconds` |
+| `src/refmate/ingest/ocr_runner.py` | Modificado | Tres correcciones: tipo `OCRProvider` en `_extract_with_retry`, `_check_endpoint_health` recibe `model_name` y `timeout` como parámetros, nombre de modelo en error message leído de config |
+
+### Decisiones tomadas
+
+- **`_extract_with_retry` tipa `OCRProvider` (protocolo), no `LightOnOCRProvider`:** La función privada no necesita saber qué implementación concreta recibe — solo necesita que tenga `extract_text`. Usar el tipo concreto obligaba a importar la implementación desde `infrastructure/` en el módulo de orquestación, acoplando los dos niveles. Con el protocolo, `_extract_with_retry` es agnóstica a la implementación. El import de `LightOnOCRProvider` se mantiene en `run_ocr_runner` para la instanciación hasta que `pipeline.py` (Fase 7) asuma ese rol como composition root.
+
+- **`_check_endpoint_health` recibe `model_name` y `timeout` como parámetros:** Alternativa descartada: hacer que la función lea `get_config()` internamente. Eso habría añadido un efecto secundario oculto y dificultado el testing. Recibir los valores como parámetros es coherente con el principio de que las funciones privadas son helpers puros que reciben lo que necesitan.
+
+- **`timeout_seconds` e `health_timeout_seconds` en `OcrModelConfig`:** Los dos timeouts tienen naturalezas distintas: uno es el tiempo máximo de inferencia del modelo (depende del tamaño de la imagen y la GPU), el otro es un ping de disponibilidad. Tenerlos separados permite ajustar uno sin afectar al otro. Alternativa descartada: un único campo `timeout_seconds` para ambos — demasiado genérico y podría dar falsos positivos en el health check si se usa el valor de inferencia (120s).
+
+### Problemas encontrados
+
+- Ninguno — todos los cambios son puntuales y quirúrgicos.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 4: Structurer — implementar `src/refmate/ingest/structurer.py` usando `TextGenerator` de OpenRouter para convertir texto plano en Markdown jerárquico.
+
+---
