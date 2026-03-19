@@ -54,7 +54,7 @@ class OpenRouterTextGenerator:
         Raises:
             RuntimeError: Si todos los reintentos fallan.
         """
-        payload: dict = {
+        payload: dict[str, object] = {
             "model": self._config.name,
             "messages": [
                 {"role": "system", "content": system_prompt},
@@ -78,7 +78,7 @@ class OpenRouterTextGenerator:
         last_exc: Exception | None = None
         for attempt, delay in enumerate(_RETRY_DELAYS, start=1):
             try:
-                async with httpx.AsyncClient(timeout=120) as client:
+                async with httpx.AsyncClient(timeout=self._config.timeout_seconds) as client:
                     response = await client.post(
                         self._config.endpoint, json=payload, headers=headers
                     )

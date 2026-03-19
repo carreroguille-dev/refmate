@@ -22,7 +22,7 @@ _PAGE_SEPARATOR = re.compile(r"<!-- PAGE \d+ -->")
 _REF_PATTERN = re.compile(r"\[REF:([^:]+):([^\]]+)\]")
 
 # Patrones para validar identificadores normativos por documento
-_NORM_ID_PATTERNS: dict[str, re.Pattern] = {
+_NORM_ID_PATTERNS: dict[str, re.Pattern[str]] = {
     "reglas-de-juego": re.compile(r"\d{1,2}:\d{1,2}"),
     "rgc-fabm": re.compile(r"[Aa]rt[ií]culo\s+\d+"),
     "add-fabm": re.compile(r"[Aa]rt[ií]culo\s+\d+"),
@@ -70,15 +70,15 @@ class Structurer:
                 f"Ejecuta primero la FASE 3: uv run python -m refmate.ingest.ocr_runner"
             )
 
-        prompt = self._load_prompt(doc_id)
         ocr_text = ocr_path.read_text(encoding="utf-8")
         logger.info(f"OCR cargado → {doc_id} ({len(ocr_text)} chars)")
 
+        prompt = self._load_prompt(doc_id)
         windows = self._build_windows(ocr_text, doc_id)
         logger.info(f"Ventanas generadas: {len(windows)} para {doc_id}")
 
-        structured_parts = await self._generate_windows(windows, doc_id)
-        structured = self._combine_windows(structured_parts, ocr_text)
+        structured_parts = await self._generate_windows(windows, doc_id, prompt)
+        structured = self._combine_windows(structured_parts)
 
         self._validate_output(structured, ocr_text, doc_id)
 
@@ -193,17 +193,19 @@ class Structurer:
         )
         return windows
 
-    async def _generate_windows(self, windows: list[str], doc_id: str) -> list[str]:
+    async def _generate_windows(
+        self, windows: list[str], doc_id: str, prompt: str
+    ) -> list[str]:
         """Llama al TextGenerator por cada ventana con rate limiting.
 
         Args:
             windows: Lista de textos de ventana.
             doc_id: Identificador del documento (para logging).
+            prompt: System prompt de estructuración ya cargado.
 
         Returns:
             Lista de textos estructurados en el mismo orden.
         """
-        prompt = self._load_prompt(doc_id)
         results: list[str] = []
         total = len(windows)
 
@@ -220,7 +222,7 @@ class Structurer:
 
         return results
 
-    def _combine_windows(self, parts: list[str], ocr_text: str) -> str:
+    def _combine_windows(self, parts: list[str]) -> str:
         """Combina las ventanas estructuradas eliminando el overlap.
 
         Para cada ventana (excepto la primera), busca en el output previo el
@@ -228,7 +230,6 @@ class Structurer:
 
         Args:
             parts: Lista de textos generados por ventana.
-            ocr_text: Texto OCR original (no usado directamente, reservado).
 
         Returns:
             Texto Markdown combinado.

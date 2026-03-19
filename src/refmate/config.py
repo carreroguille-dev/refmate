@@ -58,6 +58,7 @@ class LlmModelConfig(BaseModel):
     endpoint: str
     temperature: float
     max_tokens: int
+    timeout_seconds: int
     mode: str | None = None
     overlap_tokens: int | None = None
 
