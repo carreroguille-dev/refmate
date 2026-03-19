@@ -55,3 +55,31 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 1: Scraper — implementar `src/refmate/ingest/scraper.py` con descarga de los 3 PDFs, SHA-256 deduplicación y `manifest.json`.
 
 ---
+
+## 2026-03-19 — FASE 0: Correcciones post-revisión
+
+**Fase(s):** Fase 0: Scaffolding (fix)
+**Duración aproximada:** 5 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/core/protocols.py` | Modificado | `dict \| None` → `dict[str, Any] \| None` en los tres métodos de `VectorStore`; añadido `Any` al import de `typing` |
+| `src/refmate/config.py` | Modificado | Ruta al `.env` calculada relativa al `config.yaml` encontrado en lugar de `parent.parent.parent` hardcodeado |
+| `pyproject.toml` + `uv.lock` | Modificado | Añadido `types-PyYAML` como dev dependency para satisfacer mypy en modo strict |
+
+### Decisiones tomadas
+
+- **`dict[str, Any]` en lugar de `dict` sin parámetros:** mypy en modo `strict` exige type parameters en todos los genéricos. `dict[str, Any]` es la opción más permisiva que satisface el tipo correcto para filtros arbitrarios de metadatos (documento_id, fuente, nivel). Una alternativa habría sido un `TypedDict` específico, pero sería prematura: los filtros reales se definen en FASE 6 (Qdrant), no aquí.
+
+- **Ruta `.env` anclada al `config.yaml`:** El `.env` siempre vive junto al `config.yaml` en la raíz del proyecto. Anclar su ruta al resultado de `_find_config_file()` es más robusto que contar niveles de directorio, y reutiliza la lógica ya existente de búsqueda de config.
+
+### Problemas encontrados
+
+- Ninguno — los tres cambios son quirúrgicos y el criterio `mypy: no issues found` se cumple tras aplicarlos.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 1: Scraper — implementar `src/refmate/ingest/scraper.py` con descarga de los 3 PDFs, SHA-256 deduplicación y `manifest.json`.
+
+---
