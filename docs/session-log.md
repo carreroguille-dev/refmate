@@ -342,3 +342,34 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 4: Structurer — implementar `src/refmate/ingest/structurer.py` usando `TextGenerator` de OpenRouter para convertir texto plano en Markdown jerárquico.
 
 ---
+
+## 2026-03-19 — FASE 4: Correcciones post-revisión (fix)
+
+**Fase(s):** Fase 4: Structurer (fix)
+**Duración aproximada:** 5 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `config.yaml` | Modificado | `timeout_seconds` añadido a `models.structuring` (120s), `models.guard` (30s) y `models.agent` (120s) |
+| `src/refmate/config.py` | Modificado | Campo `timeout_seconds: int` añadido a `LlmModelConfig` |
+| `src/refmate/infrastructure/llm/openrouter.py` | Modificado | `timeout=120` hardcodeado → `self._config.timeout_seconds`; `payload: dict` → `dict[str, object]` |
+| `src/refmate/ingest/structurer.py` | Modificado | Prompt cargado una vez en `run()` y pasado como argumento a `_generate_windows`; eliminado parámetro muerto `ocr_text` de `_combine_windows`; `re.Pattern` → `re.Pattern[str]` |
+
+### Decisiones tomadas
+
+- **`timeout_seconds` en `LlmModelConfig` (igual que en `OcrModelConfig`):** La revisión detectó que `openrouter.py` tenía `timeout=120` hardcodeado, incoherente con el tratamiento del OCR donde el timeout ya era configurable. Se añadió el campo al modelo Pydantic para mantener coherencia. Los valores elegidos reflejan las necesidades de cada modelo: structuring y agent necesitan 120s (modelos grandes, salidas largas), guard solo 30s (modelo pequeño, salida de 50 tokens).
+
+- **`prompt` pasado como argumento a `_generate_windows` (no recargado):** La versión original cargaba el prompt en `run()` (variable que quedaba sin usar) y lo volvía a cargar dentro de `_generate_windows`. La solución correcta es cargarlo una sola vez en `run()` y pasarlo como parámetro. Alternativa descartada: hacer `_load_prompt` un método de caché interna (`@lru_cache`) — sobreingeniería para un fichero que se lee una vez por ejecución.
+
+- **Eliminación de `ocr_text` de `_combine_windows`:** El parámetro estaba marcado como "reservado" en el docstring original pero nunca se usó. Mantenerlo hubiera sido una API mentirosa: la firma prometía recibir el OCR pero lo ignoraba. Se eliminó para que la firma refleje exactamente lo que la función necesita.
+
+### Problemas encontrados
+
+- Ninguno — los cinco cambios son puntuales y el test de imports + firma de métodos confirmó la corrección antes del commit.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 5: Chunker — implementar `src/refmate/ingest/chunker.py` para dividir el Markdown estructurado en `Chunk` DTOs con metadatos jerárquicos.
+
+---
