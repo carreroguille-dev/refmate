@@ -75,7 +75,7 @@ class LightOnOCRProvider:
 
         logger.debug(f"OCR request → {image_path.name}")
 
-        async with httpx.AsyncClient(timeout=120.0) as client:
+        async with httpx.AsyncClient(timeout=self._config.timeout_seconds) as client:
             response = await client.post(self._config.endpoint, json=payload)
             response.raise_for_status()
 

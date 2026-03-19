@@ -15,6 +15,7 @@ import httpx
 from loguru import logger
 
 from refmate.config import get_config, get_project_root
+from refmate.core.protocols import OCRProvider
 from refmate.infrastructure.ocr.lighton import LightOnOCRProvider
 
 
@@ -50,11 +51,13 @@ def _parse_base_url(endpoint: str) -> str:
     return endpoint.rstrip("/")
 
 
-async def _check_endpoint_health(base_url: str) -> None:
+async def _check_endpoint_health(base_url: str, model_name: str, timeout: int) -> None:
     """Comprueba que el servidor vLLM está activo consultando /health.
 
     Args:
         base_url: URL base del servidor (ej. 'http://host.docker.internal:8000').
+        model_name: Nombre del modelo OCR configurado (para el mensaje de error).
+        timeout: Segundos de espera máxima para la petición de salud.
 
     Raises:
         RuntimeError: Si el endpoint no responde o devuelve error HTTP.
@@ -63,14 +66,14 @@ async def _check_endpoint_health(base_url: str) -> None:
     logger.info(f"Comprobando disponibilidad del endpoint OCR → {health_url}")
 
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with httpx.AsyncClient(timeout=timeout) as client:
             response = await client.get(health_url)
             response.raise_for_status()
     except (httpx.ConnectError, httpx.TimeoutException) as exc:
         raise RuntimeError(
             f"El servidor vLLM no está disponible en {health_url}.\n"
             f"Para levantarlo, ejecuta en el host:\n\n"
-            f"  vllm serve lightonai/LightOnOCR-1B-1025 \\\n"
+            f"  vllm serve {model_name} \\\n"
             f"    --limit-mm-per-prompt '{{\"image\": 1}}' \\\n"
             f"    --mm-processor-cache-gb 0 \\\n"
             f"    --no-enable-prefix-caching \\\n"
@@ -91,7 +94,7 @@ async def _check_endpoint_health(base_url: str) -> None:
 
 
 async def _extract_with_retry(
-    provider: LightOnOCRProvider,
+    provider: OCRProvider,
     image_path: Path,
     page_number: int,
     doc_id: str,
@@ -163,7 +166,11 @@ async def run_ocr_runner(doc_ids: list[str] | None = None) -> dict[str, int]:
 
     # Comprobar salud del endpoint antes de empezar
     base_url = _parse_base_url(config.models.ocr.endpoint)
-    await _check_endpoint_health(base_url)
+    await _check_endpoint_health(
+        base_url,
+        config.models.ocr.name,
+        config.models.ocr.health_timeout_seconds,
+    )
 
     provider = LightOnOCRProvider(config.models.ocr)
     results: dict[str, int] = {}

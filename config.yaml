@@ -26,6 +26,8 @@ models:
     temperature: 0.2
     max_tokens: 4096
     top_p: 0.9
+    timeout_seconds: 120
+    health_timeout_seconds: 10
   structuring:
     name: "qwen/qwen3-235b-a22b-instruct"
     provider: "openrouter"

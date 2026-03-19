@@ -44,6 +44,8 @@ class OcrModelConfig(BaseModel):
     temperature: float
     max_tokens: int
     top_p: float
+    timeout_seconds: int
+    health_timeout_seconds: int
 
 
 class LlmModelConfig(BaseModel):
