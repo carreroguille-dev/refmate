@@ -270,6 +270,48 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 
 ---
 
+## 2026-03-19 — FASE 4: Structurer con OpenRouterTextGenerator
+
+**Fase(s):** Fase 4: Structurer
+**Duración aproximada:** 15 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/infrastructure/llm/openrouter.py` | Creado | `OpenRouterTextGenerator` implementa `TextGenerator`: POST a OpenRouter con retry exponencial (2s/4s/8s), headers obligatorios y soporte no-thinking mode |
+| `src/refmate/ingest/structurer.py` | Creado | Pipeline completo: carga OCR → ventaneo por páginas con overlap → llamadas LLM → combinación de ventanas → validación → extracción de refs → escritura de `.md` y `_refs.json` |
+| `src/refmate/prompts/structuring/reglas-de-juego.md` | Modificado | Prompt con jerarquía `# Regla N` / `## N:M`, reglas de no-modificación y marcas `[REF:reglas-de-juego:regla-N-M]` |
+| `src/refmate/prompts/structuring/rgc-fabm.md` | Modificado | Prompt con jerarquía H1/H2(Capítulo)/H3(Sección)/H4 y marcas `[REF:rgc-fabm:art-N]` |
+| `src/refmate/prompts/structuring/add-fabm.md` | Modificado | Prompt con jerarquía H1/H2(Capítulo)/H3(Artículo) y marcas `[REF:add-fabm:art-N]` |
+
+### Decisiones tomadas
+
+- **`OPENROUTER_REFERER` como constante de módulo (no en `config.yaml`):** Es un identificador fijo del proyecto que no varía entre entornos ni usuarios. Ponerlo en config añadiría una llave que nadie necesita cambiar. Las constantes de módulo son el lugar correcto para valores literales que no son operacionales.
+
+- **Retry de 3 intentos con delays `(2, 4, 8)` como tupla constante:** Los delays son una decisión de diseño fija del módulo (no configurable). Una tupla inmutable de tres elementos es más expresiva que un bucle con `2 ** intento`. Si en el futuro se necesita configurabilidad, se añadirá a `LlmModelConfig`.
+
+- **Ventaneo por páginas completas (no por offset de caracteres):** Cortar por offset de caracteres puede dividir el texto en mitad de una regla o un artículo, lo que degradaría la calidad del output estructurado. Agrupando páginas completas hasta llenar la ventana, el LLM siempre recibe unidades semánticas completas. El coste es que alguna ventana puede quedar ligeramente por debajo del límite si la última página que cabe es muy pequeña.
+
+- **Overlap como páginas completas (no texto arbitrario):** Al mantener el overlap a nivel de páginas completas, se garantiza que el LLM siempre tiene contexto de continuación coherente. La longitud del overlap es variable (depende de cuántas páginas completas caben en `overlap_chars`), pero nunca parte una página por la mitad.
+
+- **Combinación de ventanas buscando el primer párrafo en el output previo:** Un offset fijo de caracteres para el join fallaría si el LLM reorganiza ligeramente el texto (añade saltos de línea, cambia espaciado). Buscar el primer párrafo del window N en el acumulado es más robusto ante esas variaciones menores. El fallback es concatenar con doble salto de línea si no se encuentra coincidencia.
+
+- **Validación como warning (no excepción) para el ratio de longitud:** El LLM puede añadir encabezados y marcas de referencia que aumenten el tamaño del output, o puede comprimir ligeramente el espaciado. Un ratio 0.85–1.15 es suficientemente permisivo para ambas variaciones. Elevar a excepción detendría el pipeline por variaciones legítimas; un warning informa sin bloquear.
+
+- **`FileNotFoundError` con mensaje de instrucción explícita:** El error indica qué módulo hay que ejecutar antes (`refmate.ingest.ocr_runner`). Un mensaje genérico "fichero no encontrado" obliga al usuario a buscar en la documentación qué hacer. El mensaje contextualizado acelera el debugging.
+
+- **Stats como `dict` simple (no DTO):** `Structurer.run()` es invocado por el orquestador del pipeline (Fase 7), que solo necesita los números para logging. No hay otros consumidores. Un `TypedDict` o `@dataclass` sería over-engineering para un dict de cuatro enteros.
+
+### Problemas encontrados
+
+- Ninguno — los imports y la lógica de ventaneo/extracción de refs se verificaron con tests inline antes del commit.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 5: Chunker — implementar `src/refmate/ingest/chunker.py` para dividir el Markdown estructurado en `Chunk` DTOs con metadatos jerárquicos.
+
+---
+
 ## 2026-03-19 — FASE 3: Correcciones post-revisión (fix)
 
 **Fase(s):** Fase 3: OCR (fix)
