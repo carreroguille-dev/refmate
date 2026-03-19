@@ -276,13 +276,13 @@ def get_config() -> RefMateConfig:
         ValueError: Si falta alguna variable de entorno requerida.
         ValidationError: Si la configuración no cumple el esquema Pydantic.
     """
-    # Cargar .env si existe (no sobreescribe variables ya definidas en el entorno)
-    env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+    config_path = _find_config_file()
+
+    # Cargar .env junto al config.yaml si existe (no sobreescribe vars ya definidas)
+    env_path = config_path.parent / ".env"
     if env_path.exists():
         load_dotenv(env_path, override=False)
         logger.debug(f"Variables de entorno cargadas desde {env_path}")
-
-    config_path = _find_config_file()
     logger.info(f"Cargando configuración desde {config_path}")
 
     with open(config_path) as f:

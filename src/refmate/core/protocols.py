@@ -6,7 +6,7 @@ infrastructure/ — solo estos protocolos.
 """
 
 from pathlib import Path
-from typing import Protocol, runtime_checkable
+from typing import Any, Protocol, runtime_checkable
 
 from refmate.core.models import (
     AgentResult,
@@ -116,7 +116,7 @@ class VectorStore(Protocol):
         self,
         vector: list[float],
         top_k: int,
-        filters: dict | None,
+        filters: dict[str, Any] | None,
     ) -> list[SearchResult]:
         """Búsqueda por similitud semántica (vector denso).
 
@@ -134,7 +134,7 @@ class VectorStore(Protocol):
         self,
         sparse_vector: SparseVector,
         top_k: int,
-        filters: dict | None,
+        filters: dict[str, Any] | None,
     ) -> list[SearchResult]:
         """Búsqueda por términos exactos (vector sparse).
 
@@ -153,7 +153,7 @@ class VectorStore(Protocol):
         dense: list[float],
         sparse: SparseVector,
         top_k: int,
-        filters: dict | None,
+        filters: dict[str, Any] | None,
     ) -> list[SearchResult]:
         """Búsqueda híbrida combinando dense y sparse con RRF.
 
