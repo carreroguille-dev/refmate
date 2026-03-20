@@ -613,3 +613,32 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
 
 ---
+
+## 2026-03-20 — Revisión y fix menor FASE 7: Pipeline Orchestrator
+
+**Fase(s):** Fase 7: Pipeline Orchestrator
+**Duración aproximada:** 15 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/ingest/pipeline.py` | Modificado | Envolver retorno de `run_scraper()` en `{"docs": result}` para uniformizar formato de estadísticas |
+
+### Decisiones tomadas
+
+- **Uniformizar formato de estadísticas entre fases:** `run_scraper()` devolvía su dict directamente (sin clave wrapper) mientras que `run_cropper()` y `run_ocr_runner()` se envolvían en `{"pages_per_doc": result}`. En el resumen final del pipeline, el campo `stats` de la fase scraper tenía estructura diferente a las demás, lo que dificultaba leer el log. Wrap mínimo `{"docs": result}` hace el formato uniforme sin perder información. Alternativa descartada: cambiar `run_scraper()` para que devuelva directamente `{"docs": ...}` — no se toca la interfaz pública de scraper.py por un cambio cosmético en el pipeline.
+
+- **DIP de `_invalidate_redis` no resuelto (deferred):** La función crea `redis.asyncio.Redis` directamente en lugar de usar el protocolo `SemanticCache`. Se aplaza deliberadamente a FASE 9, cuando se implemente `SemanticCache.invalidate_all()`. Arreglarlo ahora requeriría adelantar parte de FASE 9.
+
+- **Config inyectado vs singleton en scraper/cropper/ocr_runner (no resuelto):** Estas tres funciones llaman `get_config()` internamente en lugar de recibir el config del pipeline. Como `get_config()` es un singleton `lru_cache` que siempre devuelve la misma instancia, no hay diferencia en runtime. No se considera un bug — es el patrón seguido en todo el codebase para funciones standalone.
+
+### Problemas encontrados
+
+- Ninguno bloqueante. Solo el fix cosmético de estadísticas aplicado.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
+- [ ] Al implementar FASE 9 (`SemanticCache`): refactorizar `_invalidate_redis` en `pipeline.py` para que use el protocolo en lugar de conectarse a Redis directamente.
+
+---
