@@ -514,3 +514,37 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 7: Pipeline Orchestrator — implementar `src/refmate/ingest/pipeline.py` con flags `--from` y `--only`, verificación de artefactos y FLUSHDB Redis al finalizar.
 
 ---
+
+## 2026-03-20 — FASE 7: Pipeline Orchestrator con CLI y verificación de artefactos
+
+**Fase(s):** Fase 7: Pipeline Orchestrator
+**Duración aproximada:** 15 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/ingest/pipeline.py` | Creado | Orquestador completo: `PHASES`, verificación de artefactos por fase, dispatcher `_run_phase`, invalidación Redis, `run_pipeline` async, CLI con `--from`/`--only` |
+
+### Decisiones tomadas
+
+- **Lazy imports dentro de `_run_phase`:** Los módulos pesados (FlagEmbedding, OpenRouter, Qdrant) se importan dentro del bloque `if phase == ...` correspondiente, no en el top-level del módulo. Esto evita que el simple `import refmate.ingest.pipeline` cargue el modelo BGE-m3 en memoria. Alternativa descartada: imports en el top-level — penalizaría el arranque y el `--help` con varios segundos de carga del modelo.
+
+- **Wrappers de Structurer y Chunker en `pipeline.py` (composition root de ingesta):** Structurer necesita un `TextGenerator` inyectado y Chunker necesita config. No tienen un `run_*` standalone equivalente a `run_scraper`. En lugar de añadir `run_structurer(config)` a cada módulo (cambio de interfaz no pedido), se instancian directamente en `pipeline.py`, que es el composition root legítimo para la ingesta. Esta es la misma pauta que ya seguía `run_indexer` y `run_ocr_runner`.
+
+- **Redis solo se invalida si `indexer` estuvo en las fases ejecutadas:** El ROADMAP dice "FLUSHDB Redis al finalizar" pero no especifica la condición. Si alguien ejecuta `--only structurer`, el índice vectorial en Qdrant no cambia, por lo que las respuestas cacheadas siguen siendo válidas. Invalidar siempre sería incorrecto y frustrante (el usuario perdería la caché por ejecutar solo el paso de estructuración). La condición `"indexer" in phases_to_run and config.cache.invalidate_on_ingest` es la más precisa.
+
+- **Fallo de Redis no es bloqueante:** Si Qdrant está indexado pero Redis no está levantado, el pipeline ya completó su trabajo principal. Un `logger.warning` sin relanzar la excepción permite que el pipeline termine con éxito aunque Redis no sea accesible. Alternativa descartada: relanzar — haría que una caché inaccesible rompiera una indexación exitosa.
+
+- **`--from` y `--only` mutuamente excluyentes vía `add_mutually_exclusive_group`:** argparse maneja la exclusividad automáticamente con mensaje de error claro. Alternativa descartada: validación manual post-parse — más código para el mismo resultado.
+
+- **Abort inmediato si cualquier fase falla:** El pipeline re-lanza la excepción en cuanto una fase falla. Continuar con la siguiente fase tras un error produciría datos inconsistentes (ej: indexar chunks basados en un structurer fallido). El resumen parcial se loguea antes de re-lanzar para que el usuario vea qué había completado.
+
+### Problemas encontrados
+
+- Ninguno.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
+
+---
