@@ -65,8 +65,10 @@ class OpenRouterTextGenerator:
         }
 
         if self._config.mode == "no-thinking":
-            payload["thinking"] = {"type": "disabled"}
-            logger.debug("Modo no-thinking activado en payload")
+            # Qwen3 usa /no_think en el system prompt para desactivar el razonamiento.
+            # El campo "thinking" de OpenRouter solo aplica a modelos Anthropic.
+            system_prompt = "/no_think\n" + system_prompt
+            logger.debug("Modo no-thinking: /no_think antepuesto al system prompt")
 
         headers = {
             "Authorization": f"Bearer {self._api_key}",
@@ -92,6 +94,13 @@ class OpenRouterTextGenerator:
                 )
                 return text
 
+            except httpx.HTTPStatusError as exc:
+                last_exc = exc
+                body = exc.response.text[:500] if exc.response else ""
+                logger.warning(
+                    f"OpenRouter intento {attempt}/3 fallido: {exc}. "
+                    f"Body: {body}. Reintentando en {delay}s…"
+                )
             except (httpx.HTTPError, KeyError, IndexError) as exc:
                 last_exc = exc
                 logger.warning(
