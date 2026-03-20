@@ -578,3 +578,38 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
 
 ---
+
+## 2026-03-20 — Fix indexer: structurer overlap, config env vars y bypass FlagEmbedding
+
+**Fase(s):** Fase 6: Indexer / Fase 7: Pipeline Orchestrator (correcciones post-implementación)
+**Duración aproximada:** 2 horas
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/ingest/structurer.py` | Modificado | Corregido `_combine_windows` para limitar la búsqueda del overlap al tail del documento |
+| `src/refmate/config.py` | Modificado | Añadido soporte para `${VAR:-default}` en `_resolve_env_vars` |
+| `config.yaml` | Modificado | `qdrant.host` y `cache.host` usan `${QDRANT_HOST:-qdrant}` y `${REDIS_HOST:-redis}` |
+| `src/refmate/infrastructure/embeddings/bge_m3.py` | Modificado | Reescrito para bypasear `FlagEmbedding.encode()` incompatible con transformers>=4.44 |
+
+### Decisiones tomadas
+
+- **Limitar búsqueda de overlap al tail en `_combine_windows`:** El bug era que `combined.rfind(first_para)` buscaba en todo el documento. El documento reglas-de-juego comienza con un TOC que lista todos los encabezados `## Regla N:`, exactamente igual que los primeros párrafos de cada ventana de overlap. `rfind` encontraba esos encabezados en el TOC (posición ~0) en lugar del overlap real al final del documento, descartando toda la ventana anterior. Fix: `combined.find(first_para, max(0, len(combined) - overlap_chars * 3))` limita la búsqueda al último tramo del documento. Resultado: reglas-de-juego pasó de 19 chunks (incorrecto) a 95 chunks (correcto).
+
+- **`${VAR:-default}` para hosts de servicios Docker:** Los hostnames `qdrant` y `redis` solo resuelven dentro de la red Docker. Para desarrollo local sin Docker necesitamos poder usar `localhost`. Alternativas descartadas: (1) dos ficheros config.yaml — duplicación; (2) hardcodear `localhost` — rompería Docker. La solución `${QDRANT_HOST:-qdrant}` es el patrón estándar de shell: usa el valor del entorno si está definido, el default si no. Permite `QDRANT_HOST=localhost uv run ...` localmente sin tocar ningún fichero.
+
+- **Bypass completo de `FlagEmbedding.encode()`:** La causa raíz del `IndexError: list index out of range` era que `AbsEmbedder.encode()` pasa `convert_to_numpy=True` en los `kwargs` de `encode_single_device()`, que los reenvía al tokenizer. Desde transformers>=4.44, el tokenizer rechaza kwargs desconocidos con `TypeError`. La TypeError vaciaba `all_inputs` → `tokenizer.pad([])` → IndexError. Se intentó un subclass que eliminara el kwarg pero seguía fallando. La alternativa de usar sentence-transformers habría requerido reimplementar el soporte de sparse vectors que solo tiene BGE-M3. Decisión final: usar directamente `model.tokenizer()` y `model.model()` replicando la lógica de `_process_token_weights` para los sparse vectors. Más código pero 100% determinista y sin depender de los internals frágiles de FlagEmbedding.
+
+### Problemas encontrados
+
+- **`_combine_windows` con falsos positivos en TOC:** El TOC del documento reglas-de-juego lista explícitamente todos los encabezados de reglas, que son idénticos a los primeros párrafos de cada ventana de overlap. `rfind` encontraba el encabezado en el TOC y descartaba toda la ventana precedente. Resuelto limitando la búsqueda al tail del documento.
+
+- **`[Errno -2] Name or service not known` para Qdrant:** El hostname `qdrant` no resuelve fuera de Docker. Resuelto con `${QDRANT_HOST:-qdrant}` + soporte de defaults en `_resolve_env_vars`.
+
+- **`IndexError: list index out of range` en FlagEmbedding 1.3.5 con transformers>=4.44:** Cadena de fallos: `convert_to_numpy` kwarg → `TypeError` en tokenizer → `all_inputs` vacío → `tokenizer.pad([])` → IndexError. Resuelto con bypass completo del API de alto nivel de FlagEmbedding.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
+
+---
