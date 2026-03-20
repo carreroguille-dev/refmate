@@ -92,6 +92,7 @@ qdrant:
   host: "qdrant"
   port: 6333
   collection: "handball_normativa"
+  upsert_batch_size: 50
   vectors:
     dense:
       size: 1024

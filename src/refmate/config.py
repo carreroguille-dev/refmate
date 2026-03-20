@@ -145,6 +145,7 @@ class QdrantConfig(BaseModel):
     host: str
     port: int
     collection: str
+    upsert_batch_size: int
     vectors: QdrantVectorsConfig
 
 

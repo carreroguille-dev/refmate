@@ -6,6 +6,8 @@ Genera vectores dense (1024 dims) y sparse (lexical weights) sin llamadas extern
 
 from __future__ import annotations
 
+from typing import Any
+
 from FlagEmbedding import BGEM3FlagModel  # type: ignore[import-untyped]
 from loguru import logger
 
@@ -28,7 +30,7 @@ class BGEM3EmbeddingProvider:
         """
         logger.info(f"Cargando modelo de embeddings '{config.name}' en {config.device}...")
         self._batch_size = config.batch_size
-        self._model: BGEM3FlagModel = BGEM3FlagModel(config.name, use_fp16=False)
+        self._model: BGEM3FlagModel = BGEM3FlagModel(config.name, use_fp16=False, device=config.device)
         logger.info("Modelo BGE-m3 cargado correctamente")
 
     def encode(self, text: str) -> EmbeddingResult:
@@ -80,7 +82,7 @@ class BGEM3EmbeddingProvider:
 
         return results
 
-    def _to_embedding_result(self, raw: dict, idx: int) -> EmbeddingResult:
+    def _to_embedding_result(self, raw: dict[str, Any], idx: int) -> EmbeddingResult:
         """Convierte la salida raw de FlagEmbedding a EmbeddingResult.
 
         Args:

@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 import time
 from pathlib import Path
+from typing import Any
 
 from loguru import logger
 
@@ -62,7 +63,7 @@ class Indexer:
             )
 
         logger.info(f"[{doc_id}] Cargando chunks desde {chunks_path}...")
-        raw_chunks: list[dict] = json.loads(chunks_path.read_text(encoding="utf-8"))
+        raw_chunks: list[dict[str, Any]] = json.loads(chunks_path.read_text(encoding="utf-8"))
         chunks = [Chunk.model_validate(c) for c in raw_chunks]
         logger.info(f"[{doc_id}] {len(chunks)} chunks cargados")
 
@@ -110,7 +111,7 @@ class Indexer:
         return stats
 
 
-async def run_indexer(config: RefMateConfig) -> None:
+async def run_indexer(config: RefMateConfig, recreate: bool = True) -> None:
     """Punto de entrada para la fase de indexación desde pipeline.py.
 
     Actúa como composition root para la ingesta: instancia las implementaciones
@@ -118,6 +119,8 @@ async def run_indexer(config: RefMateConfig) -> None:
 
     Args:
         config: Configuración del sistema ya cargada.
+        recreate: Si True, elimina y recrea la colección antes de indexar.
+                  Pasar False para indexación incremental (ej: --from indexer sin --only).
     """
     from refmate.infrastructure.embeddings.bge_m3 import BGEM3EmbeddingProvider
     from refmate.infrastructure.vectorstore.qdrant import QdrantVectorStore
@@ -125,8 +128,8 @@ async def run_indexer(config: RefMateConfig) -> None:
     embedder = BGEM3EmbeddingProvider(config.models.embeddings)
     store = QdrantVectorStore(config.qdrant)
 
-    logger.info("Preparando colección Qdrant (recreate=True)...")
-    await store.ensure_collection(recreate=True)
+    logger.info(f"Preparando colección Qdrant (recreate={recreate})...")
+    await store.ensure_collection(recreate=recreate)
 
     indexer = Indexer(embedder=embedder, store=store, config=config)
     await indexer.index_all()

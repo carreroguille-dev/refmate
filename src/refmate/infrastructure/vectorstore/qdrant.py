@@ -33,8 +33,6 @@ from qdrant_client.models import (
 from refmate.config import QdrantConfig
 from refmate.core.models import Chunk, EmbeddingResult, SearchResult, SparseVector
 
-_UPSERT_BATCH_SIZE = 50
-
 _DISTANCE_MAP = {
     "Cosine": Distance.COSINE,
     "Dot": Distance.DOT,
@@ -178,16 +176,17 @@ class QdrantVectorStore:
             for chunk, emb in zip(chunks, embeddings)
         ]
 
+        batch_size = self._config.upsert_batch_size
         total = 0
-        for i in range(0, len(points), _UPSERT_BATCH_SIZE):
-            batch = points[i : i + _UPSERT_BATCH_SIZE]
+        for i in range(0, len(points), batch_size):
+            batch = points[i : i + batch_size]
             await self._client.upsert(
                 collection_name=self._config.collection,
                 points=batch,
             )
             total += len(batch)
             logger.debug(
-                f"Upserted batch {i // _UPSERT_BATCH_SIZE + 1}: {len(batch)} puntos"
+                f"Upserted batch {i // batch_size + 1}: {len(batch)} puntos"
             )
 
         return total
