@@ -445,3 +445,38 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 6: Indexer — implementar `src/refmate/infrastructure/embeddings/bge_m3.py` (EmbeddingProvider) y `src/refmate/infrastructure/vectorstore/qdrant.py` (VectorStore) + `src/refmate/ingest/indexer.py`.
 
 ---
+
+## 2026-03-20 — FASE 6: Indexer con BGE-m3 y QdrantVectorStore
+
+**Fase(s):** Fase 6: Indexer
+**Duración aproximada:** 20 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/infrastructure/embeddings/bge_m3.py` | Creado | `BGEM3EmbeddingProvider` implementa `EmbeddingProvider`: carga BGE-m3 en CPU, encode/encode_batch con lexical_weights → sparse indices+values |
+| `src/refmate/infrastructure/vectorstore/qdrant.py` | Creado | `QdrantVectorStore` implementa `VectorStore`: colección con named vectors dense+sparse, payload indexes, upsert en batches de 50, búsqueda dense/sparse/hybrid (RRF), get_by_ids |
+| `src/refmate/ingest/indexer.py` | Creado | `Indexer` orquesta embedding + indexación; `run_indexer()` es el composition root de ingesta (instancia concretos y prepara colección) |
+| `pyproject.toml` + `uv.lock` | Modificado | Añadida restricción `transformers<5.0` por incompatibilidad de FlagEmbedding 1.3.5 con transformers 5.x |
+
+### Decisiones tomadas
+
+- **`ensure_collection()` fuera del protocolo `VectorStore`, llamado desde `run_indexer`:** La preparación de la colección es una operación de inicialización específica de Qdrant, no parte del contrato genérico de `VectorStore`. Incluirla en el protocolo habría contaminado la interfaz con un detalle de infraestructura. El `run_indexer` (composition root) conoce la implementación concreta y puede llamar `store.ensure_collection()` antes de delegar en `Indexer`. Alternativa descartada: añadirla al protocolo — violaría ISP (un `FaissVectorStore` futuro no necesitaría colecciones Qdrant).
+
+- **chunk_id → UUID determinista con MD5:** Qdrant requiere `int` o UUID como punto ID. Los chunk_ids son strings (`reglas-de-juego:regla-8:8-5`). Se usa MD5 del string para obtener un UUID estable y reproducible: el mismo chunk_id siempre genera el mismo UUID, lo que hace los upserts idempotentes. Alternativa descartada: un contador entero secuencial — no sería reproducible entre ejecuciones con distintos subconjuntos de documentos.
+
+- **Chunk payload completo en Qdrant (todos los campos del DTO):** Se almacena `chunk.model_dump()` como payload. Esto permite reconstruir el `Chunk` completo en `get_by_ids` y en los resultados de búsqueda sin queries adicionales. Alternativa descartada: almacenar solo el `chunk_id` y hacer lookup en los ficheros JSON — añadiría I/O extra y acoplaría el retrieval a los ficheros de ingesta.
+
+- **`encode_batch` síncrono (no `asyncio.to_thread`):** El protocolo `EmbeddingProvider` define `encode`/`encode_batch` como síncronos (FlagEmbedding es CPU-bound, no I/O). En el contexto del pipeline de ingesta (offline, no web server), bloquear el event loop durante la embedificación es aceptable. Añadir `to_thread` habría complicado el código sin beneficio real en este contexto.
+
+- **`transformers<5.0` como restricción explícita:** FlagEmbedding 1.3.5 importa `is_torch_fx_available` de `transformers.utils.import_utils`, que se eliminó en transformers 5.0. Se añadió la restricción al resolver el error de importación. Alternativa descartada: actualizar a una versión de FlagEmbedding compatible con transformers 5.x — no existe en PyPI a fecha de esta sesión.
+
+### Problemas encontrados
+
+- **Incompatibilidad FlagEmbedding 1.3.5 + transformers 5.3.0:** Al intentar importar `BGEM3FlagModel`, el entorno lanzaba `ImportError: cannot import name 'is_torch_fx_available'`. Se resolvió añadiendo `transformers<5.0` al `pyproject.toml`, que instaló `transformers==4.57.6`. La restricción queda documentada en el lock file para evitar que futuras actualizaciones reactiven el problema.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 7: Pipeline Orchestrator — implementar `src/refmate/ingest/pipeline.py` que encadene las fases 1-6 con flags `--from` y `--only`.
+
+---
