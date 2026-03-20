@@ -308,7 +308,7 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 
 ### Pendiente para la próxima sesión
 
-- [ ] Fase 5: Chunker — implementar `src/refmate/ingest/chunker.py` para dividir el Markdown estructurado en `Chunk` DTOs con metadatos jerárquicos.
+- [x] Fase 5: Chunker — implementar `src/refmate/ingest/chunker.py` para dividir el Markdown estructurado en `Chunk` DTOs con metadatos jerárquicos.
 
 ---
 
@@ -370,6 +370,78 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 
 ### Pendiente para la próxima sesión
 
-- [ ] Fase 5: Chunker — implementar `src/refmate/ingest/chunker.py` para dividir el Markdown estructurado en `Chunk` DTOs con metadatos jerárquicos.
+- [x] Fase 5: Chunker — implementar `src/refmate/ingest/chunker.py` para dividir el Markdown estructurado en `Chunk` DTOs con metadatos jerárquicos.
+
+---
+
+## 2026-03-20 — FASE 5: Chunker semántico con grafo de referencias cruzadas
+
+**Fase(s):** Fase 5: Chunker
+**Duración aproximada:** 45 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/ingest/chunker.py` | Creado | Chunker completo: 3 parsers específicos por tipo de jerarquía, resolución bidireccional de refs cruzadas, generación de grafo e índice jerárquico |
+
+### Decisiones tomadas
+
+- **3 parsers separados por `tipo_jerarquia` (no uno genérico paramétrico):** Cada documento tiene reglas de chunking distintas (nivel de heading, lógica de subdivisión, formato de lookup para refs). Un parser genérico con flags tendría demasiados condicionales anidados. Tres métodos `_parse_regla_subregla`, `_parse_titulo_capitulo_articulo` y `_parse_titulo_capitulo_seccion` son más legibles, independientes y fáciles de ajustar por separado cuando el LLM del structurer produce variaciones menores.
+
+- **chunk_ids concisos extrayendo solo el número/numeral romano:** La primera implementación usaba el slug completo del título (`capitulo-i-disposiciones-generales:articulo-1-objeto-y-ambito-de-aplicacion`). Se sustituyó por extracción de número mediante regex específica por tipo de heading (`_heading_slug`), produciendo IDs del estilo `add-fabm:capitulo-i:articulo-1`. Motivo: los IDs aparecerán en logs, en el grafo de refs y en las respuestas del agente al usuario — la legibilidad importa.
+
+- **Chunk por capítulo (`nivel=capitulo`) cuando un H2 de rgc-fabm carece de secciones H3:** El ROADMAP especifica "chunk por sección" para rgc-fabm, pero algunos capítulos del RGC no tienen secciones (el contenido normativo está directamente bajo el capítulo). Alternativa descartada: ignorar ese contenido (se perdería normativa relevante). Se crea un chunk de nivel `capitulo` para no perder texto normativo.
+
+- **Contenido pre-H3 en un capítulo que sí tiene secciones → chunk `capitulo` separado:** Cuando un capítulo de rgc-fabm tiene texto introductorio antes de la primera sección, ese texto se flushea como chunk de nivel `capitulo` al encontrar el primer H3. Alternativa descartada: añadirlo al primer H3 (mezclaría contextos distintos).
+
+- **Auto-referencias filtradas del grafo:** La resolución de `[REF:rgc-fabm:art-N]` busca artículos en el body text de los chunks. Si el artículo referenciado está en el mismo chunk (self-loop), la ref se filtra con `if target_id != chunk_id`. Los self-loops no añaden información al grafo y generarían ruido en la expansión de refs del agente.
+
+- **Lookup de refs para rgc-fabm basado en escaneo del body text:** Los refs en rgc-fabm son `[REF:rgc-fabm:art-N]` pero los chunks son por sección. Para resolver `art-15`, `_register_lookup_rgc` escanea el texto del chunk con regex `Art[íi]culo\s+(\d+)` y registra la clave. Primer-come-first-served: no sobreescribe si ya existe una entrada, para que la mención definitoria prevalezca sobre menciones incidentales.
+
+- **Implementación sin ejecutar structurer previo:** El usuario decidió implementar el chunker directamente basándose en los prompts de estructuración (formato de headings conocido y determinista) sin necesidad de correr la FASE 4 primero. El chunker se validó con Markdown sintético representativo de los tres tipos de documento.
+
+### Problemas encontrados
+
+- **chunk_ids verbosos en primera implementación:** Primera versión usaba `_slugify(titulo[:60])` produciendo IDs muy largos. Detectado al inspeccionar el output y corregido con `_heading_slug()` que extrae solo el número/numeral.
+
+- **Auto-referencia en rgc-fabm:** La resolución de `[REF:rgc-fabm:art-12]` dentro del chunk `capitulo-ii` (que define ese artículo en su body) creaba un edge self-loop. Corregido filtrando `target_id == chunk_id` en `_resolve_references`.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 6: Indexer — implementar `src/refmate/infrastructure/embeddings/bge_m3.py` (EmbeddingProvider) y `src/refmate/infrastructure/vectorstore/qdrant.py` (VectorStore) + `src/refmate/ingest/indexer.py`.
+
+---
+
+## 2026-03-20 — Fix FASE 5: correcciones de review (hardcoding, async, dedup, splitting)
+
+**Fase(s):** Fase 5: Chunker
+**Duración aproximada:** 20 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `config.yaml` | Modificado | Añadida sección `chunker:` con `max_section_tokens: 2000` y `max_chunk_tokens: 3000` |
+| `src/refmate/config.py` | Modificado | Añadida clase `ChunkerConfig` (Pydantic frozen) y campo `chunker: ChunkerConfig` en `RefMateConfig` |
+| `src/refmate/ingest/chunker.py` | Modificado | 5 correcciones: eliminar constantes hardcodeadas, `run_all()` async, dedup de edges, quitar nonlocal innecesario, splitting universal |
+
+### Decisiones tomadas
+
+- **Eliminar `_MAX_SECTION_TOKENS` y `_MAX_CHUNK_TOKENS` como constantes de módulo:** Los umbrales de tokens son parámetros operacionales que el usuario podría querer ajustar sin tocar código. Se movieron a `config.yaml` y se acceden via `self._config.chunker.max_section_tokens/max_chunk_tokens`. No se pasaron como argumentos al constructor de `Chunker` (eso requeriría cambiar la interfaz del composition root); leerlos directamente de config es más simple y consistente con el resto del código.
+
+- **`run_all()` → `async def`:** Toda la pipeline es async por convención del proyecto (CLAUDE.md). Aunque `run_all()` actualmente no hace I/O asíncrono (los ficheros los lee de forma síncrona con Pydantic/pathlib), el método está destinado a integrarse en una pipeline async en FASE 8. Hacer la signatura async ahora evita un cambio de interfaz posterior. El `__main__` se actualizó para usar `asyncio.run()`.
+
+- **Dedup de edges con comparación por valor de dict:** La lista `edges` acumulaba un edge por cada ocurrencia del mismo `[REF:...]` en el texto (si la misma referencia aparece dos veces en un chunk, se registraba dos veces). Se añadió `if edge not in edges` (O(n) por edge, pero el grafo es pequeño). Alternativa descartada: usar un set de tuplas (requeriría conversión y es menos legible).
+
+- **Splitting en los tres parsers (no solo rgc-fabm):** El review señaló que los parsers de reglas-de-juego y add-fabm no tenían garantía de chunk < 3000 tokens. Se añadió el mismo patrón de splitting en `flush()` de los tres parsers, usando `max_chunk_tokens` del config. `_split_large_section` se parametrizó con `max_tokens` en lugar de usar la constante eliminada.
+
+- **Quitar `h2_has_sections` del nonlocal:** La variable `h2_has_sections` se modificaba en el loop principal (no dentro de `flush()`), por lo que declararlo `nonlocal` dentro de `flush()` era incorrecto y confuso. Se eliminó del `nonlocal` sin impacto funcional.
+
+### Problemas encontrados
+
+- Ninguno — todas las correcciones se aplicaron directamente sin errores. La verificación con `uv run python -m refmate.ingest.chunker` confirmó que la config carga y valida correctamente con el nuevo campo `chunker`.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 6: Indexer — implementar `src/refmate/infrastructure/embeddings/bge_m3.py` (EmbeddingProvider) y `src/refmate/infrastructure/vectorstore/qdrant.py` (VectorStore) + `src/refmate/ingest/indexer.py`.
 
 ---
