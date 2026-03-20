@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import time
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -29,6 +30,10 @@ PHASES: list[str] = ["scraper", "cropper", "ocr", "structurer", "chunker", "inde
 # ---------------------------------------------------------------------------
 # Verificación de artefactos previos
 # ---------------------------------------------------------------------------
+
+
+def _check_scraper(root: Path, config: RefMateConfig) -> None:
+    """Sin precondiciones: el scraper descarga desde URLs externas."""
 
 
 def _check_cropper(root: Path, config: RefMateConfig) -> None:
@@ -84,8 +89,8 @@ def _check_indexer(root: Path, config: RefMateConfig) -> None:
             )
 
 
-_ARTIFACT_CHECKS: dict[str, Any] = {
-    "scraper": None,  # sin precondiciones
+_ARTIFACT_CHECKS: dict[str, Callable[[Path, RefMateConfig], None]] = {
+    "scraper": _check_scraper,
     "cropper": _check_cropper,
     "ocr": _check_ocr,
     "structurer": _check_structurer,
@@ -105,9 +110,7 @@ def _check_artifacts(phase: str, root: Path, config: RefMateConfig) -> None:
     Raises:
         FileNotFoundError: Si algún artefacto requerido no existe.
     """
-    check_fn = _ARTIFACT_CHECKS.get(phase)
-    if check_fn is not None:
-        check_fn(root, config)
+    _ARTIFACT_CHECKS[phase](root, config)
 
 
 # ---------------------------------------------------------------------------
@@ -138,7 +141,7 @@ async def _run_phase(phase: str, config: RefMateConfig, root: Path) -> dict[str,
     if phase == "scraper":
         from refmate.ingest.scraper import run_scraper
 
-        return await run_scraper()  # type: ignore[return-value]
+        return await run_scraper()
 
     if phase == "cropper":
         from refmate.ingest.cropper import run_cropper
@@ -220,8 +223,13 @@ async def run_pipeline(phases_to_run: list[str], config: RefMateConfig) -> None:
         config: Configuración del sistema.
 
     Raises:
+        ValueError: Si alguna fase de `phases_to_run` no es una fase válida.
         Exception: Si cualquier fase falla, el error se propaga y el pipeline para.
     """
+    invalid = [p for p in phases_to_run if p not in PHASES]
+    if invalid:
+        raise ValueError(f"Fases desconocidas: {invalid}. Fases válidas: {PHASES}")
+
     root = get_project_root()
     summary: dict[str, dict[str, Any]] = {}
     pipeline_t0 = time.monotonic()
@@ -258,7 +266,9 @@ async def run_pipeline(phases_to_run: list[str], config: RefMateConfig) -> None:
     logger.info(f"Pipeline completada en {total_elapsed:.1f}s")
     for phase, data in summary.items():
         mark = "✓" if data["status"] == "ok" else "✗"
-        logger.info(f"  {mark} {phase:<12} {data['elapsed_s']:>6.1f}s")
+        stats = data.get("stats") or {}
+        stats_str = f" — {stats}" if stats else ""
+        logger.info(f"  {mark} {phase:<12} {data['elapsed_s']:>6.1f}s{stats_str}")
 
 
 # ---------------------------------------------------------------------------
