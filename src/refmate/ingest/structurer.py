@@ -225,8 +225,10 @@ class Structurer:
     def _combine_windows(self, parts: list[str]) -> str:
         """Combina las ventanas estructuradas eliminando el overlap.
 
-        Para cada ventana (excepto la primera), busca en el output previo el
-        primer párrafo no-overlap y descarta el contenido duplicado.
+        Para cada ventana (excepto la primera), busca el primer párrafo del
+        output en la región de overlap al FINAL de combined (no en todo el
+        texto), para evitar falsos positivos con índices o tablas de contenido
+        al inicio del documento.
 
         Args:
             parts: Lista de textos generados por ventana.
@@ -239,16 +241,22 @@ class Structurer:
         if len(parts) == 1:
             return parts[0]
 
+        # Tamaño de la ventana de búsqueda: el overlap esperado × 3 para dar margen
+        overlap_chars = (self._config.models.structuring.overlap_tokens or 500) * 4
+        search_window = overlap_chars * 3
+
         combined = parts[0]
         for part in parts[1:]:
-            # Buscar el primer párrafo del part en el texto combinado acumulado
             first_para = self._first_paragraph(part)
-            if first_para and first_para in combined:
-                idx = combined.rfind(first_para)
-                combined = combined[:idx] + part
-            else:
-                # Fallback: concatenar con separador de línea
-                combined = combined.rstrip("\n") + "\n\n" + part.lstrip("\n")
+            if first_para:
+                # Buscar SOLO en el extremo final de combined (región de overlap)
+                search_start = max(0, len(combined) - search_window)
+                idx = combined.find(first_para, search_start)
+                if idx != -1:
+                    combined = combined[:idx] + part
+                    continue
+            # Fallback: concatenar con separador de línea
+            combined = combined.rstrip("\n") + "\n\n" + part.lstrip("\n")
 
         return combined
 
@@ -325,3 +333,23 @@ class Structurer:
                 }
             )
         return refs
+
+
+if __name__ == "__main__":
+    import asyncio
+
+    from refmate.config import get_config
+    from refmate.infrastructure.llm.openrouter import OpenRouterTextGenerator
+
+    async def main() -> None:
+        """Ejecuta el structurer para todos los documentos configurados."""
+        config = get_config()
+        generator = OpenRouterTextGenerator(config)
+        structurer = Structurer(generator, config)
+
+        for doc_id in config.documents:
+            logger.info(f"Estructurando {doc_id}...")
+            stats = await structurer.run(doc_id)
+            logger.info(f"{doc_id} completado: {stats}")
+
+    asyncio.run(main())

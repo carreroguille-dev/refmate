@@ -230,6 +230,7 @@ class RefMateConfig(BaseModel):
 # ---------------------------------------------------------------------------
 
 _ENV_VAR_PATTERN = re.compile(r"\$\{([^}]+)\}")
+_ENV_VAR_DEFAULT_PATTERN = re.compile(r"^([^:]+):-(.*)$")
 
 
 def _resolve_env_vars(obj: Any) -> Any:
@@ -250,8 +251,13 @@ def _resolve_env_vars(obj: Any) -> Any:
         return [_resolve_env_vars(item) for item in obj]
     if isinstance(obj, str):
         def replace_match(match: re.Match) -> str:  # type: ignore[type-arg]
-            var_name = match.group(1)
-            value = os.environ.get(var_name)
+            expr = match.group(1)
+            default_match = _ENV_VAR_DEFAULT_PATTERN.match(expr)
+            if default_match:
+                var_name, default_value = default_match.group(1), default_match.group(2)
+            else:
+                var_name, default_value = expr, None
+            value = os.environ.get(var_name, default_value)
             if value is None:
                 raise ValueError(
                     f"Variable de entorno requerida '{var_name}' no definida. "
