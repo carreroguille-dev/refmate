@@ -480,3 +480,37 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 7: Pipeline Orchestrator — implementar `src/refmate/ingest/pipeline.py` que encadene las fases 1-6 con flags `--from` y `--only`.
 
 ---
+
+## 2026-03-20 — Fix FASE 6: correcciones de review (device, batch_size, tipos, recreate)
+
+**Fase(s):** Fase 6: Indexer (fix)
+**Duración aproximada:** 10 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/infrastructure/embeddings/bge_m3.py` | Modificado | Pasar `device=config.device` a `BGEM3FlagModel`; `raw: dict` → `dict[str, Any]`; añadido import `Any` |
+| `src/refmate/infrastructure/vectorstore/qdrant.py` | Modificado | Eliminado `_UPSERT_BATCH_SIZE = 50` hardcodeado; `upsert()` usa ahora `self._config.upsert_batch_size` |
+| `config.yaml` | Modificado | Añadido `upsert_batch_size: 50` bajo la sección `qdrant:` |
+| `src/refmate/config.py` | Modificado | Añadido campo `upsert_batch_size: int` a `QdrantConfig` |
+| `src/refmate/ingest/indexer.py` | Modificado | `list[dict]` → `list[dict[str, Any]]`; `run_indexer` recibe `recreate: bool = True` como parámetro; añadido import `Any` |
+
+### Decisiones tomadas
+
+- **`device` no pasado al modelo (bug):** `BGEM3FlagModel` acepta un parámetro `device` explícito. La implementación original lo logueaba pero lo ignoraba, lo que significaba que en un entorno con GPU (`device: cuda` en config) el modelo correría igualmente en CPU. Corrección directa: `BGEM3FlagModel(config.name, use_fp16=False, device=config.device)`. El default del config sigue siendo `"cpu"` según el ROADMAP.
+
+- **`upsert_batch_size` a `config.yaml`:** El valor `50` aparecía como constante de módulo `_UPSERT_BATCH_SIZE = 50`, violando el principio de zero-hardcoding. Aunque el ROADMAP lo menciona como "batches de 50", el tamaño de batch es un parámetro operacional (afecta a latencia y uso de memoria del cliente Qdrant). Se movió a `config.yaml` bajo `qdrant:` para que sea ajustable sin tocar código. El valor por defecto se mantuvo en 50.
+
+- **`recreate: bool = True` en `run_indexer`:** Hardcodear `recreate=True` impedía que el pipeline (FASE 7) pudiera invocar indexación incremental mediante `--from indexer` sin destruir la colección existente. Recibir el flag como parámetro con default `True` mantiene el comportamiento habitual (ingesta completa siempre recrea) pero permite al pipeline pasar `recreate=False` cuando sea apropiado.
+
+- **Tipos sin parámetros (`dict`, `list[dict]`):** En modo `strict` de mypy, los genéricos sin parámetros de tipo (`dict` en lugar de `dict[str, Any]`, `list[dict]` en lugar de `list[dict[str, Any]]`) son errores. Las correcciones son mecánicas y no afectan al comportamiento en runtime.
+
+### Problemas encontrados
+
+- La verificación con `get_config()` falló por falta de `.env` en el entorno del agente (`TELEGRAM_BOT_TOKEN` no definida). Se verificaron todas las correcciones mediante inspección de código fuente con `inspect.getsource()` y lectura directa de ficheros, evitando la necesidad de cargar la config completa.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 7: Pipeline Orchestrator — implementar `src/refmate/ingest/pipeline.py` con flags `--from` y `--only`, verificación de artefactos y FLUSHDB Redis al finalizar.
+
+---
