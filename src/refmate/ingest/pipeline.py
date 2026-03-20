@@ -141,7 +141,8 @@ async def _run_phase(phase: str, config: RefMateConfig, root: Path) -> dict[str,
     if phase == "scraper":
         from refmate.ingest.scraper import run_scraper
 
-        return await run_scraper()
+        result = await run_scraper()
+        return {"docs": result}
 
     if phase == "cropper":
         from refmate.ingest.cropper import run_cropper
