@@ -159,7 +159,7 @@ async def _run_phase(phase: str, config: RefMateConfig, root: Path) -> dict[str,
         from refmate.infrastructure.llm.openrouter import OpenRouterTextGenerator
         from refmate.ingest.structurer import Structurer
 
-        generator = OpenRouterTextGenerator(config)
+        generator = OpenRouterTextGenerator(config.models.structuring, config.api_keys.openrouter)
         structurer = Structurer(generator, config)
         stats: dict[str, Any] = {}
         for doc_id in config.documents:
