@@ -8,6 +8,7 @@ construir el grafo bidireccional de referencias cruzadas y generar el
 
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 import unicodedata
@@ -46,8 +47,6 @@ _CAPITULO_NUM = re.compile(r"Cap[íi]tulo\s+(\w+)", re.IGNORECASE)
 _SECCION_NUM = re.compile(r"Secci[oó]n\s+(\w+)", re.IGNORECASE)
 _ARTICULO_NUM = re.compile(r"Art[íi]culo\s+(\d+)", re.IGNORECASE)
 
-_MAX_SECTION_TOKENS = 2_000   # Threshold de subdivisión para rgc-fabm
-_MAX_CHUNK_TOKENS = 3_000     # Límite de aceptación (criterio de la fase)
 
 
 # ---------------------------------------------------------------------------
@@ -178,12 +177,13 @@ class Chunker:
     # Entry point público
     # ------------------------------------------------------------------
 
-    def run_all(self) -> dict[str, Any]:
+    async def run_all(self) -> dict[str, Any]:
         """Procesa todos los documentos y genera los artefactos de chunking.
 
         Returns:
             Dict con estadísticas por documento y totales de referencias cruzadas.
         """
+        max_chunk_tokens = self._config.chunker.max_chunk_tokens
         raw_chunks_by_doc: dict[str, list[dict]] = {}
         lookups_by_doc: dict[str, dict[str, str]] = {}
         stats: dict[str, Any] = {}
@@ -203,10 +203,10 @@ class Chunker:
             lookups_by_doc[doc_id] = lookup
 
             tokens = [_approx_tokens(c["texto"]) for c in raw_chunks]
-            over_limit = [t for t in tokens if t > _MAX_CHUNK_TOKENS]
+            over_limit = [t for t in tokens if t > max_chunk_tokens]
             if over_limit:
                 logger.warning(
-                    f"{doc_id}: {len(over_limit)} chunks superan {_MAX_CHUNK_TOKENS} tokens"
+                    f"{doc_id}: {len(over_limit)} chunks superan {max_chunk_tokens} tokens"
                 )
             stats[doc_id] = {
                 "chunks": len(raw_chunks),
@@ -312,17 +312,33 @@ class Chunker:
             chunk_id = f"{doc_id}:{h1_slug}:{h2_slug}" if h1_slug else f"{doc_id}:{h2_slug}"
 
             jerarquia = [x for x in [current_h1, current_h2] if x]
-            raw = _make_raw_chunk(
-                chunk_id=chunk_id,
-                doc_id=doc_id,
-                doc_nombre=doc_cfg.nombre,
-                doc_fuente=doc_cfg.fuente,
-                jerarquia=jerarquia,
-                nivel="subregla",
-                titulo_seccion=current_h2,
-                texto=texto,
-            )
-            raw_chunks.append(raw)
+            max_chunk_tokens = self._config.chunker.max_chunk_tokens
+            if _approx_tokens(texto) > max_chunk_tokens:
+                sub_chunks = self._split_large_section(
+                    texto=texto,
+                    base_chunk_id=chunk_id,
+                    doc_id=doc_id,
+                    doc_nombre=doc_cfg.nombre,
+                    doc_fuente=doc_cfg.fuente,
+                    jerarquia=jerarquia,
+                    nivel="subregla",
+                    titulo_seccion=current_h2,
+                    max_tokens=max_chunk_tokens,
+                )
+                for sc in sub_chunks:
+                    raw_chunks.append(sc)
+            else:
+                raw = _make_raw_chunk(
+                    chunk_id=chunk_id,
+                    doc_id=doc_id,
+                    doc_nombre=doc_cfg.nombre,
+                    doc_fuente=doc_cfg.fuente,
+                    jerarquia=jerarquia,
+                    nivel="subregla",
+                    titulo_seccion=current_h2,
+                    texto=texto,
+                )
+                raw_chunks.append(raw)
 
             # Registrar claves de lookup para resolución de refs
             # El formato de refs es [REF:reglas-de-juego:regla-N-M]
@@ -397,17 +413,33 @@ class Chunker:
             chunk_id = f"{doc_id}:{h2_slug}:{h3_slug}" if h2_slug else f"{doc_id}:{h3_slug}"
             jerarquia = [x for x in [current_h1, current_h2, current_h3] if x]
 
-            raw = _make_raw_chunk(
-                chunk_id=chunk_id,
-                doc_id=doc_id,
-                doc_nombre=doc_cfg.nombre,
-                doc_fuente=doc_cfg.fuente,
-                jerarquia=jerarquia,
-                nivel="articulo",
-                titulo_seccion=current_h3,
-                texto=texto,
-            )
-            raw_chunks.append(raw)
+            max_chunk_tokens = self._config.chunker.max_chunk_tokens
+            if _approx_tokens(texto) > max_chunk_tokens:
+                sub_chunks = self._split_large_section(
+                    texto=texto,
+                    base_chunk_id=chunk_id,
+                    doc_id=doc_id,
+                    doc_nombre=doc_cfg.nombre,
+                    doc_fuente=doc_cfg.fuente,
+                    jerarquia=jerarquia,
+                    nivel="articulo",
+                    titulo_seccion=current_h3,
+                    max_tokens=max_chunk_tokens,
+                )
+                for sc in sub_chunks:
+                    raw_chunks.append(sc)
+            else:
+                raw = _make_raw_chunk(
+                    chunk_id=chunk_id,
+                    doc_id=doc_id,
+                    doc_nombre=doc_cfg.nombre,
+                    doc_fuente=doc_cfg.fuente,
+                    jerarquia=jerarquia,
+                    nivel="articulo",
+                    titulo_seccion=current_h3,
+                    texto=texto,
+                )
+                raw_chunks.append(raw)
 
             # Registrar claves: "art-N", "articulo-N", "N"
             m_num = _ARTICULO_NUM.search(current_h3)
@@ -476,7 +508,7 @@ class Chunker:
         h2_has_sections = False  # ¿El H2 actual ha visto algún H3?
 
         def flush(force_nivel: str | None = None) -> None:
-            nonlocal current_lines, h2_has_sections
+            nonlocal current_lines
             texto = "".join(current_lines).strip()
             current_lines.clear()
             if not texto:
@@ -498,8 +530,9 @@ class Chunker:
             else:
                 return  # Contenido antes de cualquier H2 (preámbulo): ignorar
 
+            max_section_tokens = self._config.chunker.max_section_tokens
             tokens = _approx_tokens(texto)
-            if tokens > _MAX_SECTION_TOKENS and not force_nivel:
+            if tokens > max_section_tokens and not force_nivel:
                 sub_chunks = self._split_large_section(
                     texto=texto,
                     base_chunk_id=chunk_id_base,
@@ -509,6 +542,7 @@ class Chunker:
                     jerarquia=jerarquia,
                     nivel=nivel,
                     titulo_seccion=titulo_seccion,
+                    max_tokens=max_section_tokens,
                 )
                 for sc in sub_chunks:
                     raw_chunks.append(sc)
@@ -573,6 +607,7 @@ class Chunker:
         jerarquia: list[str],
         nivel: str,
         titulo_seccion: str,
+        max_tokens: int,
     ) -> list[dict]:
         """Divide una sección grande en sub-chunks por párrafos.
 
@@ -585,6 +620,7 @@ class Chunker:
             jerarquia: Jerarquía completa.
             nivel: Nivel normativo.
             titulo_seccion: Título de la sección original.
+            max_tokens: Umbral máximo de tokens por sub-chunk.
 
         Returns:
             Lista de raw_chunks. Si el texto no se puede subdividir,
@@ -597,7 +633,7 @@ class Chunker:
 
         for para in paragraphs:
             para_tokens = _approx_tokens(para)
-            if current_tokens + para_tokens > _MAX_SECTION_TOKENS and current_paras:
+            if current_tokens + para_tokens > max_tokens and current_paras:
                 parts.append("\n\n".join(current_paras))
                 current_paras = []
                 current_tokens = 0
@@ -689,7 +725,9 @@ class Chunker:
                     if target_id and target_id != chunk_id:  # Ignorar auto-referencias
                         if target_id not in refs_salientes:
                             refs_salientes.append(target_id)
-                        edges.append({"from": chunk_id, "to": target_id, "raw": raw_ref})
+                        edge = {"from": chunk_id, "to": target_id, "raw": raw_ref}
+                        if edge not in edges:
+                            edges.append(edge)
                     elif not target_id:
                         unresolved.append({"from": chunk_id, "raw": raw_ref})
                         logger.debug(f"Ref no resuelta: {raw_ref} en {chunk_id}")
@@ -916,22 +954,25 @@ def _register_lookup_rgc(
 if __name__ == "__main__":
     from refmate.config import get_config
 
-    config = get_config()
-    chunker = Chunker(config)
-    stats = chunker.run_all()
+    async def _main() -> None:
+        config = get_config()
+        chunker = Chunker(config)
+        stats = await chunker.run_all()
 
-    print("\n=== Resultados del Chunker ===")
-    for doc_id, doc_stats in stats.items():
-        if doc_id == "cross_refs":
-            continue
-        print(
-            f"  {doc_id}: {doc_stats['chunks']} chunks, "
-            f"max={doc_stats['tokens_max']} tokens, "
-            f"avg={doc_stats['tokens_avg']} tokens"
-        )
-    if "cross_refs" in stats:
-        cr = stats["cross_refs"]
-        print(
-            f"\n  Referencias cruzadas: {cr['resolved']}/{cr['total']} resueltas "
-            f"({cr['unresolved']} sin resolver)"
-        )
+        print("\n=== Resultados del Chunker ===")
+        for doc_id, doc_stats in stats.items():
+            if doc_id == "cross_refs":
+                continue
+            print(
+                f"  {doc_id}: {doc_stats['chunks']} chunks, "
+                f"max={doc_stats['tokens_max']} tokens, "
+                f"avg={doc_stats['tokens_avg']} tokens"
+            )
+        if "cross_refs" in stats:
+            cr = stats["cross_refs"]
+            print(
+                f"\n  Referencias cruzadas: {cr['resolved']}/{cr['total']} resueltas "
+                f"({cr['unresolved']} sin resolver)"
+            )
+
+    asyncio.run(_main())

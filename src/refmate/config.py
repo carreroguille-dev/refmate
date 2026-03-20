@@ -119,6 +119,15 @@ class RetrievalConfig(BaseModel):
     rrf_k: int
 
 
+class ChunkerConfig(BaseModel):
+    """Parámetros del chunker semántico."""
+
+    model_config = ConfigDict(frozen=True)
+
+    max_section_tokens: int
+    max_chunk_tokens: int
+
+
 class QdrantVectorsConfig(BaseModel):
     """Configuración de los vectores de la colección Qdrant."""
 
@@ -207,6 +216,7 @@ class RefMateConfig(BaseModel):
     crop_masks: dict[str, CropMaskConfig]
     rendering: RenderingConfig
     retrieval: RetrievalConfig
+    chunker: ChunkerConfig
     qdrant: QdrantConfig
     cache: CacheConfig
     scraper: ScraperConfig
