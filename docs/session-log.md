@@ -548,3 +548,33 @@ Registro de decisiones de diseño, cambios realizados y razonamiento detrás de 
 - [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
 
 ---
+
+## 2026-03-20 — Fix FASE 7: tipos Callable, _check_scraper, stats en resumen, validación
+
+**Fase(s):** Fase 7: Pipeline Orchestrator (fix)
+**Duración aproximada:** 10 minutos
+
+### Ficheros tocados
+| Fichero | Acción | Descripción |
+|---------|--------|-------------|
+| `src/refmate/ingest/pipeline.py` | Modificado | 5 correcciones: tipo `Callable` en `_ARTIFACT_CHECKS`, `_check_scraper` vacío, eliminado `type: ignore`, stats en resumen final, validación de fases al inicio de `run_pipeline` |
+
+### Decisiones tomadas
+
+- **`_check_scraper` vacío en lugar de `None` en el dict:** El valor `None` para la fase scraper requería una guarda `if check_fn is not None` en `_check_artifacts`, añadiendo complejidad innecesaria y un camino de código que no se testea. Una función vacía `_check_scraper` que simplemente retorna sin hacer nada es más uniforme: todas las fases siguen el mismo patrón, `_check_artifacts` se simplifica a una línea, y el tipo del dict puede ser homogéneo (`Callable` en lugar de `Callable | None`).
+
+- **`dict[str, Callable[[Path, RefMateConfig], None]]` en lugar de `dict[str, Any]`:** El tipo `Any` en `_ARTIFACT_CHECKS` silenciaba potenciales errores de tipo en mypy strict. El tipo preciso documenta el contrato del dict y permite que mypy verifique que todos los valores son funciones con la firma correcta. El único coste es la verbosidad del tipo, que se compensa con el beneficio de seguridad.
+
+- **Resumen final con stats:** `summary[phase]["stats"]` se capturaba por fase pero nunca se emitía en el log de resumen. El ROADMAP pide "resumen final con estadísticas". Se añadió `stats_str` que loguea el dict de stats si no está vacío (el indexer devuelve `{}`, los demás devuelven métricas útiles como conteo de páginas/chunks). El formato `— {stats}` es compacto y no requiere formato especial por fase.
+
+- **Validación de `phases_to_run` al inicio de `run_pipeline`:** Sin validación, una fase inválida pasaba por `_check_artifacts` (que hace `_ARTIFACT_CHECKS[fase]` con KeyError tardío) o llegaba al `raise ValueError` al final de `_run_phase`. Validar al inicio con un mensaje claro es más conforme al principio de fail-fast del ROADMAP.
+
+### Problemas encontrados
+
+- Ninguno — todas las correcciones son mecánicas y se verificaron con inspección de código fuente.
+
+### Pendiente para la próxima sesión
+
+- [ ] Fase 8: Guard Model — implementar `src/refmate/retrieval/guard.py` con Qwen3-4B vía OpenRouter y `src/refmate/prompts/guard_prompt.md`.
+
+---
