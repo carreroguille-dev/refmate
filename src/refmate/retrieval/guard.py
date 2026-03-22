@@ -28,9 +28,8 @@ _VALID_CLASSIFICATIONS: dict[str, str] = {
 class OpenRouterGuardModel:
     """Implementa el protocolo GuardModel usando un TextGenerator de OpenRouter.
 
-    Clasifica consultas de usuario en tres categorías mediante un LLM pequeño
-    (Qwen3-4B) con temperature=0.0 para máxima determinismo. En caso de
-    respuesta inesperada del modelo, el fallback seguro es 'out_of_scope'.
+    Clasifica consultas de usuario en tres categorías. En caso de respuesta
+    inesperada del modelo, el fallback seguro es 'out_of_scope'.
     """
 
     def __init__(self, generator: TextGenerator, prompt_path: Path) -> None:
@@ -65,7 +64,7 @@ class OpenRouterGuardModel:
             user_prompt=query,
         )
 
-        token = raw.strip().upper()
+        token = raw.strip().split()[0].upper().rstrip(".!?,;")
         classification = _VALID_CLASSIFICATIONS.get(token)
 
         if classification is None:
