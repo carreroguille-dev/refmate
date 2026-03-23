@@ -161,6 +161,7 @@ class CacheConfig(BaseModel):
     similarity_direct_hit: float
     similarity_context_hit: float
     min_hits_for_direct: int
+    max_entries: int
     invalidate_on_ingest: bool
 
 

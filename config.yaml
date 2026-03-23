@@ -109,6 +109,7 @@ cache:
   similarity_direct_hit: 0.95
   similarity_context_hit: 0.85
   min_hits_for_direct: 3
+  max_entries: 100
   invalidate_on_ingest: true
 
 telegram:
