@@ -225,3 +225,34 @@ class Agent(Protocol):
             AgentResult con la respuesta y metadata de la búsqueda.
         """
         ...
+
+
+@runtime_checkable
+class ToolCallingLLM(Protocol):
+    """LLM que soporta tool calling (function calling) nativo.
+
+    Abstracción de bajo nivel para un único turno de conversación con tools.
+    El loop multi-turn lo gestiona el llamador (el agente).
+    """
+
+    async def chat(
+        self,
+        messages: list[dict[str, Any]],
+        tools: list[dict[str, Any]],
+    ) -> tuple[str | None, list[dict[str, Any]]]:
+        """Realiza una llamada al LLM con soporte de tool calling.
+
+        Args:
+            messages: Lista de mensajes en formato OpenAI
+                      (role: system/user/assistant/tool).
+            tools: Lista de esquemas de herramientas en formato OpenAI
+                   function calling.
+
+        Returns:
+            Tuple ``(content, tool_calls)`` donde exactamente uno de los dos
+            tiene valor:
+            - ``content``: texto de la respuesta final del LLM (None si hay tool_calls).
+            - ``tool_calls``: lista de tool calls en formato OpenAI
+              ``[{"id": ..., "function": {"name": ..., "arguments": ...}}]``.
+        """
+        ...
