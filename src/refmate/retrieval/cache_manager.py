@@ -44,8 +44,8 @@ class CacheManager:
             CacheLookupResult con hit_type ('direct', 'context' o 'miss'),
             la respuesta cacheada (None si miss) y la similitud coseno.
         """
-        embedding = self._embedder.encode(question)
         logger.debug(f"CacheManager.lookup → codificando pregunta ({len(question)} chars)")
+        embedding = self._embedder.encode(question)
         result = await self._cache.lookup(embedding.dense)
         logger.debug(
             f"CacheManager.lookup → {result.hit_type} (sim={result.similarity:.3f})"

@@ -17,8 +17,8 @@ from refmate.config import CacheConfig
 from refmate.core.models import CacheLookupResult
 
 # Prefijos de claves Redis
-_KEY_PREFIX = "refmate:cache:"
-_INDEX_KEY = "refmate:cache:keys"
+_KEY_PREFIX = "refmate:cache:entry:"  # entradas individuales
+_INDEX_KEY = "refmate:cache:keys"     # índice SET de UUIDs activos
 
 
 def _cosine_similarity(a: list[float], b: list[float]) -> float:
@@ -215,7 +215,8 @@ class RedisSemanticCache:
         """Evicta la entrada con menor hit_count si se supera max_entries.
 
         Carga los hit_counts de todas las entradas activas y elimina la que
-        tenga menor valor. En caso de empate, elimina la primera encontrada.
+        tenga menor valor. En caso de empate, el resultado no es determinístico
+        (depende del orden de iteración del SET de Redis).
         """
         count = await self._client.scard(_INDEX_KEY)
         if count < self._config.max_entries:
