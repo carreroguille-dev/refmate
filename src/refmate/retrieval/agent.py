@@ -14,156 +14,140 @@ from typing import Any
 from loguru import logger
 
 from refmate.config import RetrievalConfig
-from refmate.core.models import AgentResult, SparseVector
+from refmate.core.models import AgentResult, Chunk, SearchResult, SparseVector
 from refmate.core.protocols import EmbeddingProvider, ToolCallingLLM, VectorStore
 from refmate.retrieval.cross_refs import CrossRefExpander
 
 # ---------------------------------------------------------------------------
-# Esquemas de tools en formato OpenAI function calling
+# Constantes de módulo
 # ---------------------------------------------------------------------------
-
-_DOC_FILTER_ENUM = ["reglas-de-juego", "rgc-fabm", "add-fabm"]
-
-_TOOLS: list[dict[str, Any]] = [
-    {
-        "type": "function",
-        "function": {
-            "name": "search_dense",
-            "description": (
-                "Búsqueda semántica por similitud de significado (vector denso). "
-                "Usar para preguntas conceptuales o con sinónimos."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "Texto de búsqueda semántica.",
-                    },
-                    "top_k": {
-                        "type": "integer",
-                        "description": "Número de resultados (por defecto 5).",
-                        "default": 5,
-                    },
-                    "doc_filter": {
-                        "type": "string",
-                        "enum": _DOC_FILTER_ENUM,
-                        "description": "Filtrar por documento específico (opcional).",
-                    },
-                },
-                "required": ["query"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "search_sparse",
-            "description": (
-                "Búsqueda léxica por términos exactos (vector sparse). "
-                "Usar cuando la pregunta menciona números de regla o artículos concretos."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "Texto de búsqueda léxica.",
-                    },
-                    "top_k": {
-                        "type": "integer",
-                        "description": "Número de resultados (por defecto 5).",
-                        "default": 5,
-                    },
-                    "doc_filter": {
-                        "type": "string",
-                        "enum": _DOC_FILTER_ENUM,
-                        "description": "Filtrar por documento específico (opcional).",
-                    },
-                },
-                "required": ["query"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "search_hybrid",
-            "description": (
-                "Búsqueda híbrida combinando semántica y léxica con RRF. "
-                "Opción más robusta cuando no estés seguro del tipo de búsqueda."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "query": {
-                        "type": "string",
-                        "description": "Texto de búsqueda híbrida.",
-                    },
-                    "top_k": {
-                        "type": "integer",
-                        "description": "Número de resultados (por defecto 5).",
-                        "default": 5,
-                    },
-                    "doc_filter": {
-                        "type": "string",
-                        "enum": _DOC_FILTER_ENUM,
-                        "description": "Filtrar por documento específico (opcional).",
-                    },
-                },
-                "required": ["query"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_chunk_by_id",
-            "description": (
-                "Acceso directo a un chunk por su ID exacto. "
-                "Usar cuando el índice jerárquico indica el chunk concreto necesario."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "chunk_id": {
-                        "type": "string",
-                        "description": "ID del chunk (ej: 'reglas-de-juego:regla-8:8-5').",
-                    },
-                },
-                "required": ["chunk_id"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "get_related_chunks",
-            "description": (
-                "Devuelve chunks relacionados mediante referencias cruzadas. "
-                "Usar para expandir el contexto cuando un artículo referencia otros."
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "chunk_id": {
-                        "type": "string",
-                        "description": "ID del chunk del que expandir referencias.",
-                    },
-                    "max_results": {
-                        "type": "integer",
-                        "description": "Número máximo de chunks relacionados (por defecto 3).",
-                        "default": 3,
-                    },
-                },
-                "required": ["chunk_id"],
-            },
-        },
-    },
-]
 
 # Máximo de iteraciones del loop de tool calling para evitar bucles infinitos
 _MAX_TOOL_ITERATIONS = 10
+
+# Mensaje de fallback cuando el loop de tools se agota sin respuesta
+_RESPONSE_FALLBACK = (
+    "No he podido generar una respuesta completa. Por favor, reformula tu pregunta."
+)
+
+
+# ---------------------------------------------------------------------------
+# Construcción dinámica de tools (doc_ids viene de config, no hardcodeado)
+# ---------------------------------------------------------------------------
+
+
+def _build_tools(doc_ids: list[str]) -> list[dict[str, Any]]:
+    """Construye los esquemas de tools en formato OpenAI function calling.
+
+    El enum de ``doc_filter`` se genera a partir de los IDs de documentos
+    configurados en ``config.yaml``, evitando hardcodear los IDs.
+
+    Args:
+        doc_ids: Lista de IDs de documentos (claves de config.documents).
+
+    Returns:
+        Lista de esquemas de herramientas lista para enviarse al LLM.
+    """
+    doc_filter_prop: dict[str, Any] = {
+        "type": "string",
+        "enum": doc_ids,
+        "description": "Filtrar por documento específico (opcional).",
+    }
+
+    search_params = {
+        "type": "object",
+        "properties": {
+            "query": {"type": "string", "description": "Texto de búsqueda."},
+            "top_k": {
+                "type": "integer",
+                "description": "Número de resultados (por defecto 5).",
+                "default": 5,
+            },
+            "doc_filter": doc_filter_prop,
+        },
+        "required": ["query"],
+    }
+
+    return [
+        {
+            "type": "function",
+            "function": {
+                "name": "search_dense",
+                "description": (
+                    "Búsqueda semántica por similitud de significado (vector denso). "
+                    "Usar para preguntas conceptuales o con sinónimos."
+                ),
+                "parameters": search_params,
+            },
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "search_sparse",
+                "description": (
+                    "Búsqueda léxica por términos exactos (vector sparse). "
+                    "Usar cuando la pregunta menciona números de regla o artículos concretos."
+                ),
+                "parameters": search_params,
+            },
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "search_hybrid",
+                "description": (
+                    "Búsqueda híbrida combinando semántica y léxica con RRF. "
+                    "Opción más robusta cuando no estés seguro del tipo de búsqueda."
+                ),
+                "parameters": search_params,
+            },
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_chunk_by_id",
+                "description": (
+                    "Acceso directo a un chunk por su ID exacto. "
+                    "Usar cuando el índice jerárquico indica el chunk concreto necesario."
+                ),
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "chunk_id": {
+                            "type": "string",
+                            "description": "ID del chunk (ej: 'reglas-de-juego:regla-8:8-5').",
+                        },
+                    },
+                    "required": ["chunk_id"],
+                },
+            },
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_related_chunks",
+                "description": (
+                    "Devuelve chunks relacionados mediante referencias cruzadas. "
+                    "Usar para expandir el contexto cuando un artículo referencia otros."
+                ),
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "chunk_id": {
+                            "type": "string",
+                            "description": "ID del chunk del que expandir referencias.",
+                        },
+                        "max_results": {
+                            "type": "integer",
+                            "description": "Número máximo de chunks relacionados (por defecto 3).",
+                            "default": 3,
+                        },
+                    },
+                    "required": ["chunk_id"],
+                },
+            },
+        },
+    ]
 
 
 def _format_index(index_data: dict[str, Any]) -> str:
@@ -200,7 +184,7 @@ def _format_index(index_data: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _format_search_results(results: list[Any]) -> str:
+def _format_search_results(results: list[SearchResult]) -> str:
     """Formatea SearchResults para que el LLM pueda leerlos y citarlos.
 
     Args:
@@ -226,7 +210,7 @@ def _format_search_results(results: list[Any]) -> str:
     return "\n---\n".join(parts)
 
 
-def _format_chunks(chunks: list[Any]) -> str:
+def _format_chunks(chunks: list[Chunk]) -> str:
     """Formatea una lista de Chunk para que el LLM pueda leerlos.
 
     Args:
@@ -296,6 +280,7 @@ class RAGAgent:
         retrieval_config: RetrievalConfig,
         system_prompt_path: Path,
         index_path: Path,
+        doc_ids: list[str],
     ) -> None:
         """Inicializa el agente cargando el system prompt y el índice jerárquico.
 
@@ -307,6 +292,8 @@ class RAGAgent:
             retrieval_config: Parámetros de recuperación (top_k, etc.).
             system_prompt_path: Ruta al fichero system_prompt.md (template).
             index_path: Ruta al fichero hierarchical_index.json.
+            doc_ids: IDs de los documentos disponibles (de config.documents.keys()).
+                     Usados para construir el enum de doc_filter de las tools.
 
         Raises:
             FileNotFoundError: Si algún fichero de prompt o índice no existe.
@@ -316,6 +303,7 @@ class RAGAgent:
         self._embedder = embedder
         self._cross_ref_expander = cross_ref_expander
         self._retrieval_config = retrieval_config
+        self._tools = _build_tools(doc_ids)
 
         # Cargar y preparar el template del system prompt
         if not system_prompt_path.exists():
@@ -356,7 +344,7 @@ class RAGAgent:
         final_response = ""
 
         for iteration in range(_MAX_TOOL_ITERATIONS):
-            content, tool_calls = await self._llm.chat(messages, _TOOLS)
+            content, tool_calls = await self._llm.chat(messages, self._tools)
 
             if tool_calls:
                 # El modelo quiere invocar herramientas: ejecutarlas y continuar
@@ -413,10 +401,7 @@ class RAGAgent:
             )
             # Si el loop se agota sin respuesta, usar el último contenido disponible
             if not final_response:
-                final_response = (
-                    "No he podido generar una respuesta completa. "
-                    "Por favor, reformula tu pregunta."
-                )
+                final_response = _RESPONSE_FALLBACK
 
         # Deduplicar chunks_used manteniendo orden
         seen: set[str] = set()
@@ -473,7 +458,31 @@ class RAGAgent:
             args: Argumentos de la herramienta (ya deserializados).
 
         Returns:
+            Tuple ``(resultado_texto, chunk_ids_usados)``. Nunca lanza excepciones:
+            si faltan argumentos requeridos o falla la ejecución, devuelve un
+            mensaje de error como primer elemento de la tupla.
+        """
+        try:
+            return await self._dispatch_tool(tool_name, args)
+        except KeyError as exc:
+            msg = f"Argumento requerido ausente en '{tool_name}': {exc}"
+            logger.warning(f"RAGAgent: {msg}")
+            return msg, []
+
+    async def _dispatch_tool(
+        self, tool_name: str, args: dict[str, Any]
+    ) -> tuple[str, list[str]]:
+        """Despacha la ejecución al handler correspondiente según el nombre de la tool.
+
+        Args:
+            tool_name: Nombre de la herramienta.
+            args: Argumentos ya deserializados (puede estar incompleto si el LLM falla).
+
+        Returns:
             Tuple ``(resultado_texto, chunk_ids_usados)``.
+
+        Raises:
+            KeyError: Si falta un argumento requerido en ``args``.
         """
         top_k: int = int(args.get("top_k", self._retrieval_config.top_k))
         doc_filter_val: str | None = args.get("doc_filter")

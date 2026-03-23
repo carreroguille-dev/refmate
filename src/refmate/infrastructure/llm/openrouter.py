@@ -8,7 +8,6 @@ tool calling (function calling) nativo.
 from __future__ import annotations
 
 import asyncio
-import json
 from typing import Any
 
 import httpx
@@ -241,46 +240,3 @@ class OpenRouterToolCallingLLM:
             f"'{self._config.name}'. Último error: {last_exc}"
         )
 
-    def build_tool_message(self, tool_call_id: str, content: str) -> dict[str, Any]:
-        """Construye un mensaje de resultado de tool en formato OpenAI.
-
-        Args:
-            tool_call_id: ID del tool call devuelto por el modelo.
-            content: Resultado de la ejecución de la herramienta.
-
-        Returns:
-            Dict con role='tool' listo para añadir a la lista de mensajes.
-        """
-        return {"role": "tool", "tool_call_id": tool_call_id, "content": content}
-
-    def build_assistant_tool_call_message(
-        self, tool_calls: list[dict[str, Any]]
-    ) -> dict[str, Any]:
-        """Construye el mensaje del asistente que contiene los tool calls.
-
-        Necesario para mantener el historial de mensajes correcto antes de
-        añadir los resultados de las tools.
-
-        Args:
-            tool_calls: Lista de tool calls en formato OpenAI.
-
-        Returns:
-            Dict con role='assistant' y tool_calls listo para el historial.
-        """
-        return {"role": "assistant", "content": None, "tool_calls": tool_calls}
-
-    @staticmethod
-    def parse_tool_call(tool_call: dict[str, Any]) -> tuple[str, str, dict[str, Any]]:
-        """Extrae id, nombre y argumentos de un tool call en formato OpenAI.
-
-        Args:
-            tool_call: Dict con campos id y function (name + arguments).
-
-        Returns:
-            Tuple ``(call_id, tool_name, arguments_dict)``.
-        """
-        call_id: str = tool_call["id"]
-        fn = tool_call["function"]
-        name: str = fn["name"]
-        arguments: dict[str, Any] = json.loads(fn["arguments"])
-        return call_id, name, arguments
