@@ -1,0 +1,1992 @@
+{
+  "reglas-de-juego": {
+    "nombre": "Reglas de Juego (Julio 2025)",
+    "fuente": "RFEBM/IHF",
+    "chunks": [
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-1",
+        "titulo_seccion": "1:1",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-2",
+        "titulo_seccion": "1:2",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-3",
+        "titulo_seccion": "1:3",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-4",
+        "titulo_seccion": "1:4",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-5",
+        "titulo_seccion": "1:5",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:5"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-6",
+        "titulo_seccion": "1:6",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:6"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-7",
+        "titulo_seccion": "1:7",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:7"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-8",
+        "titulo_seccion": "1:8",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:8"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-9",
+        "titulo_seccion": "1:9",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:9"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-10",
+        "titulo_seccion": "1:10",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:10"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-11",
+        "titulo_seccion": "1:11",
+        "jerarquia": [
+          "Regla 1: El terreno de juego",
+          "1:11"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-2:2-1",
+        "titulo_seccion": "2:1",
+        "jerarquia": [
+          "Regla 2: Tiempo de juego, señal final y tiempo muerto",
+          "2:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-2:2-2",
+        "titulo_seccion": "2:2",
+        "jerarquia": [
+          "Regla 2: Tiempo de juego, señal final y tiempo muerto",
+          "2:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-2:2-3",
+        "titulo_seccion": "2:3",
+        "jerarquia": [
+          "Regla 2: Tiempo de juego, señal final y tiempo muerto",
+          "2:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-2:2-4",
+        "titulo_seccion": "2:4",
+        "jerarquia": [
+          "Regla 2: Tiempo de juego, señal final y tiempo muerto",
+          "2:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-2:2-9",
+        "titulo_seccion": "2:9",
+        "jerarquia": [
+          "Regla 2: Tiempo de juego, señal final y tiempo muerto",
+          "2:9"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-2:2-10",
+        "titulo_seccion": "2:10",
+        "jerarquia": [
+          "Regla 2: Tiempo de juego, señal final y tiempo muerto",
+          "2:10"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-3:3-1",
+        "titulo_seccion": "3:1",
+        "jerarquia": [
+          "Regla 3: El balón",
+          "3:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-3:3-2",
+        "titulo_seccion": "3:2",
+        "jerarquia": [
+          "Regla 3: El balón",
+          "3:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-3:3-3",
+        "titulo_seccion": "3:3",
+        "jerarquia": [
+          "Regla 3: El balón",
+          "3:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-3:3-4",
+        "titulo_seccion": "3:4",
+        "jerarquia": [
+          "Regla 3: El balón",
+          "3:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-1",
+        "titulo_seccion": "4:1",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-2",
+        "titulo_seccion": "4:2",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-3",
+        "titulo_seccion": "4:3",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-4",
+        "titulo_seccion": "4:4",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-5",
+        "titulo_seccion": "4:5",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:5"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-6",
+        "titulo_seccion": "4:6",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:6"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-7",
+        "titulo_seccion": "4:7",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:7"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-8",
+        "titulo_seccion": "4:8",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:8"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-9",
+        "titulo_seccion": "4:9",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:9"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-10",
+        "titulo_seccion": "4:10",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:10"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-11",
+        "titulo_seccion": "4:11",
+        "jerarquia": [
+          "Regla 4: El equipo, sustituciones, equipación, jugador lesionado",
+          "4:11"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-1",
+        "titulo_seccion": "5:1",
+        "jerarquia": [
+          "Regla 5: El portero",
+          "5:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-2",
+        "titulo_seccion": "5:2",
+        "jerarquia": [
+          "Regla 5: El portero",
+          "5:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-3",
+        "titulo_seccion": "5:3",
+        "jerarquia": [
+          "Regla 5: El portero",
+          "5:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-4",
+        "titulo_seccion": "5:4",
+        "jerarquia": [
+          "Regla 5: El portero",
+          "5:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-5",
+        "titulo_seccion": "5:5",
+        "jerarquia": [
+          "Regla 5: El portero",
+          "5:5"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-6",
+        "titulo_seccion": "5:6",
+        "jerarquia": [
+          "Regla 5: El portero",
+          "5:6"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-8:8-4",
+        "titulo_seccion": "8:4",
+        "jerarquia": [
+          "Regla 8:4 Faltas que justifican una inmediata exclusión de 2 minutos",
+          "8:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-8:8-5",
+        "titulo_seccion": "8:5",
+        "jerarquia": [
+          "Regla 8:5 FALTAS QUE JUSTIFICAN UNA DESCALIFICACIÓN",
+          "8:5"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-8:8-11",
+        "titulo_seccion": "8:11",
+        "jerarquia": [
+          "Regla 8:11 DESCALIFICACIÓN Y LANZAMIENTO DE 7 METROS POR COMPORTAMIENTO ANTIDEPORTIVO ESPECÍFICO O COMPORTAMIENTO IRREGULAR ESPECÍFICO EN LOS ÚLTIMOS 30 SEGUNDOS",
+          "8:11"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-9:9-1",
+        "titulo_seccion": "9:1",
+        "jerarquia": [
+          "Regla 9:1 El gol",
+          "9:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-9:9-2",
+        "titulo_seccion": "9:2",
+        "jerarquia": [
+          "Regla 9:2",
+          "9:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-9:9-3",
+        "titulo_seccion": "9:3",
+        "jerarquia": [
+          "Regla 9:3",
+          "9:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-1",
+        "titulo_seccion": "10:1",
+        "jerarquia": [
+          "Regla 10:1 El saque de centro",
+          "10:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-2",
+        "titulo_seccion": "10:2",
+        "jerarquia": [
+          "Regla 10:2",
+          "10:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-3",
+        "titulo_seccion": "10:3",
+        "jerarquia": [
+          "Regla 10:3",
+          "10:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-4",
+        "titulo_seccion": "10:4",
+        "jerarquia": [
+          "Regla 10:4",
+          "10:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-1",
+        "titulo_seccion": "11:1",
+        "jerarquia": [
+          "Regla 11:1 El saque de banda",
+          "11:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-2",
+        "titulo_seccion": "11:2",
+        "jerarquia": [
+          "Regla 11:2",
+          "11:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-3",
+        "titulo_seccion": "11:3",
+        "jerarquia": [
+          "Regla 11:3",
+          "11:3"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-4",
+        "titulo_seccion": "11:4",
+        "jerarquia": [
+          "Regla 11:4",
+          "11:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-5",
+        "titulo_seccion": "11:5",
+        "jerarquia": [
+          "Regla 11:5",
+          "11:5"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-12:12-1",
+        "titulo_seccion": "12:1",
+        "jerarquia": [
+          "Regla 12:1 El saque de portería",
+          "12:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-12:12-2",
+        "titulo_seccion": "12:2",
+        "jerarquia": [
+          "Regla 12:2",
+          "12:2"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:13-1",
+        "titulo_seccion": "13:1",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "13:1"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-4",
+        "titulo_seccion": "16:4",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:4"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-5",
+        "titulo_seccion": "16:5",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:5"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-6",
+        "titulo_seccion": "16:6",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:6"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-7",
+        "titulo_seccion": "16:7",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:7"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-8",
+        "titulo_seccion": "16:8",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:8"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-9",
+        "titulo_seccion": "16:9",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:9"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-10-parte-1",
+        "titulo_seccion": "16:10 (parte 1/2)",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:10"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-13:16-10-parte-2",
+        "titulo_seccion": "16:10 (parte 2/2)",
+        "jerarquia": [
+          "Regla 13:1 DECISIÓN DE GOLPE FRANCO",
+          "16:10"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-1:1-1",
+        "titulo_seccion": "1:1 Directrices generales:",
+        "jerarquia": [
+          "Regla 1: FALTAS QUE DAN LUGAR A UN GOLPE FRANCO",
+          "1:1 Directrices generales:"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-3:3-1",
+        "titulo_seccion": "3:1 EVALUACIÓN DEL JUEGO PASIVO EN SIETE CONTRA SEIS",
+        "jerarquia": [
+          "Regla 3: Los criterios de observación son",
+          "3:1 EVALUACIÓN DEL JUEGO PASIVO EN SIETE CONTRA SEIS"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-1",
+        "titulo_seccion": "4:1 CÓMO USAR LA GESTOFORMA DE ADVERTENCIA DE JUEGO PASIVO",
+        "jerarquia": [
+          "Regla 4: GESTIÓN DEL JUEGO PASIVO HACIA EL FINAL DEL PARTIDO",
+          "4:1 CÓMO USAR LA GESTOFORMA DE ADVERTENCIA DE JUEGO PASIVO"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-2",
+        "titulo_seccion": "4:2 La gestoforma de advertencia de juego pasivo normalmente tiene validez durante todo el resto del ataque.",
+        "jerarquia": [
+          "Regla 4: GESTIÓN DEL JUEGO PASIVO HACIA EL FINAL DEL PARTIDO",
+          "4:2 La gestoforma de advertencia de juego pasivo normalmente tiene validez durante todo el resto del ataque."
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-4:4-3",
+        "titulo_seccion": "4:3 DIRECTRICES PARA MOSTRAR LA SEÑAL DE PASIVO",
+        "jerarquia": [
+          "Regla 4: GESTIÓN DEL JUEGO PASIVO HACIA EL FINAL DEL PARTIDO",
+          "4:3 DIRECTRICES PARA MOSTRAR LA SEÑAL DE PASIVO"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-1",
+        "titulo_seccion": "5:1 Nota:",
+        "jerarquia": [
+          "Regla 5: Después de haber realizado la Gestofirma de advertencia de juego pasivo",
+          "5:1 Nota:"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-2",
+        "titulo_seccion": "5:2 Notas respecto al número de pases",
+        "jerarquia": [
+          "Regla 5: Después de haber realizado la Gestofirma de advertencia de juego pasivo",
+          "5:2 Notas respecto al número de pases"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-5:5-3",
+        "titulo_seccion": "5:3 ANTES DE QUE SE COMPLETE EL 5º PASE:",
+        "jerarquia": [
+          "Regla 5: Después de haber realizado la Gestofirma de advertencia de juego pasivo",
+          "5:3 ANTES DE QUE SE COMPLETE EL 5º PASE:"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-6:6-1",
+        "titulo_seccion": "6:1 OMITIR UNA CLARA OCASIÓN DE GOL",
+        "jerarquia": [
+          "Regla 6: SITUACIONES ESPICIALES EN LAS QUE EL ÁRBITRO PUEDE DECIDIR DIRECTAMENTE SOBRE EL JUEGO PASIVO",
+          "6:1 OMITIR UNA CLARA OCASIÓN DE GOL"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-6:6-2",
+        "titulo_seccion": "6:2 Situaciones típicas de juego:",
+        "jerarquia": [
+          "Regla 6: SITUACIONES ESPICIALES EN LAS QUE EL ÁRBITRO PUEDE DECIDIR DIRECTAMENTE SOBRE EL JUEGO PASIVO",
+          "6:2 Situaciones típicas de juego:"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-6:6-3",
+        "titulo_seccion": "6:3 LANZAMIENTOS ABIERTOS DESDE EL EXTREMO",
+        "jerarquia": [
+          "Regla 6: SITUACIONES ESPICIALES EN LAS QUE EL ÁRBITRO PUEDE DECIDIR DIRECTAMENTE SOBRE EL JUEGO PASIVO",
+          "6:3 LANZAMIENTOS ABIERTOS DESDE EL EXTREMO"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-6:6-4",
+        "titulo_seccion": "6:4 DEFENSA INDIVIDUAL EN LA MITAD DEL CAMPO CONTRARIA",
+        "jerarquia": [
+          "Regla 6: SITUACIONES ESPICIALES EN LAS QUE EL ÁRBITRO PUEDE DECIDIR DIRECTAMENTE SOBRE EL JUEGO PASIVO",
+          "6:4 DEFENSA INDIVIDUAL EN LA MITAD DEL CAMPO CONTRARIA"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-6:6-5",
+        "titulo_seccion": "6:5 SAQUE DE CENTRO (10:3)",
+        "jerarquia": [
+          "Regla 6: SITUACIONES ESPICIALES EN LAS QUE EL ÁRBITRO PUEDE DECIDIR DIRECTAMENTE SOBRE EL JUEGO PASIVO",
+          "6:5 SAQUE DE CENTRO (10:3)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-6:6-6",
+        "titulo_seccion": "6:6 EJECUCIÓN SIN EL ÁREA DEL SAQUE DE CENTRO",
+        "jerarquia": [
+          "Regla 6: SITUACIONES ESPICIALES EN LAS QUE EL ÁRBITRO PUEDE DECIDIR DIRECTAMENTE SOBRE EL JUEGO PASIVO",
+          "6:6 EJECUCIÓN SIN EL ÁREA DEL SAQUE DE CENTRO"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-8:8-1",
+        "titulo_seccion": "8:1 CAMBIO ANTIRREGLAMENTARIO O ENTRADA ILEGAL DE UN JUGADOR (REGLA 4:2-3, 5-6)",
+        "jerarquia": [
+          "Regla 8: INTERVENCIÓN DEL CRONOMETRADOR O DEL DELEGADO (18:1)",
+          "8:1 CAMBIO ANTIRREGLAMENTARIO O ENTRADA ILEGAL DE UN JUGADOR (REGLA 4:2-3, 5-6)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-8:8-2",
+        "titulo_seccion": "8:2 INTERRUPCIÓN POR OTRAS CAUSAS, POR EJEMPLO, CONDUCTA ANTIDEPORTIVA EN LA ZONA DE CAMBIOS",
+        "jerarquia": [
+          "Regla 8: INTERVENCIÓN DEL CRONOMETRADOR O DEL DELEGADO (18:1)",
+          "8:2 INTERRUPCIÓN POR OTRAS CAUSAS, POR EJEMPLO, CONDUCTA ANTIDEPORTIVA EN LA ZONA DE CAMBIOS"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-8:8-3",
+        "titulo_seccion": "8:3 INTERVENCIÓN POR PARTE DE UN DELEGADO",
+        "jerarquia": [
+          "Regla 8: INTERVENCIÓN DEL CRONOMETRADOR O DEL DELEGADO (18:1)",
+          "8:3 INTERVENCIÓN POR PARTE DE UN DELEGADO"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-9:9-1",
+        "titulo_seccion": "9:1 b. el anotador, el cronometrador o los delegados son los responsables de contar el número de ataques. Informan al equipo correspondiente en el momento en que puede regresar al terreno de juego.",
+        "jerarquia": [
+          "Regla 9: JUGADOR LESIONADO (4:11)",
+          "9:1 b. el anotador, el cronometrador o los delegados son los responsables de contar el número de ataques. Informan al equipo correspondiente en el momento en que puede regresar al terreno de juego."
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-9:9-2",
+        "titulo_seccion": "9:2 c. regla 4:11, 2º párrafo: no se aplica en los casos siguientes:",
+        "jerarquia": [
+          "Regla 9: JUGADOR LESIONADO (4:11)",
+          "9:2 c. regla 4:11, 2º párrafo: no se aplica en los casos siguientes:"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-1",
+        "titulo_seccion": "10:1 2 Solamente los jugadores y los oficiales de equipo que figuran en el acta del partido están autorizados a permanecer en la zona de cambios (reglas 4:1-2).",
+        "jerarquia": [
+          "Regla 10: ZONAS DE CAMBIOS",
+          "10:1 2 Solamente los jugadores y los oficiales de equipo que figuran en el acta del partido están autorizados a permanecer en la zona de cambios (reglas 4:1-2)."
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-3",
+        "titulo_seccion": "10:3 4 El cronometrador y el anotador ayudarán a los árbitros a controlar la ocupación de la zona de cambios antes y durante el partido.",
+        "jerarquia": [
+          "Regla 10: ZONAS DE CAMBIOS",
+          "10:3 4 El cronometrador y el anotador ayudarán a los árbitros a controlar la ocupación de la zona de cambios antes y durante el partido."
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-4",
+        "titulo_seccion": "10:4 5 Los oficiales de equipo tienen el derecho y la obligación de controlar y dirigir a su equipo también durante el partido, siempre y cuando lo hagan con espíritu deportivo y limpio, de acuerdo con las reglas. En principio, deberían estar sentados en el banquillo.",
+        "jerarquia": [
+          "Regla 10: ZONAS DE CAMBIOS",
+          "10:4 5 Los oficiales de equipo tienen el derecho y la obligación de controlar y dirigir a su equipo también durante el partido, siempre y cuando lo hagan con espíritu deportivo y limpio, de acuerdo con las reglas. En principio, deberían estar sentados en el banquillo."
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-10:10-5",
+        "titulo_seccion": "10:5 6",
+        "jerarquia": [
+          "Regla 10: ZONAS DE CAMBIOS",
+          "10:5 6"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-1",
+        "titulo_seccion": "11:1 PORTERÍAS ANTIVUELCO (REGLA 1:2)",
+        "jerarquia": [
+          "Regla 11: LÍNEAS DEL TERRENO DE JUEGO (REGLAMENTO RELATIVO A LA ZONA DE CAMBIOS REGLA 1, APARTADO 1)",
+          "11:1 PORTERÍAS ANTIVUELCO (REGLA 1:2)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-2",
+        "titulo_seccion": "11:2 PORTERO LESIONADO EN CONEXIÓN CON EL LIBRE SAQUE (REGLA 2:5)",
+        "jerarquia": [
+          "Regla 11: LÍNEAS DEL TERRENO DE JUEGO (REGLAMENTO RELATIVO A LA ZONA DE CAMBIOS REGLA 1, APARTADO 1)",
+          "11:2 PORTERO LESIONADO EN CONEXIÓN CON EL LIBRE SAQUE (REGLA 2:5)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-11:11-3",
+        "titulo_seccion": "11:3 GOLPE FRANCO O SAQUE DE 7 METROS DESPUÉS DEL PITIDO FINAL (REGLAS 2:6, 8:11A)",
+        "jerarquia": [
+          "Regla 11: LÍNEAS DEL TERRENO DE JUEGO (REGLAMENTO RELATIVO A LA ZONA DE CAMBIOS REGLA 1, APARTADO 1)",
+          "11:3 GOLPE FRANCO O SAQUE DE 7 METROS DESPUÉS DEL PITIDO FINAL (REGLAS 2:6, 8:11A)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-12:12-1",
+        "titulo_seccion": "12:1 USO DE BALONES RESERVA (REGLA 3:3)",
+        "jerarquia": [
+          "Regla 12: TIEMPO MUERTO DE EQUIPO (REGLA 2:10, ACLARACIÓN N.° 3)",
+          "12:1 USO DE BALONES RESERVA (REGLA 3:3)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-12:12-2",
+        "titulo_seccion": "12:2 SUSTITUCIÓN DE JUGADORES Y OFICIALES (4:1-4:2)",
+        "jerarquia": [
+          "Regla 12: TIEMPO MUERTO DE EQUIPO (REGLA 2:10, ACLARACIÓN N.° 3)",
+          "12:2 SUSTITUCIÓN DE JUGADORES Y OFICIALES (4:1-4:2)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-12:12-3",
+        "titulo_seccion": "12:3 SUSTITUCIÓN DE JUGADORES (4:4)",
+        "jerarquia": [
+          "Regla 12: TIEMPO MUERTO DE EQUIPO (REGLA 2:10, ACLARACIÓN N.° 3)",
+          "12:3 SUSTITUCIÓN DE JUGADORES (4:4)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-12:12-4",
+        "titulo_seccion": "12:4 ENTRAR AL TERRENO DE JUEGO (REGLAS 4:4, 4:6)",
+        "jerarquia": [
+          "Regla 12: TIEMPO MUERTO DE EQUIPO (REGLA 2:10, ACLARACIÓN N.° 3)",
+          "12:4 ENTRAR AL TERRENO DE JUEGO (REGLAS 4:4, 4:6)"
+        ],
+        "nivel": "subregla"
+      },
+      {
+        "chunk_id": "reglas-de-juego:regla-15:15-7",
+        "titulo_seccion": "15:7 Párrafo 3° y 15:8 Ejemplos de posibles faltas al ejecutar el lanzamiento",
+        "jerarquia": [
+          "Regla 15 Ejecución de un Lanzamiento",
+          "15:7 Párrafo 3° y 15:8 Ejemplos de posibles faltas al ejecutar el lanzamiento"
+        ],
+        "nivel": "subregla"
+      }
+    ]
+  },
+  "rgc-fabm": {
+    "nombre": "Reglamento General de Competiciones (FABM, 2025)",
+    "fuente": "FABM",
+    "chunks": [
+      {
+        "chunk_id": "rgc-fabm:edicion-julio-2025:preliminar",
+        "titulo_seccion": "PRELIMINAR",
+        "jerarquia": [
+          "REGLAMENTO GENERAL Y DE COMPETICIONES",
+          "EDICIÓN JULIO 2025",
+          "PRELIMINAR"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:edicion-julio-2025:titulo-i",
+        "titulo_seccion": "TÍTULO I",
+        "jerarquia": [
+          "REGLAMENTO GENERAL Y DE COMPETICIONES",
+          "EDICIÓN JULIO 2025",
+          "TÍTULO I"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:edicion-julio-2025:titulo-ii",
+        "titulo_seccion": "TÍTULO II",
+        "jerarquia": [
+          "REGLAMENTO GENERAL Y DE COMPETICIONES",
+          "EDICIÓN JULIO 2025",
+          "TÍTULO II"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:participacion-en-competiciones-oficiales",
+        "titulo_seccion": "PARTICIPACIÓN EN COMPETICIONES OFICIALES",
+        "jerarquia": [
+          "CAP. QUINTO",
+          "PARTICIPACIÓN EN COMPETICIONES OFICIALES"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-primero",
+        "titulo_seccion": "CAP. PRIMERO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. PRIMERO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-segundo",
+        "titulo_seccion": "CAP. SEGUNDO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. SEGUNDO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-tercero",
+        "titulo_seccion": "CAP. TERCERO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. TERCERO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-cuarto",
+        "titulo_seccion": "CAP. CUARTO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. CUARTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-quinto",
+        "titulo_seccion": "CAP. QUINTO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. QUINTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-sexto",
+        "titulo_seccion": "CAP. SEXTO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. SEXTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-septimo",
+        "titulo_seccion": "CAP. SEPTIMO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. SEPTIMO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-octavo",
+        "titulo_seccion": "CAP. OCTAVO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. OCTAVO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-noveno",
+        "titulo_seccion": "CAP. NOVENO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. NOVENO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:encuentros:cap-decimo",
+        "titulo_seccion": "CAP. DÉCIMO",
+        "jerarquia": [
+          "TITULO III",
+          "ENCUENTROS",
+          "CAP. DÉCIMO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:composicion-de-equipos-en-encuentros-ofi:cap-primero",
+        "titulo_seccion": "CAP. PRIMERO",
+        "jerarquia": [
+          "TITULO IV",
+          "COMPOSICION DE EQUIPOS EN ENCUENTROS OFICIALES",
+          "CAP. PRIMERO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:composicion-de-equipos-en-encuentros-ofi:cap-segundo",
+        "titulo_seccion": "CAP. SEGUNDO",
+        "jerarquia": [
+          "TITULO IV",
+          "COMPOSICION DE EQUIPOS EN ENCUENTROS OFICIALES",
+          "CAP. SEGUNDO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:composicion-de-equipos-en-encuentros-ofi:cap-tercero",
+        "titulo_seccion": "CAP. TERCERO",
+        "jerarquia": [
+          "TITULO IV",
+          "COMPOSICION DE EQUIPOS EN ENCUENTROS OFICIALES",
+          "CAP. TERCERO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:composicion-de-equipos-en-encuentros-ofi:cap-cuarto",
+        "titulo_seccion": "CAP. CUARTO",
+        "jerarquia": [
+          "TITULO IV",
+          "COMPOSICION DE EQUIPOS EN ENCUENTROS OFICIALES",
+          "CAP. CUARTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:composicion-de-equipos-en-encuentros-ofi:cap-quinto",
+        "titulo_seccion": "CAP. QUINTO",
+        "jerarquia": [
+          "TITULO IV",
+          "COMPOSICION DE EQUIPOS EN ENCUENTROS OFICIALES",
+          "CAP. QUINTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:relacion-rgc-y-add:cap-primero",
+        "titulo_seccion": "CAP. PRIMERO",
+        "jerarquia": [
+          "TITULO VII",
+          "RELACIÓN RGC Y ADD",
+          "CAP. PRIMERO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:relacion-rgc-y-add:cap-segundo",
+        "titulo_seccion": "CAP. SEGUNDO",
+        "jerarquia": [
+          "TITULO VII",
+          "RELACIÓN RGC Y ADD",
+          "CAP. SEGUNDO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:relacion-rgc-y-add:cap-tercero",
+        "titulo_seccion": "CAP. TERCERO",
+        "jerarquia": [
+          "TITULO VII",
+          "RELACIÓN RGC Y ADD",
+          "CAP. TERCERO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:relacion-rgc-y-add:cap-cuarto",
+        "titulo_seccion": "CAP. CUARTO",
+        "jerarquia": [
+          "TITULO VII",
+          "RELACIÓN RGC Y ADD",
+          "CAP. CUARTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:relacion-rgc-y-add:cap-quinto",
+        "titulo_seccion": "CAP. QUINTO",
+        "jerarquia": [
+          "TITULO VII",
+          "RELACIÓN RGC Y ADD",
+          "CAP. QUINTO"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-primero:seccion-primera",
+        "titulo_seccion": "Sección Primera – Afiliación",
+        "jerarquia": [
+          "TÍTULO PRIMERO: ESTAMENTOS DE LA FEDERACIÓN ANDALUZA DE BALONMANO",
+          "CAPÍTULO PRIMERO – CLUBES Y SECCIONES DEPORTIVAS.",
+          "Sección Primera – Afiliación"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-4",
+        "titulo_seccion": "Artículo 4.",
+        "jerarquia": [
+          "Sección Segunda - Denominación",
+          "Artículo 4."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-5",
+        "titulo_seccion": "Artículo 5.",
+        "jerarquia": [
+          "Sección Segunda - Denominación",
+          "Artículo 5."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-6",
+        "titulo_seccion": "Artículo 6.",
+        "jerarquia": [
+          "Sección Segunda - Denominación",
+          "Artículo 6."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-7",
+        "titulo_seccion": "Artículo 7.",
+        "jerarquia": [
+          "Sección Tercera - Categoría de los Clubes.",
+          "Artículo 7."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-8",
+        "titulo_seccion": "Artículo 8.",
+        "jerarquia": [
+          "Sección Cuarta - Derechos y Obligaciones",
+          "Artículo 8."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-9-bis-obligaciones-especific",
+        "titulo_seccion": "Artículo 9 bis. - obligaciones específicas en materia de protección de menores.",
+        "jerarquia": [
+          "Reglamento General y en las Normas de cada Competición.",
+          "Artículo 9 bis. - obligaciones específicas en materia de protección de menores."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-10",
+        "titulo_seccion": "Artículo 10.",
+        "jerarquia": [
+          "Sección Quinta - Cambio de Residencia",
+          "Artículo 10."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:subseccion-primera-fusion-de-clubes:articulo-11",
+        "titulo_seccion": "Artículo 11.",
+        "jerarquia": [
+          "Sección Sexta – Fusiones, cesiones de derechos deportivos y Clubes filiales",
+          "Subsección Primera: Fusión de Clubes",
+          "Artículo 11."
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-13-1-el-comite-de-competicio",
+        "titulo_seccion": "Artículo 13.- 1. El Comité de Competición y Disciplina podrá autorizar la suscripción de Convenios de filialidad entre Clubes, debiendo reunir las siguientes condiciones:",
+        "jerarquia": [
+          "Subsección Tercera: Clubes Filiales",
+          "Artículo 13.- 1. El Comité de Competición y Disciplina podrá autorizar la suscripción de Convenios de filialidad entre Clubes, debiendo reunir las siguientes condiciones:"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-ii:seccion-sexta",
+        "titulo_seccion": "Sección Sexta - Derechos y Obligaciones de jugadores y jugadoras",
+        "jerarquia": [
+          "Reglamento General de Competición de la Federación Andaluza de Balonmano",
+          "Capítulo II - Licencias y derechos de formación",
+          "Sección Sexta - Derechos y Obligaciones de jugadores y jugadoras"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-ii:seccion-septima",
+        "titulo_seccion": "Sección Séptima - Derechos de Formación de jugadores y jugadoras",
+        "jerarquia": [
+          "Reglamento General de Competición de la Federación Andaluza de Balonmano",
+          "Capítulo II - Licencias y derechos de formación",
+          "Sección Séptima - Derechos de Formación de jugadores y jugadoras"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:seccion-primera",
+        "titulo_seccion": "Sección Primera - Definición y Condición de Entrenador o Entrenadora",
+        "jerarquia": [
+          "Reglamento General de Competición de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero - Entrenadores o Entrenadoras y Ayudantes de Entrenador",
+          "Sección Primera - Definición y Condición de Entrenador o Entrenadora"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:seccion-segunda",
+        "titulo_seccion": "Sección Segunda - Tramitación de Licencias de Entrenador o Entrenadora",
+        "jerarquia": [
+          "Reglamento General de Competición de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero - Entrenadores o Entrenadoras y Ayudantes de Entrenador",
+          "Sección Segunda - Tramitación de Licencias de Entrenador o Entrenadora"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:seccion-tercera",
+        "titulo_seccion": "Sección Tercera - Tramitación de Licencias de Ayudantes o Ayudantas de Entrenadora",
+        "jerarquia": [
+          "Reglamento General de Competición de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero - Entrenadores o Entrenadoras y Ayudantes de Entrenador",
+          "Sección Tercera - Tramitación de Licencias de Ayudantes o Ayudantas de Entrenadora"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:seccion-cuarta",
+        "titulo_seccion": "Sección Cuarta - Derechos y Deberes de los y las Entrenadoras y de las y los Ayudantes",
+        "jerarquia": [
+          "Reglamento General de Competición de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero - Entrenadores o Entrenadoras y Ayudantes de Entrenador",
+          "Sección Cuarta - Derechos y Deberes de los y las Entrenadoras y de las y los Ayudantes"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-76",
+        "titulo_seccion": "Artículo 76.",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano (RGC-FABM)",
+          "Artículo 76."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-77",
+        "titulo_seccion": "Artículo 77.",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano (RGC-FABM)",
+          "Artículo 77."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-78",
+        "titulo_seccion": "Artículo 78.",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano (RGC-FABM)",
+          "Artículo 78."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-80-el-equipo-arbitral-estara",
+        "titulo_seccion": "Artículo 80.- El equipo arbitral estará compuesto por los o las árbitras, que han de dirigir los encuentros y sus auxiliares, y en su caso, el delegado federativo.",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano (RGC-FABM)",
+          "Artículo 80.- El equipo arbitral estará compuesto por los o las árbitras, que han de dirigir los encuentros y sus auxiliares, y en su caso, el delegado federativo."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-81-los-nombramientos-del-equi",
+        "titulo_seccion": "Artículo 81.- Los nombramientos del equipo arbitral que hayan de dirigir encuentros de ámbito territorial los designará el Comité Territorial Arbitral de la Federación Andaluza de Balonmano, realizándose a través de la plataforma informática, pudiendo ser por causas excepcionales a través de correo electrónico.",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano (RGC-FABM)",
+          "Artículo 81.- Los nombramientos del equipo arbitral que hayan de dirigir encuentros de ámbito territorial los designará el Comité Territorial Arbitral de la Federación Andaluza de Balonmano, realizándose a través de la plataforma informática, pudiendo ser por causas excepcionales a través de correo electrónico."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-84-1-en-todos-los-encuentros-parte-1",
+        "titulo_seccion": "Artículo 84.- 1. En todos los encuentros, ya sean de carácter oficial o amistoso, es responsabilidad del equipo arbitral el supervisar la correcta redacción y suscribir el acta del partido, así como su correcta grabación en el sistema informático. (parte 1/2)",
+        "jerarquia": [
+          "Artículo 83.- 1. El equipo arbitral de los encuentros tiene la obligación ineludible de comprobar que el Acta digital ha sido subida correctamente a la plataforma a tal efecto.",
+          "Artículo 84.- 1. En todos los encuentros, ya sean de carácter oficial o amistoso, es responsabilidad del equipo arbitral el supervisar la correcta redacción y suscribir el acta del partido, así como su correcta grabación en el sistema informático."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-84-1-en-todos-los-encuentros-parte-2",
+        "titulo_seccion": "Artículo 84.- 1. En todos los encuentros, ya sean de carácter oficial o amistoso, es responsabilidad del equipo arbitral el supervisar la correcta redacción y suscribir el acta del partido, así como su correcta grabación en el sistema informático. (parte 2/2)",
+        "jerarquia": [
+          "Artículo 83.- 1. El equipo arbitral de los encuentros tiene la obligación ineludible de comprobar que el Acta digital ha sido subida correctamente a la plataforma a tal efecto.",
+          "Artículo 84.- 1. En todos los encuentros, ya sean de carácter oficial o amistoso, es responsabilidad del equipo arbitral el supervisar la correcta redacción y suscribir el acta del partido, así como su correcta grabación en el sistema informático."
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-primero",
+        "titulo_seccion": "CAPITULO PRIMERO: TEMPORADA DEPORTIVA OFICIAL",
+        "jerarquia": [
+          "TITULO II - COMPETICIONES",
+          "CAPITULO PRIMERO: TEMPORADA DEPORTIVA OFICIAL"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-segundo",
+        "titulo_seccion": "CAPITULO SEGUNDO: COMPETICIONES OFICIALES ANDALUZAS",
+        "jerarquia": [
+          "TITULO II - COMPETICIONES",
+          "CAPITULO SEGUNDO: COMPETICIONES OFICIALES ANDALUZAS"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero",
+        "titulo_seccion": "CAPITULO TERCERO: COMPETICIONES OFICIALES PROVINCIALES",
+        "jerarquia": [
+          "TITULO II - COMPETICIONES",
+          "CAPITULO TERCERO: COMPETICIONES OFICIALES PROVINCIALES"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-i:seccion-5",
+        "titulo_seccion": "Sección 5º: Requisitos para participar",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano (RGC-FABM)",
+          "Capítulo I — Disposiciones Generales",
+          "Sección 5º: Requisitos para participar"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:seccion-6-parte-1",
+        "titulo_seccion": "Sección 6º: Clases de competiciones y modo de jugarse (parte 1/2)",
+        "jerarquia": [
+          "Artículo 116.- Los clubes con equipos en categoría territorial sénior, que al 31 de mayo de cada temporada no hayan satisfecho las deudas por sus compromisos federativos o acuerdos adquiridos con los demás estamentos de balonmano, se verán obligados a:",
+          "Sección 6º: Clases de competiciones y modo de jugarse"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:seccion-6-parte-2",
+        "titulo_seccion": "Sección 6º: Clases de competiciones y modo de jugarse (parte 2/2)",
+        "jerarquia": [
+          "Artículo 116.- Los clubes con equipos en categoría territorial sénior, que al 31 de mayo de cada temporada no hayan satisfecho las deudas por sus compromisos federativos o acuerdos adquiridos con los demás estamentos de balonmano, se verán obligados a:",
+          "Sección 6º: Clases de competiciones y modo de jugarse"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:seccion-7-normativa-y-criterios-de-cla",
+        "titulo_seccion": "Sección 7º: Normativa y criterios de Clasificación",
+        "jerarquia": [
+          "DE DIECIOCHO EQUIPOS",
+          "Sección 7º: Normativa y criterios de Clasificación"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-quinto",
+        "titulo_seccion": "Capítulo Quinto — CAMBIO DE FECHAS DE ENCUENTROS",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Quinto — CAMBIO DE FECHAS DE ENCUENTROS"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-quinto:a-por-circunstancias-generales",
+        "titulo_seccion": "A) Por circunstancias generales:",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Quinto — CAMBIO DE FECHAS DE ENCUENTROS",
+          "A) Por circunstancias generales:"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-quinto:b-por-actividades-de-los-equipos-nacion",
+        "titulo_seccion": "B) Por actividades de los Equipos Nacionales o Equipos de Andalucía:",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Quinto — CAMBIO DE FECHAS DE ENCUENTROS",
+          "B) Por actividades de los Equipos Nacionales o Equipos de Andalucía:"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-sexto-parte-1",
+        "titulo_seccion": "Capítulo Sexto — SUSPENSIÓN DE ENCUENTROS (parte 1/2)",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Sexto — SUSPENSIÓN DE ENCUENTROS"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-sexto-parte-2",
+        "titulo_seccion": "Capítulo Sexto — SUSPENSIÓN DE ENCUENTROS (parte 2/2)",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Sexto — SUSPENSIÓN DE ENCUENTROS"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-septimo",
+        "titulo_seccion": "Capítulo Séptimo — SUSPENSIÓN DEFINITIVA DE COMPETICIONES",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Séptimo — SUSPENSIÓN DEFINITIVA DE COMPETICIONES"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-septimo:consideraciones-generales",
+        "titulo_seccion": "CONSIDERACIONES GENERALES:",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Séptimo — SUSPENSIÓN DEFINITIVA DE COMPETICIONES",
+          "CONSIDERACIONES GENERALES:"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-septimo:tipos-de-competiciones",
+        "titulo_seccion": "TIPOS DE COMPETICIONES:",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Séptimo — SUSPENSIÓN DEFINITIVA DE COMPETICIONES",
+          "TIPOS DE COMPETICIONES:"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-octavo",
+        "titulo_seccion": "Capítulo Octavo — RETIRADA DE LOS EQUIPOS DEL TERRENO DE JUEGO",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Octavo — RETIRADA DE LOS EQUIPOS DEL TERRENO DE JUEGO"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-noveno",
+        "titulo_seccion": "Capítulo Noveno — INCOMPARECENCIAS DE LOS EQUIPOS",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Noveno — INCOMPARECENCIAS DE LOS EQUIPOS"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-decimo:seccion-1",
+        "titulo_seccion": "Sección 1ª: Condiciones de los Terrenos de Juego",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Décimo — TERRENOS DE JUEGO",
+          "Sección 1ª: Condiciones de los Terrenos de Juego"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-segundo:articulo-194",
+        "titulo_seccion": "Artículo 194.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Segundo: Alineación de Entrenadores o Entrenadoras y Ayudantes o Ayudantas",
+          "Artículo 194.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-segundo:articulo-195",
+        "titulo_seccion": "Artículo 195.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Segundo: Alineación de Entrenadores o Entrenadoras y Ayudantes o Ayudantas",
+          "Artículo 195.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:articulo-196",
+        "titulo_seccion": "Artículo 196.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero: Alineación de Oficiales u Oficiales",
+          "Artículo 196.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:articulo-197",
+        "titulo_seccion": "Artículo 197.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero: Alineación de Oficiales u Oficiales",
+          "Artículo 197.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:articulo-198",
+        "titulo_seccion": "Artículo 198.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero: Alineación de Oficiales u Oficiales",
+          "Artículo 198.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:articulo-199",
+        "titulo_seccion": "Artículo 199.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero: Alineación de Oficiales u Oficiales",
+          "Artículo 199.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:articulo-200",
+        "titulo_seccion": "Artículo 200.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero: Alineación de Oficiales u Oficiales",
+          "Artículo 200.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-tercero:articulo-201",
+        "titulo_seccion": "Artículo 201.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Tercero: Alineación de Oficiales u Oficiales",
+          "Artículo 201.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-cuarto:articulo-202",
+        "titulo_seccion": "Artículo 202.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Cuarto: Alineación de Auxiliar de Equipo y Médico o Médica",
+          "Artículo 202.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-cuarto:articulo-203",
+        "titulo_seccion": "Artículo 203.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Cuarto: Alineación de Auxiliar de Equipo y Médico o Médica",
+          "Artículo 203.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-quinto:articulo-204",
+        "titulo_seccion": "Artículo 204.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Quinto: El Delegado Federativo",
+          "Artículo 204.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-quinto:articulo-205",
+        "titulo_seccion": "Artículo 205.-",
+        "jerarquia": [
+          "Reglamento General de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo Quinto: El Delegado Federativo",
+          "Artículo 205.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-206",
+        "titulo_seccion": "Artículo 206.-",
+        "jerarquia": [
+          "Título V - Selecciones Provinciales",
+          "Artículo 206.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-207",
+        "titulo_seccion": "Artículo 207.-",
+        "jerarquia": [
+          "Título VI - Selecciones Andaluzas",
+          "Artículo 207.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-208",
+        "titulo_seccion": "Artículo 208.-",
+        "jerarquia": [
+          "Título VI - Selecciones Andaluzas",
+          "Artículo 208.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-209",
+        "titulo_seccion": "Artículo 209.-",
+        "jerarquia": [
+          "Título VI - Selecciones Andaluzas",
+          "Artículo 209.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-210",
+        "titulo_seccion": "Artículo 210.-",
+        "jerarquia": [
+          "Título VI - Selecciones Andaluzas",
+          "Artículo 210.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-211",
+        "titulo_seccion": "Artículo 211.-",
+        "jerarquia": [
+          "Título VI - Selecciones Andaluzas",
+          "Artículo 211.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:articulo-212",
+        "titulo_seccion": "Artículo 212.-",
+        "jerarquia": [
+          "Título VI - Selecciones Andaluzas",
+          "Artículo 212.-"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:preliminar:articulo-213",
+        "titulo_seccion": "Artículo 213.-",
+        "jerarquia": [
+          "Título Séptimo: Relación Reglamento General y de Competiciones y Reglamento Disciplinario",
+          "Preliminar",
+          "Artículo 213.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-primero:articulo-214",
+        "titulo_seccion": "Artículo 214.-",
+        "jerarquia": [
+          "Título Séptimo: Relación Reglamento General y de Competiciones y Reglamento Disciplinario",
+          "Capítulo Primero – Jugadores y Jugadoras",
+          "Artículo 214.-"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-i:seccion-1",
+        "titulo_seccion": "Sección 1 — Infracciones Muy Graves",
+        "jerarquia": [
+          "Reglamento General y de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo I — Infracciones y Sanciones",
+          "Sección 1 — Infracciones Muy Graves"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-i:seccion-2",
+        "titulo_seccion": "Sección 2 — Infracciones Graves",
+        "jerarquia": [
+          "Reglamento General y de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo I — Infracciones y Sanciones",
+          "Sección 2 — Infracciones Graves"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:capitulo-i:seccion-3",
+        "titulo_seccion": "Sección 3 — Infracciones Leves",
+        "jerarquia": [
+          "Reglamento General y de Competiciones de la Federación Andaluza de Balonmano",
+          "Capítulo I — Infracciones y Sanciones",
+          "Sección 3 — Infracciones Leves"
+        ],
+        "nivel": "seccion"
+      },
+      {
+        "chunk_id": "rgc-fabm:disposicion-adicional",
+        "titulo_seccion": "DISPOSICIÓN ADICIONAL",
+        "jerarquia": [
+          "Reglamento General y de Competiciones de la Federación Andaluza de Balonmano",
+          "DISPOSICIÓN ADICIONAL"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:disposicion-final",
+        "titulo_seccion": "DISPOSICIÓN FINAL",
+        "jerarquia": [
+          "Reglamento General y de Competiciones de la Federación Andaluza de Balonmano",
+          "DISPOSICIÓN FINAL"
+        ],
+        "nivel": "capitulo"
+      },
+      {
+        "chunk_id": "rgc-fabm:disposicion-derogatoria",
+        "titulo_seccion": "DISPOSICIÓN DEROGATORIA",
+        "jerarquia": [
+          "Reglamento General y de Competiciones de la Federación Andaluza de Balonmano",
+          "DISPOSICIÓN DEROGATORIA"
+        ],
+        "nivel": "capitulo"
+      }
+    ]
+  },
+  "add-fabm": {
+    "nombre": "Acuerdo Disciplinario Deportivo (FABM, 2024)",
+    "fuente": "FABM",
+    "chunks": [
+      {
+        "chunk_id": "add-fabm:estatutos:anexo-de-disciplina-deportiva",
+        "titulo_seccion": "Anexo de Disciplina Deportiva",
+        "jerarquia": [
+          "Federación Andaluz de Balonmano",
+          "ESTATUTOS",
+          "Anexo de Disciplina Deportiva"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:titulo-preliminar:de-las-finalidades-y-campo-de-aplicacion",
+        "titulo_seccion": "DE LAS FINALIDADES Y CAMPO DE APLICACIÓN DEL REGLAMENTO",
+        "jerarquia": [
+          "PREÁMBULO",
+          "TÍTULO PRELIMINAR",
+          "DE LAS FINALIDADES Y CAMPO DE APLICACIÓN DEL REGLAMENTO"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:titulo-i:disposiciones-comunes-generales",
+        "titulo_seccion": "DISPOSICIONES COMUNES GENERALES",
+        "jerarquia": [
+          "PREÁMBULO",
+          "TÍTULO I",
+          "DISPOSICIONES COMUNES GENERALES"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:titulo-ii:del-regimen-disciplinario-de-la-fabm-parte-1",
+        "titulo_seccion": "DEL RÉGIMEN DISCIPLINARIO DE LA FABM (parte 1/3)",
+        "jerarquia": [
+          "PREÁMBULO",
+          "TÍTULO II",
+          "DEL RÉGIMEN DISCIPLINARIO DE LA FABM"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:titulo-ii:del-regimen-disciplinario-de-la-fabm-parte-2",
+        "titulo_seccion": "DEL RÉGIMEN DISCIPLINARIO DE LA FABM (parte 2/3)",
+        "jerarquia": [
+          "PREÁMBULO",
+          "TÍTULO II",
+          "DEL RÉGIMEN DISCIPLINARIO DE LA FABM"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:titulo-ii:del-regimen-disciplinario-de-la-fabm-parte-3",
+        "titulo_seccion": "DEL RÉGIMEN DISCIPLINARIO DE LA FABM (parte 3/3)",
+        "jerarquia": [
+          "PREÁMBULO",
+          "TÍTULO II",
+          "DEL RÉGIMEN DISCIPLINARIO DE LA FABM"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:articulo-30",
+        "titulo_seccion": "Artículo 30 — Sanciones pecuniarias",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Artículo 30 — Sanciones pecuniarias"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:articulo-31",
+        "titulo_seccion": "Artículo 31 — Registro de sanciones",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Artículo 31 — Registro de sanciones"
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:articulo-32",
+        "titulo_seccion": "Artículo 32 — Rehabilitación de la sanción.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Artículo 32 — Rehabilitación de la sanción."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:articulo-33",
+        "titulo_seccion": "Artículo 33 — Prescripción de las infracciones.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Artículo 33 — Prescripción de las infracciones."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:articulo-34",
+        "titulo_seccion": "Artículo 34 — Prescripción de las sanciones.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Artículo 34 — Prescripción de las sanciones."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-ii:articulo-35",
+        "titulo_seccion": "Artículo 35 — Cuadro de infracciones y su gravedad.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo II — De las infracciones",
+          "Artículo 35 — Cuadro de infracciones y su gravedad."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-ii:articulo-36",
+        "titulo_seccion": "Artículo 36 — Infracciones muy graves.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo II — De las infracciones",
+          "Artículo 36 — Infracciones muy graves."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-ii:articulo-37",
+        "titulo_seccion": "Artículo 37 — Infracciones graves.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo II — De las infracciones",
+          "Artículo 37 — Infracciones graves."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-ii:articulo-38",
+        "titulo_seccion": "Artículo 38 — Infracciones leves.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo II — De las infracciones",
+          "Artículo 38 — Infracciones leves."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-iii:articulo-39",
+        "titulo_seccion": "Artículo 39 — Sanciones por infracciones muy graves.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo III — De las sanciones",
+          "Artículo 39 — Sanciones por infracciones muy graves."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-iii:articulo-40",
+        "titulo_seccion": "Artículo 40 — Sanciones por infracciones graves.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo III — De las sanciones",
+          "Artículo 40 — Sanciones por infracciones graves."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-iii:articulo-41",
+        "titulo_seccion": "Artículo 41 — Sanciones por infracciones leves.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo III — De las sanciones",
+          "Artículo 41 — Sanciones por infracciones leves."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-iii:articulo-42",
+        "titulo_seccion": "Artículo 42 — Régimen de suspensión de sanciones.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo III — De las sanciones",
+          "Artículo 42 — Régimen de suspensión de sanciones."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:capitulo-iii:articulo-43",
+        "titulo_seccion": "Artículo 43 — Medidas cautelares.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "Capítulo III — De las sanciones",
+          "Artículo 43 — Medidas cautelares."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:disposiciones-adicionales:primera",
+        "titulo_seccion": "Primera.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "DISPOSICIONES ADICIONALES",
+          "Primera."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:disposiciones-adicionales:segunda",
+        "titulo_seccion": "Segunda.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "DISPOSICIONES ADICIONALES",
+          "Segunda."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:disposiciones-transitorias:primera",
+        "titulo_seccion": "Primera.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "DISPOSICIONES TRANSITORIAS",
+          "Primera."
+        ],
+        "nivel": "articulo"
+      },
+      {
+        "chunk_id": "add-fabm:disposiciones-transitorias:segunda",
+        "titulo_seccion": "Segunda.",
+        "jerarquia": [
+          "Anexo Disciplinario",
+          "DISPOSICIONES TRANSITORIAS",
+          "Segunda."
+        ],
+        "nivel": "articulo"
+      }
+    ]
+  }
+}

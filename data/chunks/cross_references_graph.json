@@ -1,0 +1,628 @@
+{
+  "edges": [
+    {
+      "from": "reglas-de-juego:regla-8:8-4",
+      "to": "reglas-de-juego:regla-8:8-5",
+      "raw": "[REF:reglas-de-juego:regla-8-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-4",
+      "to": "reglas-de-juego:regla-8:8-3",
+      "raw": "[REF:reglas-de-juego:regla-8-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-5",
+      "to": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-16-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-5",
+      "to": "reglas-de-juego:regla-8:8-3",
+      "raw": "[REF:reglas-de-juego:regla-8-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-5",
+      "to": "reglas-de-juego:regla-8:8-4",
+      "raw": "[REF:reglas-de-juego:regla-8-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "to": "reglas-de-juego:regla-8:8-5",
+      "raw": "[REF:reglas-de-juego:regla-8-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-9:9-1",
+      "to": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-12-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-9:9-3",
+      "to": "reglas-de-juego:regla-2:2-2",
+      "raw": "[REF:reglas-de-juego:regla-2-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-2",
+      "to": "reglas-de-juego:regla-9:9-2",
+      "raw": "[REF:reglas-de-juego:regla-9-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "to": "reglas-de-juego:regla-13:13-1",
+      "raw": "[REF:reglas-de-juego:regla-13-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "to": "reglas-de-juego:regla-15:15-7",
+      "raw": "[REF:reglas-de-juego:regla-15-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "to": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-10-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-4",
+      "to": "reglas-de-juego:regla-15:15-7",
+      "raw": "[REF:reglas-de-juego:regla-15-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-4",
+      "to": "reglas-de-juego:regla-13:13-1",
+      "raw": "[REF:reglas-de-juego:regla-13-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "to": "reglas-de-juego:regla-4:4-4",
+      "raw": "[REF:reglas-de-juego:regla-4-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-5",
+      "to": "reglas-de-juego:regla-2:2-2",
+      "raw": "[REF:reglas-de-juego:regla-2-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "to": "reglas-de-juego:regla-8:8-5",
+      "raw": "[REF:reglas-de-juego:regla-8-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "to": "reglas-de-juego:regla-13:16-5",
+      "raw": "[REF:reglas-de-juego:regla-16-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "to": "reglas-de-juego:regla-2:2-2",
+      "raw": "[REF:reglas-de-juego:regla-2-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "to": "reglas-de-juego:regla-13:16-10",
+      "raw": "[REF:reglas-de-juego:regla-16-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-7",
+      "to": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-16-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-9",
+      "to": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-16-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-16-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-2:2-2",
+      "raw": "[REF:reglas-de-juego:regla-2-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-16-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-3:3-1",
+      "raw": "[REF:reglas-de-juego:regla-3-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-4:4-1",
+      "raw": "[REF:reglas-de-juego:regla-4-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-4:4-2",
+      "raw": "[REF:reglas-de-juego:regla-4-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-4:4-7",
+      "raw": "[REF:reglas-de-juego:regla-4-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-4:4-8",
+      "raw": "[REF:reglas-de-juego:regla-4-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-4:4-9",
+      "raw": "[REF:reglas-de-juego:regla-4-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-10:10-1",
+      "raw": "[REF:reglas-de-juego:regla-10-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-2:2-3",
+      "raw": "[REF:reglas-de-juego:regla-2-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-7",
+      "raw": "[REF:reglas-de-juego:regla-16-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-9",
+      "raw": "[REF:reglas-de-juego:regla-16-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-4",
+      "raw": "[REF:reglas-de-juego:regla-16-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-5",
+      "raw": "[REF:reglas-de-juego:regla-16-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "to": "reglas-de-juego:regla-13:16-10",
+      "raw": "[REF:reglas-de-juego:regla-16-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "to": "reglas-de-juego:regla-4:4-5",
+      "raw": "[REF:reglas-de-juego:regla-4-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "to": "reglas-de-juego:regla-11:11-1",
+      "raw": "[REF:reglas-de-juego:regla-11-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "to": "reglas-de-juego:regla-3:3-4",
+      "raw": "[REF:reglas-de-juego:regla-3-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "to": "reglas-de-juego:regla-2:2-9",
+      "raw": "[REF:reglas-de-juego:regla-2-9]"
+    },
+    {
+      "from": "rgc-fabm:capitulo-i:seccion-2",
+      "to": "rgc-fabm:capitulo-ii:seccion-septima",
+      "raw": "[REF:rgc-fabm:art-40]"
+    },
+    {
+      "from": "rgc-fabm:capitulo-i:seccion-3",
+      "to": "rgc-fabm:capitulo-ii:seccion-septima",
+      "raw": "[REF:rgc-fabm:art-41]"
+    },
+    {
+      "from": "add-fabm:titulo-ii:del-regimen-disciplinario-de-la-fabm-parte-2",
+      "to": "add-fabm:capitulo-iii:articulo-41",
+      "raw": "[REF:add-fabm:art-41]"
+    }
+  ],
+  "unresolved": [
+    {
+      "from": "reglas-de-juego:regla-1:1-4",
+      "raw": "[REF:reglas-de-juego:regla-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-4",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "raw": "[REF:reglas-de-juego:regla-8-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "raw": "[REF:reglas-de-juego:regla-8-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "raw": "[REF:reglas-de-juego:regla-8-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-8:8-11",
+      "raw": "[REF:reglas-de-juego:regla-8-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-15-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-15-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-15-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-15-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-15-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-15-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-3",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-15-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-15-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-15-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-15-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-10:10-4",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-2",
+      "raw": "[REF:reglas-de-juego:regla-15-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-4",
+      "raw": "[REF:reglas-de-juego:regla-15-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-5",
+      "raw": "[REF:reglas-de-juego:regla-15-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-5",
+      "raw": "[REF:reglas-de-juego:regla-15-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-5",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-11:11-5",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-1",
+      "raw": "[REF:reglas-de-juego:regla-13-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-15-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-2-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-15-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-15-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-12:12-2",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-4",
+      "raw": "[REF:reglas-de-juego:regla-16-14]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-5",
+      "raw": "[REF:reglas-de-juego:regla-16-6D]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-8-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-8-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-16-1B]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-6",
+      "raw": "[REF:reglas-de-juego:regla-16-3D-E]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-7",
+      "raw": "[REF:reglas-de-juego:regla-16-13]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-16-3F]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-16-9B-D]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-16-11B]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-8",
+      "raw": "[REF:reglas-de-juego:regla-8-10A-B]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-9",
+      "raw": "[REF:reglas-de-juego:regla-16-3G]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-9",
+      "raw": "[REF:reglas-de-juego:regla-16-6C]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-10A]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-13-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-14-12]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-17-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-2-8D]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-15-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-17-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-17-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-6]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-8-10]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-13]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-14]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-11]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-17]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-12]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-15]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-16]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-1",
+      "raw": "[REF:reglas-de-juego:regla-16-17]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-2-5]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-13-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-15-4]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-15-9]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-16-1B]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-16-3D]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-13-7]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-15-1]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-15-2]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-15-3]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-2-8]"
+    },
+    {
+      "from": "reglas-de-juego:regla-13:16-10-parte-2",
+      "raw": "[REF:reglas-de-juego:regla-16-15]"
+    },
+    {
+      "from": "add-fabm:titulo-i:disposiciones-comunes-generales",
+      "raw": "[REF:add-fabm:art-125]"
+    }
+  ],
+  "stats": {
+    "total": 143,
+    "resolved": 45,
+    "unresolved": 98
+  }
+}
