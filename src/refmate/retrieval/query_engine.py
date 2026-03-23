@@ -17,6 +17,11 @@ from refmate.retrieval.cache_manager import CacheManager
 from refmate.retrieval.guard import RESPONSE_INJECTION, RESPONSE_OUT_OF_SCOPE
 
 
+# Valores de search_strategy para rutas que no pasan por el agente
+_STRATEGY_NONE = "none"
+_STRATEGY_CACHED = "cached"
+
+
 class QueryEngine:
     """Orquestador del flujo online de consulta.
 
@@ -42,11 +47,11 @@ class QueryEngine:
             cache: Implementación de SemanticCache (protocolo) inyectada.
             agent: Implementación de Agent (protocolo) inyectada.
             embedder: Implementación de EmbeddingProvider (protocolo) inyectada.
-            config: Configuración validada del sistema.
+            config: Configuración validada del sistema (aceptada por contrato
+                    de interfaz; reservada para extensiones futuras).
         """
         self._guard = guard
         self._agent = agent
-        self._config = config
         # CacheManager combina SemanticCache + EmbeddingProvider en una API de texto
         self._cache_manager = CacheManager(cache, embedder)
         logger.info("QueryEngine inicializado")
@@ -79,7 +84,7 @@ class QueryEngine:
             return QueryResult(
                 response=RESPONSE_OUT_OF_SCOPE,
                 chunks_used=[],
-                search_strategy="none",
+                search_strategy=_STRATEGY_NONE,
                 cache_hit="miss",
                 guard_result="out_of_scope",
                 latency_ms=_elapsed_ms(t0),
@@ -90,7 +95,7 @@ class QueryEngine:
             return QueryResult(
                 response=RESPONSE_INJECTION,
                 chunks_used=[],
-                search_strategy="none",
+                search_strategy=_STRATEGY_NONE,
                 cache_hit="miss",
                 guard_result="injection",
                 latency_ms=_elapsed_ms(t0),
@@ -108,10 +113,11 @@ class QueryEngine:
 
         if cache_result.hit_type == "direct":
             logger.info("QueryEngine: direct cache hit — respondiendo sin LLM")
+            assert cache_result.response is not None, "direct hit garantiza response no None"
             return QueryResult(
-                response=cache_result.response,  # type: ignore[arg-type]
+                response=cache_result.response,
                 chunks_used=[],
-                search_strategy="cached",
+                search_strategy=_STRATEGY_CACHED,
                 cache_hit="direct",
                 guard_result="normal",
                 latency_ms=_elapsed_ms(t0),
