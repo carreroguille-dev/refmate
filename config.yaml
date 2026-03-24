@@ -38,7 +38,7 @@ models:
     overlap_tokens: 500
     timeout_seconds: 120
   guard:
-    name: "qwen/qwen3-4b"
+    name: "qwen/qwen3-8b"
     provider: "openrouter"
     endpoint: "https://openrouter.ai/api/v1/chat/completions"
     temperature: 0.0
