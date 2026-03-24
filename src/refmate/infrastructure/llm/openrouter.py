@@ -56,6 +56,12 @@ class OpenRouterTextGenerator:
         Raises:
             RuntimeError: Si todos los reintentos fallan.
         """
+        if self._config.mode == "no-thinking":
+            # Qwen3 usa /no_think en el system prompt para desactivar el razonamiento.
+            # El campo "thinking" de OpenRouter solo aplica a modelos Anthropic.
+            system_prompt = "/no_think\n" + system_prompt
+            logger.debug("Modo no-thinking: /no_think antepuesto al system prompt")
+
         payload: dict[str, object] = {
             "model": self._config.name,
             "messages": [
@@ -65,12 +71,6 @@ class OpenRouterTextGenerator:
             "temperature": self._config.temperature,
             "max_tokens": self._config.max_tokens,
         }
-
-        if self._config.mode == "no-thinking":
-            # Qwen3 usa /no_think en el system prompt para desactivar el razonamiento.
-            # El campo "thinking" de OpenRouter solo aplica a modelos Anthropic.
-            system_prompt = "/no_think\n" + system_prompt
-            logger.debug("Modo no-thinking: /no_think antepuesto al system prompt")
 
         headers = {
             "Authorization": f"Bearer {self._api_key}",
@@ -89,7 +89,13 @@ class OpenRouterTextGenerator:
                     response.raise_for_status()
 
                 data = response.json()
-                text: str = data["choices"][0]["message"]["content"]
+                msg = data["choices"][0]["message"]
+                text: str = msg.get("content") or msg.get("reasoning_content") or ""
+                if not text:
+                    logger.warning(
+                        f"OpenRouter devolvió content=null para '{self._config.name}'. "
+                        f"Respuesta completa: {data}"
+                    )
                 logger.debug(
                     f"OpenRouter respuesta recibida → {len(text)} chars "
                     f"(intento {attempt})"
