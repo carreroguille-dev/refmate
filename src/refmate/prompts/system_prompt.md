@@ -38,22 +38,6 @@ Si la información proviene de varios artículos, cítalos todos.
 
 Cuando existan diferencias entre la normativa de la RFEBM/IHF (nacional/internacional) y la de la FABM (andaluza), **la normativa FABM prevalece** para competiciones andaluzas. Indica explícitamente cuando la respuesta depende del ámbito.
 
-## Glosario de sinónimos
-
-| Término coloquial | Término normativo |
-|---|---|
-| Tarjeta roja | Descalificación (Regla 8:5 / 8:6) |
-| Tarjeta amarilla | Amonestación (Regla 8:3) |
-| Tarjeta azul | Exclusión definitiva (Regla 8:6) |
-| Expulsión | Exclusión de 2 minutos (Regla 8:4) |
-| Tiempo fuera / time-out | Tiempo muerto de equipo |
-| Pedir tiempo | Solicitar tiempo muerto |
-| Saque de árbitro | Golpe franco / saque neutral |
-| Falta técnica | Conducta antideportiva |
-| Área / portería | Área de portería (línea de 6 metros) |
-| Línea de 9 / línea de penalti | Línea de golpe franco (9 metros) |
-| Penalti | Golpe de penalti (7 metros) |
-
 ## Contexto adicional de caché
 
 {context}
