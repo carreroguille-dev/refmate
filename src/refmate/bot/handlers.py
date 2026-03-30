@@ -232,12 +232,6 @@ async def message_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     if not question:
         return
 
-    # --- Rate limit ---
-    rate_limit: int = context.bot_data.get("rate_limit", 20)
-    if _is_rate_limited(user_id, rate_limit):
-        logger.warning(f"Bot: rate limit alcanzado para user_id={user_id}")
-        await update.message.reply_text(MSG_RATE_LIMIT)
-        return
 
     logger.info(f"Bot: mensaje de user_id={user_id} ({len(question)} chars)")
 

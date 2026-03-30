@@ -33,7 +33,6 @@ from refmate.retrieval.cross_refs import CrossRefExpander
 from refmate.retrieval.guard import OpenRouterGuardModel
 from refmate.retrieval.query_engine import QueryEngine
 
-# Directorio de prompts relativo al paquete (no depende del cwd)
 _PROMPTS_DIR = Path(__file__).parent.parent / "prompts"
 
 
@@ -60,16 +59,6 @@ def _configure_logging(log_dir: Path) -> None:
 
 def _build_query_engine(config: RefMateConfig, root: Path) -> QueryEngine:
     """Instancia todas las dependencias y construye el QueryEngine.
-
-    Orden de construcción:
-    1. EmbeddingProvider (carga modelo BGE-m3, operación pesada)
-    2. SemanticCache (conexión Redis)
-    3. VectorStore (conexión Qdrant)
-    4. CrossRefExpander (carga grafo desde disco)
-    5. GuardModel (TextGenerator + prompt)
-    6. RAGAgent (ToolCallingLLM + VectorStore + Embedder + CrossRefs)
-    7. QueryEngine (orquesta todo lo anterior)
-
     Args:
         config: Configuración validada del sistema.
         root: Directorio raíz del proyecto (contiene config.yaml).
@@ -80,7 +69,7 @@ def _build_query_engine(config: RefMateConfig, root: Path) -> QueryEngine:
     api_key = config.api_keys.openrouter
 
     # 1. Embeddings (carga el modelo; puede tardar varios segundos)
-    logger.info("Cargando modelo de embeddings BGE-m3...")
+    logger.info("Cargando modelo de embeddings...")
     embedder = BGEM3EmbeddingProvider(config.models.embeddings)
 
     # 2. Caché semántica Redis
@@ -96,14 +85,14 @@ def _build_query_engine(config: RefMateConfig, root: Path) -> QueryEngine:
         max_expansion=config.retrieval.max_cross_ref_expansion,
     )
 
-    # 5. Guard model (Qwen3-4B vía OpenRouter)
+    # 5. Guard model 
     guard_generator = OpenRouterTextGenerator(config.models.guard, api_key)
     guard = OpenRouterGuardModel(
         generator=guard_generator,
         prompt_path=_PROMPTS_DIR / "guard_prompt.md",
     )
 
-    # 6. Agente RAG (Qwen3-235B con tool calling)
+    # 6. Agente RAG
     agent_llm = OpenRouterToolCallingLLM(config.models.agent, api_key)
     index_path = root / "data" / "index" / "hierarchical_index.json"
     agent = RAGAgent(
@@ -117,7 +106,7 @@ def _build_query_engine(config: RefMateConfig, root: Path) -> QueryEngine:
         doc_ids=list(config.documents.keys()),
     )
 
-    # 7. Query engine (orquestador online)
+    # 7. Query engine
     return QueryEngine(
         guard=guard,
         cache=cache,
@@ -139,24 +128,19 @@ def main() -> None:
     _configure_logging(root / "logs")
     logger.info("Iniciando RefMate Bot...")
 
-    # Construir QueryEngine con todas sus dependencias
     query_engine = _build_query_engine(config, root)
 
-    # Mapa doc_id → nombre corto para formatear las fuentes en las respuestas
     doc_names: dict[str, str] = {
         doc_id: _short_doc_name(doc_cfg.nombre)
         for doc_id, doc_cfg in config.documents.items()
     }
 
-    # Construir aplicación Telegram
     application = ApplicationBuilder().token(config.telegram.token).build()
 
-    # Inyectar dependencias compartidas en bot_data (accesibles desde handlers)
     application.bot_data["query_engine"] = query_engine
     application.bot_data["doc_names"] = doc_names
     application.bot_data["rate_limit"] = config.telegram.rate_limit_per_user
 
-    # Registrar handlers
     application.add_handler(CommandHandler("start", start_handler))
     application.add_handler(CommandHandler("help", help_handler))
     application.add_handler(

@@ -90,3 +90,4 @@ Repite estas preguntas varias veces para verificar los hits de caché.
 
 - ¿Qué dice la regla 8:5? *(repetir 3 veces → direct hit a partir de la 3ª)*
 - ¿Cuándo se descalifica a un jugador? *(reformular como "¿En qué situaciones se da una descalificación?" → context hit)*
+
