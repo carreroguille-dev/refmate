@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="docs/assets/refmate.png" alt="Logo RefMate" width="300"/>
+  <img src="docs/refmate.png" alt="Logo RefMate" width="300"/>
 
   <h1>RefMate</h1>
   <h3>Asistente Arbitral de Balonmano</h3>
