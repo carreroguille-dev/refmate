@@ -1,7 +1,27 @@
-# RefMate — Asistente Arbitral de Balonmano
+<div align="center">
 
-Bot de Telegram con RAG agéntico para consulta de normativa oficial de balonmano pista en el ámbito andaluz.
+  <img src="docs/assets/logo.png" alt="Logo RefMate" width="300"/>
 
+  <h1>RefMate</h1>
+  <h3>Asistente Arbitral de Balonmano</h3>
+  
+  <p>Bot de Telegram con RAG agéntico para consulta de normativa oficial de balonmano pista en el ámbito andaluz.</p>
+
+  <p>
+    <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.12" />
+    <img src="https://img.shields.io/badge/Telegram-Bot-2CA5E0?style=flat-square&logo=telegram&logoColor=white" alt="Telegram Bot" />
+    <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker" />
+    <img src="https://img.shields.io/badge/Qdrant-Vector%20Store-C5314C?style=flat-square" alt="Qdrant" />
+    <img src="https://img.shields.io/badge/Redis-Cache-DC382D?style=flat-square&logo=redis&logoColor=white" alt="Redis" />
+  </p>
+
+</div>
+
+---
+
+## ¿Qué hace?
+
+RefMate permite a árbitros y entrenadores consultar en lenguaje natural tres documentos normativos:
 ---
 
 ## ¿Qué hace?
